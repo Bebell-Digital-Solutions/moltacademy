@@ -1,1 +1,1 @@
-# moltacademy.html
+# moltacademy
