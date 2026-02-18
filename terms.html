@@ -1,1 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PAGE TITLE & META -->
+    <title>Terms of Service – Molt Academy</title>
+    <meta name="description" content="Terms of Service for Molt Academy – AI education platform.">
+    
+    <!-- FONTS & ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/c6f729e3f2ce7e2bc59bf6037f6fe0f491d94819.png">
+    
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Terms-specific styles -->
+    <style>
+        /* Terms page specific enhancements */
+        .section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section ol li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .section ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+            padding: 0;
+        }
+        
+        .section ul li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.8rem;
+            padding-left: 0;
+            color: var(--text-color);
+            transition: transform 0.2s ease;
+        }
+        
+        .section ul li:hover {
+            transform: translateX(5px);
+        }
+        
+        .section ul li i {
+            color: var(--skin-color);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+        
+        .section ul li strong {
+            color: var(--title-color);
+            font-weight: 600;
+        }
+        
+        .legal-divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--skin-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        
+        .legal-divider span {
+            display: inline-block;
+            background: var(--box-color);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--skin-color);
+            font-size: var(--small-font-size);
+        }
+        
+        .fine-print {
+            font-size: var(--smaller-font-size);
+            color: var(--text-color);
+            opacity: 0.8;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+        
+        .service-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .service-item {
+            background: rgba(232, 81, 75, 0.05);
+            border: 1px solid rgba(232, 81, 75, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--skin-color);
+        }
+        
+        .service-item i {
+            font-size: 2rem;
+            color: var(--skin-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-item span {
+            display: block;
+            color: var(--title-color);
+            font-weight: 500;
+        }
+        
+        .exclusion-badge {
+            display: inline-block;
+            background: rgba(232, 81, 75, 0.1);
+            color: var(--skin-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: var(--smaller-font-size);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION BAR (same as index.html) -->
+    <nav id="nav-bar">
+        <a href="/" id="nav-logo">
+            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/a48f92f7455b7f3eb978169ff69d1705921435f4.png" alt="MoltAcademy Logo" />
+        </a>
+        
+        <!-- MOBILE TOGGLE BUTTON -->
+        <button id="mobile-menu-toggle" aria-label="Open Menu">
+            <i class="fa-solid fa-bars" id="toggle-icon"></i>
+        </button>
+        
+        <div id="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            
+            <!-- Courses Dropdown -->
+            <div class="nav-item has-submenu">
+                <a href="#" class="nav-link" id="courses-link">Courses <i class="fa-solid fa-angle-down" style="font-size: 0.8em;"></i></a>
+                <div class="submenu-courses" id="courses-submenu">
+                    <a href="/courses#all" class="submenu-link"><i class="fa-solid fa-list-ul"></i> All Courses</a>
+                    <a href="/courses#foundation" class="submenu-link"><i class="fa-solid fa-brain"></i> AI Foundation</a>
+                    <a href="/courses#prompting" class="submenu-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt Craftsmanship</a>
+                    <a href="#building-ai-brain" class="submenu-link"><i class="fa-solid fa-database"></i> Building Your AI Brain</a>
+                    <a href="#autonomous-ai-agents" class="submenu-link"><i class="fa-solid fa-robot"></i> Autonomous AI Agents</a>
+                </div>
+            </div>
+            
+            <a href="/pricing-page" class="nav-link">Pricing</a>
+            <a href="/contact" class="nav-link">Contact</a>
+            
+            <!-- DESKTOP CTA -->
+            <a href="/login" class="nav-cta desktop-cta-only">MEMBER LOGIN</a>
+            
+            <!-- MOBILE CTA -->
+            <a href="/login" class="nav-cta mobile-cta-only">MEMBER LOGIN</a>
+        </div>
+    </nav>
+    
+    <!-- MAIN CONTENT AREA -->
+    <main>
+        <div class="disclaimer-header">
+            <div class="page-kicker">
+                <i class="fas fa-file-contract"></i>
+                Legal Agreement
+            </div>
+            <h1>Terms of Service</h1>
+            <p class="page-subtitle">
+                Please read these terms carefully before accessing or using Molt Academy's services.
+            </p>
+            <div class="time-badge">
+                <i class="fas fa-clock"></i>
+                Last updated: February 18, 2026
+            </div>
+            <div class="time-badge" style="margin-left: 0.5rem;">
+                <i class="fas fa-globe"></i>
+                Governing Law: Dominican Republic
+            </div>
+        </div>
 
+        <!-- 1. Acceptance of Terms -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-check-circle"></i>
+                <h2>1. Acceptance of Terms</h2>
+            </div>
+            <p>
+                By accessing, purchasing, or using any part of Molt Academy's website, platform, or educational materials, you agree to be legally bound by these Terms of Service.
+            </p>
+            <p>
+                <strong>If you do not agree, you must not access or use the Services.</strong>
+            </p>
+            <p>
+                You represent and warrant that you are at least eighteen (18) years of age. Access by individuals under 18 is strictly prohibited.
+            </p>
+            <div class="fine-print">
+                <i class="fas fa-info-circle"></i> These Terms constitute a binding legal agreement between you and Molt Academy.
+            </div>
+        </section>
+
+        <div class="legal-divider">
+            <span>⸻</span>
+        </div>
+
+        <!-- 2. Description of Services -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>2. Description of Services</h2>
+            </div>
+            <p>
+                Molt Academy provides educational content related to artificial intelligence and related technologies.
+            </p>
+            
+            <h3 style="color: var(--title-color); margin: 1.5rem 0 1rem 0;">Services include:</h3>
+            <div class="service-list">
+                <div class="service-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Online Courses</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-video"></i>
+                    <span>Recorded Tutorials</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Written Guides</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-copy"></i>
+                    <span>Templates</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>Educational Resources</span>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-robot"></i>
+                    <span>AI Tools Instruction</span>
+                </div>
+            </div>
+
+            <div class="notice" style="margin-top: 2rem;">
+                <div class="notice-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="notice-body">
+                    <h3>Important Limitation</h3>
+                    <p>
+                        <strong>Molt Academy does not provide</strong> consulting services, implementation services, system configuration services, or technical deployment services.
+                    </p>
+                    <p>
+                        <em>All content is for educational purposes only.</em>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="legal-divider">
+            <span>⸻</span>
+        </div>
+
+        <!-- 3. Governing Law -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-gavel"></i>
+                <h2>3. Governing Law</h2>
+            </div>
+            <p>
+                These Terms shall be governed exclusively by the laws of the <strong>Dominican Republic</strong>.
+            </p>
+            <p>
+                Conflict of law principles shall not apply.
+            </p>
+            <div class="time-badge" style="margin-top: 1rem;">
+                <i class="fas fa-map-pin"></i>
+                Jurisdiction: Dominican Republic
+            </div>
+        </section>
+
+        <!-- 4. Mandatory Binding Arbitration -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-gavel"></i>
+                <h2>4. Mandatory Binding Arbitration</h2>
+            </div>
+            <p>
+                Any dispute, claim, or controversy arising out of or relating to these Terms or the Services shall be resolved exclusively through binding arbitration.
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div><strong>Arbitration shall take place in the Dominican Republic.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-language"></i>
+                    <div><strong>Proceedings may be conducted in Spanish or English.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-gavel"></i>
+                    <div><strong>The parties waive any right to trial in court.</strong></div>
+                </li>
+            </ul>
+            <p>
+                Judgment on the arbitration award may be entered in any court of competent jurisdiction.
+            </p>
+        </section>
+
+        <!-- 5. No Class Actions -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-users-slash"></i>
+                <h2>5. No Class Actions</h2>
+            </div>
+            <p>
+                All disputes must be brought on an individual basis.
+            </p>
+            <p>
+                <strong>You waive the right</strong> to participate in any class action, collective action, consolidated action, or representative proceeding.
+            </p>
+        </section>
+
+        <!-- 6. Limitation of Liability -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-shield-halved"></i>
+                <h2>6. Limitation of Liability</h2>
+            </div>
+            <p>
+                To the maximum extent permitted by law:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-dollar-sign"></i>
+                    <div><strong>Molt Academy's total liability shall not exceed the amount paid by you for the Services.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-ban"></i>
+                    <div><strong>Molt Academy shall not be liable for indirect damages.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-ban"></i>
+                    <div><strong>Molt Academy shall not be liable for consequential damages.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line"></i>
+                    <div><strong>Molt Academy shall not be liable for lost profits.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-external-link-alt"></i>
+                    <div><strong>Molt Academy shall not be liable for third-party failures</strong>, including payment processors, hosting providers, or AI tool providers.</div>
+                </li>
+            </ul>
+            <p>
+                <em>All Services are provided on an "as is" and "as available" basis.</em>
+            </p>
+        </section>
+
+        <!-- 7. No Professional Advice -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-user-tie"></i>
+                <h2>7. No Professional Advice</h2>
+            </div>
+            <p>
+                Molt Academy does not provide:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-scale-balanced"></i>
+                    <div><strong>Legal advice</strong> <span class="exclusion-badge">Not provided</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-chart-pie"></i>
+                    <div><strong>Financial advice</strong> <span class="exclusion-badge">Not provided</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-file-invoice"></i>
+                    <div><strong>Tax advice</strong> <span class="exclusion-badge">Not provided</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-shield"></i>
+                    <div><strong>Cybersecurity audits</strong> <span class="exclusion-badge">Not provided</span></div>
+                </li>
+                <li>
+                    <i class="fas fa-clipboard-check"></i>
+                    <div><strong>Regulatory compliance advice</strong> <span class="exclusion-badge">Not provided</span></div>
+                </li>
+            </ul>
+            <p>
+                <strong>You are solely responsible</strong> for seeking qualified professionals for such matters.
+            </p>
+        </section>
+
+        <!-- 8. Technical Implementation Disclaimer -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-code"></i>
+                <h2>8. Technical Implementation Disclaimer</h2>
+            </div>
+            <p>
+                Users are solely responsible for:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-sliders-h"></i>
+                    <div><strong>Their own technical configurations</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-rocket"></i>
+                    <div><strong>Deployment decisions</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-puzzle-piece"></i>
+                    <div><strong>System integrations</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-shield-alt"></i>
+                    <div><strong>Infrastructure security</strong></div>
+                </li>
+            </ul>
+            <p>
+                <strong>Molt Academy:</strong>
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-eye-slash"></i>
+                    <div>Does not monitor user systems</div>
+                </li>
+                <li>
+                    <i class="fas fa-lock"></i>
+                    <div>Does not access user infrastructure</div>
+                </li>
+                <li>
+                    <i class="fas fa-tools"></i>
+                    <div>Does not configure user environments</div>
+                </li>
+                <li>
+                    <i class="fas fa-shield-virus"></i>
+                    <div>Does not guarantee security outcomes</div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 9. AI-Specific Risk Acknowledgment -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-robot"></i>
+                <h2>9. AI-Specific Risk Acknowledgment</h2>
+            </div>
+            <p>
+                You acknowledge and agree that:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div><strong>AI outputs may be inaccurate or incomplete.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-power-off"></i>
+                    <div><strong>AI tools may change, be discontinued, or behave unpredictably.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-chart-line"></i>
+                    <div><strong>No performance guarantees are made.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-check-double"></i>
+                    <div><strong>You must independently verify all AI-generated outputs before relying on them.</strong></div>
+                </li>
+            </ul>
+            <p>
+                <strong>Use of AI tools is at your own risk.</strong>
+            </p>
+        </section>
+
+        <!-- 10. Refund Policy -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-undo-alt"></i>
+                <h2>10. Refund Policy</h2>
+            </div>
+            <p>
+                Digital access constitutes delivery of the product.
+            </p>
+            <p>
+                <strong>Unless otherwise expressly stated in writing:</strong>
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-times-circle"></i>
+                    <div><strong>All purchases are non-refundable once access has been granted.</strong></div>
+                </li>
+            </ul>
+            <p>
+                Refund requests, if applicable under a specific written offer, must be submitted in writing to the designated support email address and within the stated timeframe.
+            </p>
+        </section>
+
+        <!-- 11. Payment Terms -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-credit-card"></i>
+                <h2>11. Payment Terms</h2>
+            </div>
+            <p>
+                Payments are processed via <strong>PayPal</strong>.
+            </p>
+            <p>
+                All transactions are subject to PayPal's terms and policies.
+            </p>
+            <p>
+                You agree not to initiate improper chargebacks. In the event of a chargeback:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-pause-circle"></i>
+                    <div><strong>Molt Academy reserves the right to suspend access immediately.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-file-signature"></i>
+                    <div><strong>Molt Academy may present these Terms as evidence in dispute resolution proceedings.</strong></div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 12. User Responsibilities -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-user-check"></i>
+                <h2>12. User Responsibilities</h2>
+            </div>
+            <p>
+                You agree to:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-key"></i>
+                    <div><strong>Protect your API keys and credentials.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-globe"></i>
+                    <div><strong>Comply with all applicable local and international laws.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-shield-alt"></i>
+                    <div><strong>Maintain appropriate data security practices.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-ban"></i>
+                    <div><strong>Refrain from illegal or abusive use of AI tools.</strong></div>
+                </li>
+            </ul>
+            <p>
+                <strong>You are solely responsible for your actions and any resulting consequences.</strong>
+            </p>
+        </section>
+
+        <!-- 13. Indemnification -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-shield"></i>
+                <h2>13. Indemnification</h2>
+            </div>
+            <p>
+                You agree to defend, indemnify, and hold harmless Molt Academy, its owners, officers, affiliates, and partners from any claims, damages, liabilities, losses, or expenses arising from:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-robot"></i>
+                    <div><strong>Your misuse of AI tools.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-gavel"></i>
+                    <div><strong>Your violation of applicable laws.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-file-contract"></i>
+                    <div><strong>Your breach of these Terms.</strong></div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 14. Intellectual Property -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-copyright"></i>
+                <h2>14. Intellectual Property</h2>
+            </div>
+            <p>
+                All course materials, videos, documents, templates, and educational content are protected by intellectual property laws.
+            </p>
+            <p>
+                <strong>You may not:</strong>
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>Reproduce</div>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>Distribute</div>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>Resell</div>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>Share</div>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>Publish</div>
+                </li>
+                <li>
+                    <i class="fas fa-times"></i>
+                    <div>License</div>
+                </li>
+            </ul>
+            <p>
+                <strong>any content without prior written consent.</strong>
+            </p>
+            <p>
+                Access grants a limited, non-transferable, non-exclusive license for personal use only.
+            </p>
+        </section>
+
+        <!-- 15. Termination -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-stop-circle"></i>
+                <h2>15. Termination</h2>
+            </div>
+            <p>
+                Molt Academy reserves the right to suspend or terminate access at its sole discretion if:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-file-contract"></i>
+                    <div><strong>You violate these Terms.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div><strong>You engage in abuse or misuse of the platform.</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-share-alt"></i>
+                    <div><strong>You attempt unauthorized redistribution of content.</strong></div>
+                </li>
+            </ul>
+            <p>
+                <strong>Termination does not waive payment obligations or legal rights.</strong>
+            </p>
+        </section>
+
+        <!-- Agreement Section -->
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-handshake"></i>
+                <h2>Agreement</h2>
+            </div>
+            <p>
+                By accessing or using Molt Academy's services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+            </p>
+
+            <div class="notice">
+                <div class="notice-icon">
+                    <i class="fas fa-circle-exclamation"></i>
+                </div>
+                <div class="notice-body">
+                    <h3>Don't Agree?</h3>
+                    <p>
+                        If you do not agree with these Terms of Service, you should not access or use Molt Academy content or services.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top"></button>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-container container"> 
+                <div class="footer-brand">
+                    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="Molt Academy Logo Icon" class="footer-logo">
+                    <div class="footer-brand-text">
+                        <h3 class="footer-title">Molt Academy</h3>
+                        <span class="footer-subtitle">By AIM, AI Mastery Program</span>
+                    </div>
+                </div>
+                    
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/courses">Courses</a></li>
+                    <li><a href="/pricing-page">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+
+                <div class="footer-socials">
+                    <a href="https://www.youtube.com/" target="_blank" class="footer-social" aria-label="Youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="footer-social" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer-social" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" class="footer-social" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="footer-copy">Copyright &#169; <span id="current-year"></span> • All rights reserved.<br>Developed with 🦞 by <a href="https://bebelldigitalsolutions.com">Bebell Digital Solutions</a></p>
+        </div>
+    </footer>
+    
+    <!-- MAIN JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>
