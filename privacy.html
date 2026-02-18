@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Molt Academy</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Lobster Red
+                            cyan: '#00e5cc',    // Cyan Accent
+                            dark: '#050810',    // Deep Navy Base
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(232, 81, 75, 0.3);
+            color: #fecaca;
+        }
+
+        /* Glass Card Utility */
+        .glass-card {
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3);
+            box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
+        }
+
+        /* Header Gradient Text */
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+        
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative flex flex-col">
+
+    <!-- BACKGROUND AMBIENCE (Blob Animation) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <!-- Red Blob -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-50"></div>
+        <!-- Cyan Blob -->
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-blob animation-delay-2000 opacity-40"></div>
+        <!-- Extra Blob for depth -->
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow max-w-4xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 relative">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-medium mb-6">
+                <i class="fas fa-shield-halved"></i>
+                <span class="tracking-wide uppercase text-xs">Your Privacy Matters</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gradient-brand">
+                Privacy Policy
+            </h1>
+            
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                How we collect, use, and protect your information across international standards.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-500 font-mono">
+                <div class="flex items-center gap-2 bg-slate-900/50 px-3 py-1 rounded border border-slate-800">
+                    <i class="fas fa-calendar-alt text-brand-cyan"></i>
+                    Effective Date: <span id="effective-date">February 18, 2026</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/50 px-3 py-1 rounded border border-slate-800">
+                    <i class="fas fa-check-circle text-brand-cyan"></i>
+                    GDPR & CCPA Compliant
+                </div>
+            </div>
+        </div>
+
+        <!-- Purpose Section -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                        Purpose
+                    </h2>
+                </div>
+                <i class="fas fa-bullseye text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6 leading-relaxed">
+                This Privacy Policy explains what information we collect, how we use it, and how we protect it. We aim to meet widely accepted international privacy standards, including the <strong class="text-white">General Data Protection Regulation (GDPR)</strong> and the <strong class="text-white">California Consumer Privacy Act (CCPA)</strong>.
+            </p>
+
+            <div class="flex gap-4">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-800/50 border border-slate-700 text-slate-300 text-xs font-mono">
+                    <i class="fab fa-european-union text-brand-cyan"></i> GDPR Ready
+                </span>
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-800/50 border border-slate-700 text-slate-300 text-xs font-mono">
+                    <i class="fas fa-calendar-check text-brand-cyan"></i> CCPA Compliant
+                </span>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="flex items-center justify-center my-12 opacity-20">
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-slate-400 to-transparent"></div>
+        </div>
+
+        <!-- 1. Information Collected -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">1. Information Collected</h2>
+                </div>
+                <i class="fas fa-database text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">We may collect the following information:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Personal Info -->
+                <div class="bg-slate-900/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="flex items-center gap-2 text-brand-cyan font-medium mb-3">
+                        <i class="fas fa-user"></i> Personal Information
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Name</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Email address</li>
+                    </ul>
+                </div>
+
+                <!-- Usage Data -->
+                <div class="bg-slate-900/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="flex items-center gap-2 text-brand-cyan font-medium mb-3">
+                        <i class="fas fa-chart-line"></i> Usage Data
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Pages visited & Features used</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Device type & IP address</li>
+                    </ul>
+                </div>
+
+                <!-- Tracking -->
+                <div class="bg-slate-900/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="flex items-center gap-2 text-brand-cyan font-medium mb-3">
+                        <i class="fas fa-cookie"></i> Tracking Technologies
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Cookies</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Similar tracking technologies</li>
+                    </ul>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="bg-slate-900/40 p-5 rounded-xl border border-slate-800">
+                    <h3 class="flex items-center gap-2 text-brand-cyan font-medium mb-3">
+                        <i class="fas fa-credit-card"></i> Payment Information
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-slate-600 text-xs"></i> Processed by PayPal</li>
+                        <li class="flex items-start gap-2 text-brand-primary/80 bg-brand-primary/5 p-2 rounded mt-2">
+                            <i class="fas fa-shield-alt mt-1"></i> 
+                            <span class="text-xs">We do not directly collect or store full credit card details.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. How Information Is Used -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">2. How Information Is Used</h2>
+                </div>
+                <i class="fas fa-tasks text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="flex items-start gap-3 p-3 rounded hover:bg-slate-800/30 transition-colors">
+                    <div class="bg-brand-primary/10 p-2 rounded text-brand-primary"><i class="fas fa-door-open"></i></div>
+                    <div class="text-slate-400 text-sm"><strong class="text-slate-200">Provide access</strong> to our platform and services</div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded hover:bg-slate-800/30 transition-colors">
+                    <div class="bg-brand-primary/10 p-2 rounded text-brand-primary"><i class="fas fa-bell"></i></div>
+                    <div class="text-slate-400 text-sm"><strong class="text-slate-200">Communicate updates</strong>, service notifications, and important information</div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded hover:bg-slate-800/30 transition-colors">
+                    <div class="bg-brand-primary/10 p-2 rounded text-brand-primary"><i class="fas fa-chart-bar"></i></div>
+                    <div class="text-slate-400 text-sm"><strong class="text-slate-200">Improve</strong> our platform, features, and user experience</div>
+                </div>
+                <div class="flex items-start gap-3 p-3 rounded hover:bg-slate-800/30 transition-colors">
+                    <div class="bg-brand-primary/10 p-2 rounded text-brand-primary"><i class="fas fa-headset"></i></div>
+                    <div class="text-slate-400 text-sm"><strong class="text-slate-200">Provide customer support</strong> and respond to inquiries</div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-center text-slate-500 font-mono">
+                We process data only for legitimate business purposes or where required by law.
+            </p>
+        </section>
+
+        <!-- 3. Payment Processing -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">3. Payment Processing</h2>
+                </div>
+                <i class="fab fa-paypal text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-6 bg-slate-900/40 p-6 rounded-xl border border-slate-800">
+                <div class="text-blue-500 opacity-80">
+                    <i class="fab fa-paypal fa-3x"></i>
+                </div>
+                <div>
+                    <p class="text-slate-300 mb-2">All financial transactions are processed by <strong>PayPal</strong>.</p>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500/50"></i> PayPal processes and stores financial data per its own policy.</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500/50"></i> We do not store full credit card numbers on our servers.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Data Storage & 5. International -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">4. Data Security</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">
+                    We implement safeguards to protect personal information.
+                </p>
+                <div class="bg-red-900/10 border border-red-500/20 p-4 rounded-lg mb-4">
+                    <p class="text-brand-primary text-xs font-bold uppercase mb-2">However:</p>
+                    <ul class="text-slate-400 text-sm space-y-1">
+                        <li><i class="fas fa-exclamation-triangle text-brand-primary mr-2"></i> No system ensures absolute security.</li>
+                        <li><i class="fas fa-exclamation-triangle text-brand-primary mr-2"></i> You provide information at your own risk.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">5. International Transfers</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">
+                    Your information may be stored or processed in countries outside your country of residence.
+                </p>
+                <div class="flex items-start gap-3 text-sm text-slate-300 bg-slate-800/30 p-3 rounded">
+                    <i class="fas fa-plane text-brand-cyan mt-1"></i>
+                    <p>By using our services, you agree to international data transfer subject to legal protections.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. GDPR Compliance -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1 flex flex-wrap items-center gap-3">
+                    <h2 class="text-2xl font-semibold text-slate-100">6. GDPR Compliance</h2>
+                    <span class="bg-blue-600/20 text-blue-400 border border-blue-600/30 px-2 py-0.5 rounded text-xs font-mono uppercase">EU Users</span>
+                </div>
+                <i class="fab fa-european-union text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">If you are located in the European Union, you have the right to:</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-800 text-center hover:border-blue-500/30 transition-colors">
+                    <i class="fas fa-eye text-blue-400 mb-2"></i>
+                    <h4 class="text-slate-200 font-medium text-sm">Access</h4>
+                </div>
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-800 text-center hover:border-blue-500/30 transition-colors">
+                    <i class="fas fa-pen text-blue-400 mb-2"></i>
+                    <h4 class="text-slate-200 font-medium text-sm">Rectification</h4>
+                </div>
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-800 text-center hover:border-blue-500/30 transition-colors">
+                    <i class="fas fa-trash text-blue-400 mb-2"></i>
+                    <h4 class="text-slate-200 font-medium text-sm">Erasure</h4>
+                </div>
+                <div class="bg-slate-900/40 p-4 rounded-lg border border-slate-800 text-center hover:border-blue-500/30 transition-colors">
+                    <i class="fas fa-ban text-blue-400 mb-2"></i>
+                    <h4 class="text-slate-200 font-medium text-sm">Withdraw</h4>
+                </div>
+            </div>
+            <p class="text-center text-xs text-slate-500">To exercise these rights, contact us using the details below.</p>
+        </section>
+
+        <!-- 7. CCPA Compliance -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1 flex flex-wrap items-center gap-3">
+                    <h2 class="text-2xl font-semibold text-slate-100">7. CCPA Compliance</h2>
+                    <span class="bg-orange-600/20 text-orange-400 border border-orange-600/30 px-2 py-0.5 rounded text-xs font-mono uppercase">California Users</span>
+                </div>
+                <i class="fas fa-calendar-check text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <p class="text-slate-400 mb-4">California residents have the right to:</p>
+                    <ul class="space-y-3 text-slate-400 text-sm">
+                        <li class="flex items-center gap-2"><i class="fas fa-info-circle text-orange-400"></i> <strong>Know</strong> what personal info we collect.</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-trash-alt text-orange-400"></i> <strong>Request deletion</strong> of your data.</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-ban text-orange-400"></i> <strong>Confirm</strong> we don't sell your data.</li>
+                    </ul>
+                </div>
+                <div class="flex-1 flex items-center justify-center">
+                    <div class="bg-orange-900/10 border border-orange-500/20 p-6 rounded-xl text-center">
+                        <i class="fas fa-check-circle text-orange-500 text-2xl mb-2"></i>
+                        <p class="text-orange-200 font-medium">We do not sell personal information to third parties.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Data Retention & 9. Cookies -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+             <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">8. Data Retention</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">We retain personal data only as long as necessary to:</p>
+                <ul class="text-sm text-slate-400 space-y-2 mb-4">
+                     <li class="flex items-center gap-2"><i class="fas fa-hand-holding-heart text-slate-600"></i> Provide services</li>
+                     <li class="flex items-center gap-2"><i class="fas fa-gavel text-slate-600"></i> Comply with laws</li>
+                     <li class="flex items-center gap-2"><i class="fas fa-scale-balanced text-slate-600"></i> Resolve disputes</li>
+                </ul>
+                <p class="text-xs text-slate-500">
+                    When information is no longer required, we securely delete or anonymize it.
+                </p>
+            </section>
+            
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">9. Cookies Policy</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">We use cookies to enable platform functionality, analyze usage, and remember preferences.</p>
+                <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700">
+                    <p class="text-xs text-slate-300 flex gap-2">
+                        <i class="fas fa-sliders-h text-brand-cyan mt-0.5"></i>
+                        You can control cookies through your browser settings. Disabling cookies may limit certain features.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 10. Contact Information -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-12">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">10. Contact Information</h2>
+                </div>
+                <i class="fas fa-envelope text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">For privacy-related requests, questions, or to exercise your legal rights:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex items-center gap-4 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 uppercase tracking-wider">Email</div>
+                        <a href="mailto:privacy@moltacademy.com" class="text-slate-200 hover:text-brand-cyan transition-colors">privacy@moltacademy.com</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <div class="w-10 h-10 rounded-full bg-brand-cyan/10 flex items-center justify-center text-brand-cyan">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-500 uppercase tracking-wider">Response Time</div>
+                        <div class="text-slate-200 text-sm">In accordance with applicable laws.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Consent Block -->
+        <section class="glass-card border-brand-cyan/20 p-8 md:p-12 text-center rounded-3xl relative overflow-hidden group mb-16">
+            <div class="absolute inset-0 bg-brand-cyan/5 group-hover:bg-brand-cyan/10 transition-colors duration-500"></div>
+            
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-slate-900 rounded-2xl mx-auto flex items-center justify-center mb-6 border border-brand-cyan/30 shadow-[0_0_30px_rgba(0,229,204,0.1)]">
+                    <i class="fas fa-handshake text-2xl text-brand-cyan"></i>
+                </div>
+                
+                <h2 class="text-3xl font-bold text-white mb-4">Your Consent</h2>
+                <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">
+                    By using Molt Academy's services, you consent to this Privacy Policy and agree to its terms.
+                </p>
+                
+                <div class="inline-block p-4 rounded-xl bg-slate-950/50 border border-slate-800 text-left max-w-md mx-auto">
+                     <div class="flex gap-4">
+                        <div class="text-slate-500 text-xl pt-1">
+                             <i class="fas fa-circle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-200 font-semibold text-sm mb-1">Questions?</h3>
+                            <p class="text-slate-500 text-xs">
+                                If you have any questions about this Privacy Policy, please contact us using the information above.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-xs text-slate-600 font-mono">
+                    <i class="fas fa-history mr-1"></i> Last Updated: February 18, 2026
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
+
+    <!-- Footer Simple -->
+    <footer class="text-center text-slate-500 text-sm max-w-4xl mx-auto pt-12 pb-12 mt-6">
+        <nav class="flex flex-wrap justify-center gap-6 mb-8">
+            <a href="/" class="hover:text-brand-primary transition-colors">Homepage</a>
+            <a href="/terms" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+            <a href="/privacy" class="hover:text-brand-primary transition-colors">Privacy Policy</a>
+            <a href="/disclaimer" class="hover:text-brand-primary transition-colors">Disclaimer</a>
+        </nav>
+        
+        <p class="mb-4 text-slate-400">
+            Built by <a href="#" class="text-brand-primary hover:underline font-medium">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline font-medium">OpenClaw</a>.
+        </p>
+        
+        <p class="opacity-50 text-xs leading-relaxed max-w-lg mx-auto">
+            MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+        </p>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+        // Date Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Effective Date
+            const dateElement = document.getElementById('effective-date');
+            if (dateElement) {
+                const today = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                dateElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+
+            // Copyright Year
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Back to Top Logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
