@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Molt Academy</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (For User Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Lobster Red
+                            cyan: '#00e5cc',    // Cyan Accent
+                            dark: '#050810',    // Deep Navy Base
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(232, 81, 75, 0.3);
+            color: #fecaca;
+        }
+
+        /* Glass Card Utility */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6); /* Fallback/Base */
+            background: rgba(10, 15, 26, 0.8); /* PDF Spec */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3);
+            box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
+        }
+
+        /* Header Gradient Text */
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- BACKGROUND AMBIENCE (Blob Animation) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <!-- Red Blob -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-50"></div>
+        <!-- Cyan Blob -->
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-blob animation-delay-2000 opacity-40"></div>
+        <!-- Extra Blob for depth -->
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-4xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 relative">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-medium mb-6 animate-fade-in-up">
+                <i class="fas fa-file-contract"></i>
+                <span class="tracking-wide uppercase text-xs">Legal Agreement</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gradient-brand">
+                Terms of Service
+            </h1>
+            
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                Please read these terms carefully before accessing or using Molt Academy's services.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-500 font-mono">
+                <div class="flex items-center gap-2 bg-slate-900/50 px-3 py-1 rounded border border-slate-800">
+                    <i class="fas fa-clock text-brand-cyan"></i>
+                    Last updated: February 18, 2026
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/50 px-3 py-1 rounded border border-slate-800">
+                    <i class="fas fa-globe text-brand-cyan"></i>
+                    Governing Law: Dominican Republic
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. Acceptance of Terms -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <!-- Chevron Prefix Implementation -->
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                        1. Acceptance of Terms
+                    </h2>
+                </div>
+                <i class="fas fa-check-circle text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <div class="text-slate-400 space-y-4 leading-relaxed">
+                <p>
+                    By accessing, purchasing, or using any part of Molt Academy's website, platform, or educational materials, you agree to be legally bound by these Terms of Service.
+                </p>
+                <div class="p-4 bg-brand-primary/5 border-l-2 border-brand-primary rounded-r-lg">
+                    <p class="text-slate-200 font-medium">
+                        If you do not agree, you must not access or use the Services.
+                    </p>
+                </div>
+                <p>
+                    You represent and warrant that you are at least eighteen (18) years of age. Access by individuals under 18 is strictly prohibited.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-slate-500 mt-4 font-mono">
+                    <i class="fas fa-info-circle"></i> 
+                    <span>These Terms constitute a binding legal agreement between you and Molt Academy.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="flex items-center justify-center my-12 opacity-20">
+            <div class="h-px w-full bg-gradient-to-r from-transparent via-slate-400 to-transparent"></div>
+        </div>
+
+        <!-- 2. Description of Services -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">2. Description of Services</h2>
+                </div>
+                <i class="fas fa-graduation-cap text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+
+            <p class="text-slate-400 mb-6">
+                Molt Academy provides educational content related to artificial intelligence and related technologies.
+            </p>
+            
+            <h3 class="text-slate-200 font-medium mb-4 pl-2 border-l border-brand-cyan/50">Services include:</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <!-- Service Items adapted to Cards -->
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-play-circle text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">Online Courses</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-video text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">Recorded Tutorials</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-file-alt text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">Written Guides</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-copy text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">Templates</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-book-open text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">Educational Resources</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-slate-900/40 rounded-lg border border-slate-800 hover:border-brand-cyan/30 transition-colors">
+                    <i class="fas fa-robot text-brand-cyan"></i>
+                    <span class="text-slate-300 text-sm">AI Tools Instruction</span>
+                </div>
+            </div>
+
+            <!-- Important Limitation Box -->
+            <div class="bg-red-900/10 border border-red-500/20 rounded-xl p-5 flex gap-4">
+                <div class="text-brand-primary text-xl pt-1">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div>
+                    <h3 class="text-brand-primary font-semibold mb-2">Important Limitation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-2">
+                        <strong class="text-slate-200">Molt Academy does not provide</strong> consulting services, implementation services, system configuration services, or technical deployment services.
+                    </p>
+                    <p class="text-slate-500 text-xs italic">All content is for educational purposes only.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Governing Law & 4. Arbitration -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- 3. Governing Law -->
+            <section class="glass-card p-6 md:p-8 rounded-2xl h-full">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">3. Governing Law</h2>
+                </div>
+                <div class="text-slate-400 space-y-4 text-sm">
+                    <p>
+                        These Terms shall be governed exclusively by the laws of the <strong class="text-white">Dominican Republic</strong>.
+                    </p>
+                    <p>Conflict of law principles shall not apply.</p>
+                    <div class="inline-flex items-center gap-2 text-brand-cyan text-xs font-mono bg-brand-cyan/5 px-2 py-1 rounded">
+                        <i class="fas fa-map-pin"></i>
+                        Jurisdiction: Dominican Republic
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Arbitration -->
+            <section class="glass-card p-6 md:p-8 rounded-2xl h-full">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">4. Binding Arbitration</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">
+                    Any dispute relating to these Terms shall be resolved exclusively through binding arbitration.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3 text-sm text-slate-300">
+                        <i class="fas fa-map-marker-alt text-brand-primary mt-1 text-xs"></i>
+                        <span>Location: <strong>Dominican Republic</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm text-slate-300">
+                        <i class="fas fa-language text-brand-primary mt-1 text-xs"></i>
+                        <span>Language: <strong>Spanish or English</strong></span>
+                    </li>
+                    <li class="flex items-start gap-3 text-sm text-slate-300">
+                        <i class="fas fa-gavel text-brand-primary mt-1 text-xs"></i>
+                        <span>Waiver: <strong>No trial in court</strong></span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- 5. No Class Actions -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+             <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">5. No Class Actions</h2>
+                </div>
+                <i class="fas fa-users-slash text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            <p class="text-slate-400">
+                All disputes must be brought on an individual basis. <strong class="text-slate-200">You waive the right</strong> to participate in any class action, collective action, consolidated action, or representative proceeding.
+            </p>
+        </section>
+
+        <!-- 6. Limitation of Liability -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">6. Limitation of Liability</h2>
+                </div>
+                <i class="fas fa-shield-halved text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">To the maximum extent permitted by law:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 rounded-lg bg-slate-900/30 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2 text-brand-primary">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span class="font-semibold text-sm uppercase">Cap on Liability</span>
+                    </div>
+                    <p class="text-sm text-slate-400">Total liability shall not exceed the amount paid by you for the Services.</p>
+                </div>
+
+                <div class="p-4 rounded-lg bg-slate-900/30 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2 text-brand-primary">
+                        <i class="fas fa-ban"></i>
+                        <span class="font-semibold text-sm uppercase">Indirect Damages</span>
+                    </div>
+                    <p class="text-sm text-slate-400">Not liable for indirect, consequential damages, or lost profits.</p>
+                </div>
+                
+                <div class="col-span-1 md:col-span-2 p-4 rounded-lg bg-slate-900/30 border border-slate-800">
+                    <div class="flex items-center gap-3 mb-2 text-brand-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="font-semibold text-sm uppercase">Third Parties</span>
+                    </div>
+                    <p class="text-sm text-slate-400">Not liable for third-party failures (payment processors, hosting, AI tools).</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-xs text-slate-500 mt-6 font-mono">
+                All Services are provided on an "as is" and "as available" basis.
+            </p>
+        </section>
+
+        <!-- 7. No Professional Advice -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">7. No Professional Advice</h2>
+                </div>
+                <i class="fas fa-user-tie text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">Molt Academy does not provide:</p>
+            
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-900/20 border border-slate-800/50">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fas fa-scale-balanced w-5 text-center text-slate-500"></i>
+                        <span>Legal advice</span>
+                    </div>
+                    <span class="text-xs font-mono text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">Not provided</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-900/20 border border-slate-800/50">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fas fa-chart-pie w-5 text-center text-slate-500"></i>
+                        <span>Financial advice</span>
+                    </div>
+                    <span class="text-xs font-mono text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">Not provided</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-900/20 border border-slate-800/50">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fas fa-file-invoice w-5 text-center text-slate-500"></i>
+                        <span>Tax advice</span>
+                    </div>
+                    <span class="text-xs font-mono text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">Not provided</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-900/20 border border-slate-800/50">
+                    <div class="flex items-center gap-3 text-slate-300">
+                        <i class="fas fa-shield w-5 text-center text-slate-500"></i>
+                        <span>Cybersecurity audits</span>
+                    </div>
+                    <span class="text-xs font-mono text-brand-primary bg-brand-primary/10 px-2 py-1 rounded">Not provided</span>
+                </div>
+            </div>
+             <p class="text-slate-400 text-sm mt-4">
+                <strong>You are solely responsible</strong> for seeking qualified professionals for such matters.
+            </p>
+        </section>
+
+        <!-- 8. Technical Implementation Disclaimer -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">8. Technical Implementation</h2>
+                </div>
+                <i class="fas fa-code text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-brand-cyan font-medium mb-4 text-sm uppercase tracking-wider">User Responsibilities</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-3 text-slate-300 text-sm">
+                            <i class="fas fa-sliders-h text-slate-600"></i>
+                            Technical configurations
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300 text-sm">
+                            <i class="fas fa-rocket text-slate-600"></i>
+                            Deployment decisions
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-300 text-sm">
+                            <i class="fas fa-puzzle-piece text-slate-600"></i>
+                            System integrations
+                        </li>
+                         <li class="flex items-center gap-3 text-slate-300 text-sm">
+                            <i class="fas fa-shield-alt text-slate-600"></i>
+                            Infrastructure security
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
+                    <h4 class="text-brand-primary font-medium mb-4 text-sm uppercase tracking-wider">Molt Academy Does Not:</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-times text-brand-primary/50 text-xs"></i>
+                            Monitor user systems
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-times text-brand-primary/50 text-xs"></i>
+                            Access user infrastructure
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-times text-brand-primary/50 text-xs"></i>
+                            Configure user environments
+                        </li>
+                         <li class="flex items-center gap-3 text-slate-400 text-sm">
+                            <i class="fas fa-times text-brand-primary/50 text-xs"></i>
+                            Guarantee security outcomes
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. AI Risk -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8 border-l-4 border-l-brand-primary">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">9. AI-Specific Risk</h2>
+                </div>
+                <i class="fas fa-robot text-brand-primary text-xl mt-1"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-4">You acknowledge that:</p>
+            <ul class="space-y-3 mb-6">
+                <li class="flex gap-3 text-slate-300">
+                    <i class="fas fa-exclamation-circle text-brand-primary mt-1"></i>
+                    <span>AI outputs may be inaccurate or incomplete.</span>
+                </li>
+                 <li class="flex gap-3 text-slate-300">
+                    <i class="fas fa-power-off text-brand-primary mt-1"></i>
+                    <span>AI tools may change, be discontinued, or behave unpredictably.</span>
+                </li>
+                 <li class="flex gap-3 text-slate-300">
+                    <i class="fas fa-check-double text-brand-primary mt-1"></i>
+                    <span>You must independently verify all AI-generated outputs before relying on them.</span>
+                </li>
+            </ul>
+            <div class="text-center bg-brand-primary/10 py-2 rounded text-brand-primary font-semibold text-sm">
+                USE OF AI TOOLS IS AT YOUR OWN RISK
+            </div>
+        </section>
+
+        <!-- 10. Refund Policy -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">10. Refund Policy</h2>
+                </div>
+                <i class="fas fa-undo-alt text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            <p class="text-slate-400 mb-4">
+                Digital access constitutes delivery of the product. Unless otherwise expressly stated in writing:
+            </p>
+            <div class="flex items-center gap-3 p-4 bg-slate-900/50 rounded border border-slate-700">
+                <i class="fas fa-times-circle text-red-500 text-xl"></i>
+                <span class="text-slate-200 font-medium">All purchases are non-refundable once access has been granted.</span>
+            </div>
+        </section>
+
+        <!-- 11. Payment Terms -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">11. Payment Terms</h2>
+                </div>
+                <i class="fas fa-credit-card text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-4">
+                Payments are processed via <strong>PayPal</strong>. All transactions are subject to PayPal's terms and policies.
+            </p>
+            
+            <div class="p-4 border border-brand-primary/30 rounded-lg bg-brand-primary/5">
+                <p class="text-sm font-semibold text-brand-primary mb-2">CHARGEBACK POLICY</p>
+                <p class="text-slate-400 text-sm mb-2">You agree not to initiate improper chargebacks. In the event of a chargeback:</p>
+                <ul class="text-sm text-slate-300 space-y-1 list-disc list-inside marker:text-brand-primary">
+                    <li>Molt Academy reserves the right to suspend access immediately.</li>
+                    <li>These Terms may be presented as evidence in dispute resolution.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 12. User Responsibilities & 13. Indemnification -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+             <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">12. User Responsibilities</h2>
+                </div>
+                <ul class="space-y-3 text-slate-400 text-sm">
+                    <li class="flex items-center gap-2"><i class="fas fa-key text-brand-cyan"></i> Protect API keys and credentials.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-globe text-brand-cyan"></i> Comply with international laws.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-shield-alt text-brand-cyan"></i> Maintain data security.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-ban text-brand-cyan"></i> Refrain from abusive use.</li>
+                </ul>
+            </section>
+            
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">13. Indemnification</h2>
+                </div>
+                <p class="text-sm text-slate-400 mb-2">
+                    You agree to indemnify Molt Academy from claims arising from:
+                </p>
+                 <ul class="space-y-3 text-slate-400 text-sm">
+                    <li class="flex items-center gap-2"><i class="fas fa-angle-right text-brand-primary"></i> Your misuse of AI tools.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-angle-right text-brand-primary"></i> Violation of applicable laws.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-angle-right text-brand-primary"></i> Breach of these Terms.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- 14. Intellectual Property -->
+         <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">14. Intellectual Property</h2>
+                </div>
+                <i class="fas fa-copyright text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">
+                All course materials, videos, documents, and templates are protected by intellectual property laws.
+            </p>
+            
+            <div class="text-center mb-6">
+                <span class="text-brand-primary font-bold tracking-widest uppercase text-sm">You May Not</span>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-3 mb-6">
+                 <span class="px-3 py-1 bg-red-900/20 text-red-400 rounded-full text-xs font-mono border border-red-900/50">Reproduce</span>
+                 <span class="px-3 py-1 bg-red-900/20 text-red-400 rounded-full text-xs font-mono border border-red-900/50">Distribute</span>
+                 <span class="px-3 py-1 bg-red-900/20 text-red-400 rounded-full text-xs font-mono border border-red-900/50">Resell</span>
+                 <span class="px-3 py-1 bg-red-900/20 text-red-400 rounded-full text-xs font-mono border border-red-900/50">Share</span>
+                 <span class="px-3 py-1 bg-red-900/20 text-red-400 rounded-full text-xs font-mono border border-red-900/50">Publish</span>
+            </div>
+            
+            <p class="text-center text-slate-500 text-sm">
+                Access grants a limited, non-transferable, non-exclusive license for <strong>personal use only</strong>.
+            </p>
+        </section>
+
+        <!-- 15. Termination -->
+         <section class="glass-card p-6 md:p-8 rounded-2xl mb-12">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">15. Termination</h2>
+                </div>
+                <i class="fas fa-stop-circle text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            <p class="text-slate-400 mb-4">
+                Molt Academy reserves the right to suspend or terminate access at its sole discretion if you violate these Terms or engage in abuse.
+            </p>
+            <p class="text-slate-500 italic text-sm">
+                Termination does not waive payment obligations or legal rights.
+            </p>
+        </section>
+
+        <!-- Final Agreement Block -->
+        <section class="glass-card border-brand-cyan/20 p-8 md:p-12 text-center rounded-3xl relative overflow-hidden group">
+            <div class="absolute inset-0 bg-brand-cyan/5 group-hover:bg-brand-cyan/10 transition-colors duration-500"></div>
+            
+            <div class="relative z-10">
+                <div class="w-16 h-16 bg-slate-900 rounded-2xl mx-auto flex items-center justify-center mb-6 border border-brand-cyan/30 shadow-[0_0_30px_rgba(0,229,204,0.1)]">
+                    <i class="fas fa-handshake text-2xl text-brand-cyan"></i>
+                </div>
+                
+                <h2 class="text-3xl font-bold text-white mb-4">Agreement</h2>
+                <p class="text-slate-400 max-w-lg mx-auto mb-8 leading-relaxed">
+                    By accessing or using Molt Academy's services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                </p>
+                
+                <div class="inline-block p-4 rounded-xl bg-slate-950/50 border border-slate-800 text-left max-w-md mx-auto">
+                     <div class="flex gap-4">
+                        <div class="text-slate-500 text-xl pt-1">
+                             <i class="fas fa-circle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-slate-200 font-semibold text-sm mb-1">Don't Agree?</h3>
+                            <p class="text-slate-500 text-xs">
+                                If you do not agree with these Terms of Service, you should not access or use Molt Academy content or services.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer Simple -->
+        <footer class="text-center text-slate-600 text-sm py-12">
+            <p>&copy; 2026 Molt Academy. All rights reserved.</p>
+        </footer>
+
+    </main>
+</body>
+</html>
