@@ -656,5 +656,44 @@
         </footer>
 
     </main>
+
+
+
+   <!-- Logic -->
+    <script>
+        // Date Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Effective Date
+            const dateElement = document.getElementById('effective-date');
+            if (dateElement) {
+                const today = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                dateElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+
+            // Copyright Year
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // Back to Top Logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+    
 </body>
 </html>
