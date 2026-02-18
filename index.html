@@ -47,31 +47,45 @@
             }
         }
     </script>
+   
+    
     <style>
+
+        
         body {
             background-color: #050810;
             color: #f0f4ff;
             overflow-x: hidden;
         }
+
+        
         .glass-card {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(148, 163, 184, 0.1);
         }
+
+        
         .glass-card:hover {
             border-color: rgba(232, 81, 75, 0.3); /* Brand primary with opacity */
             background: rgba(15, 23, 42, 0.8);
         }
+        
+        
         .text-gradient {
             background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
+
+        
         .lobster-glow {
             filter: drop-shadow(0 0 20px rgba(232, 81, 75, 0.3));
         }
+
+        
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -90,7 +104,43 @@
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
+
+
+        
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+
+        
     </style>
+
+    
 </head>
 <body class="antialiased selection:bg-brand-primary/30 selection:text-red-200">
 
