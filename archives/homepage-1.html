@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoltAcademy - Master Autonomous AI Agents</title>
+    <meta name="description" content="The premier academy for building, deploying, and securing autonomous AI agents with Moltbot. Free sandboxes available.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Updated Primary Color
+                            cyan: '#00e5cc',
+                            dark: '#050810',
+                            panel: 'rgba(10, 15, 26, 0.8)',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                        'scroll-reverse': 'scroll-reverse 40s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'scroll-reverse': {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3); /* Brand primary with opacity */
+            background: rgba(15, 23, 42, 0.8);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .lobster-glow {
+            filter: drop-shadow(0 0 20px rgba(232, 81, 75, 0.3));
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+        .mask-linear-gradient {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-primary/30 selection:text-red-200">
+
+    <!-- Background Ambient Glow -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-brand-primary/5 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-4000"></div>
+    </div>
+
+    <main class="flex flex-col items-center min-h-screen pt-16 px-4 pb-20">
+        
+        <!-- Header / Hero -->
+        <header class="text-center max-w-4xl mx-auto mb-16 relative">
+            <div class="w-32 h-32 mx-auto mb-6 lobster-glow cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="MoltAcademy Logo" class="w-full h-full object-contain">
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-bold mb-4 tracking-tighter">
+                <span class="text-gradient">MoltAcademy</span>
+            </h1>
+            
+            <p class="text-brand-primary text-lg font-medium tracking-[0.2em] uppercase mb-6">
+                Build. Deploy. Dominate.
+            </p>
+            
+            <p class="text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed">
+                The premier resource for building <strong>Autonomous AI Agents</strong> with Moltbot & OpenClaw.<br>
+                Master deployment, training, security, and execution.
+            </p>
+
+            <!-- Main CTA Buttons -->
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="#curriculum" class="group relative px-8 py-4 bg-brand-primary/10 hover:bg-brand-primary/20 border border-brand-primary text-brand-primary font-semibold rounded-full transition-all duration-300 hover:shadow-[0_0_20px_rgba(232,81,75,0.4)]">
+                    <span class="flex items-center gap-2">
+                        Start Building Agents
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </span>
+                </a>
+                <a href="#newsletter" class="px-8 py-4 glass-card text-white font-semibold rounded-full hover:bg-slate-800 transition-all duration-300 group">
+                    <span class="flex items-center gap-2">
+                        Join For FULL ACCESS
+                        
+                        <svg class="w-4 h-4 text-slate-400 group-hover:text-brand-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        
+                    </span>
+                </a>
+            </div>
+        </header>
+        
+        
+        
+        
+
+        <!-- New Feature Banner -->
+        <section class="mb-16 w-auto max-w-2xl mx-auto">
+            <a href="#sandbox" class="block group">
+                <div class="glass-card rounded-full p-1.5 pr-6 flex items-center gap-4 transition-transform hover:scale-[1.02]">
+                    <span class="bg-gradient-to-r from-brand-primary to-orange-500 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Free Access</span>
+                    <span class="text-sm md:text-base text-slate-200 truncate">Deploy Moltbot safely on a VPS</span>
+                    <svg class="w-4 h-4 text-slate-500 ml-auto group-hover:text-brand-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+            </a>
+        </section>
+        
+        
+        
+        
+
+        <!-- Social Proof / Students -->
+        <section class="w-full max-w-4xl mb-20 overflow-hidden relative">
+            <div class="flex items-center justify-between px-2 mb-8">
+                <h2 class="text-2xl font-semibold flex items-center gap-3">
+                    <span class="text-brand-primary font-bold text-3xl">⟩</span> 
+                    Student Shipments
+                </h2>
+                <span class="text-brand-primary text-sm font-medium">Over 5,000+ Agents Deployed</span>
+            </div>
+            
+
+            <!-- Infinite Scroll Container -->
+            <div class="relative w-full mask-linear-gradient">
+                <div class="flex gap-4 w-max animate-scroll hover:pause">
+                    <!-- Testimonial Cards (Replicated for infinite scroll effect) -->
+                    <div class="glass-card p-5 rounded-xl w-80 md:w-80 flex-shrink-0 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex-shrink-0 overflow-hidden"><img src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="User"></div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-2">"MoltAcademy took me from zero to a fully autonomous email agent in 2 days. The section on security sandboxing is gold."</p>
+                            <p class="text-brand-primary text-xs font-bold">@sarahcodes_ai</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl w-80 md:w-80 flex-shrink-0 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex-shrink-0 overflow-hidden"><img src="https://ui-avatars.com/api/?name=Dev+Ops&background=random" alt="User"></div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-2">"Finally, a resource that explains how to actually DEPLOY these things securely. The Hostinger integration guide was flawless."</p>
+                            <p class="text-brand-primary text-xs font-bold">@devops_guru</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl w-80 md:w-80 flex-shrink-0 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex-shrink-0 overflow-hidden"><img src="https://ui-avatars.com/api/?name=Alex+M&background=random" alt="User"></div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-2">"Built a custom skill for Moltbot to manage my crypto portfolio. The academy's coding patterns are top tier."</p>
+                            <p class="text-brand-primary text-xs font-bold">@alex_market</p>
+                        </div>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl w-80 md:w-80 flex-shrink-0 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex-shrink-0 overflow-hidden"><img src="https://ui-avatars.com/api/?name=Elena+R&background=random" alt="User"></div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-2">"The free sandbox on Emergent.sh let me test risky agents without bricking my laptop. Essential for beginners."</p>
+                            <p class="text-brand-primary text-xs font-bold">@elena_rust</p>
+                        </div>
+                    </div>
+                     
+                     
+                     <!-- Duplicate for loop illusion -->
+                     <div class="glass-card p-5 rounded-xl w-80 md:w-80 flex-shrink-0 flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-slate-700 flex-shrink-0 overflow-hidden"><img src="https://ui-avatars.com/api/?name=Mike+T&background=random" alt="User"></div>
+                        <div>
+                            <p class="text-slate-300 text-sm mb-2">"Professor Claw makes understanding recursive agent loops surprisingly easy. The best AI course I've taken."</p>
+                            <p class="text-brand-primary text-xs font-bold">@mike_tech</p>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        <!-- Sandbox Feature -->
+        <section id="sandbox" class="w-full max-w-4xl mb-20">
+            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-brand-primary font-bold text-3xl">⟩</span> 
+                Safe Deployment Sandbox
+            </h2>
+            
+            <div class="glass-card rounded-2xl overflow-hidden border border-slate-700/50">
+                <!-- Terminal Header -->
+                <div class="bg-slate-900/50 border-b border-slate-700/50 p-4 flex items-center gap-4">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="text-xs text-slate-400 font-mono">moltbot@sandbox:~/deploy</div>
+                    <div class="ml-auto bg-green-500/10 text-green-400 text-xs px-3 py-1 rounded-full border border-green-500/30 uppercase tracking-widest font-bold">
+                        Active Environment
+                    </div>
+                </div>
+                
+                <!-- Sandbox Content -->
+                <div class="p-8 md:p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-8 opacity-20 pointer-events-none">
+                        <svg width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#e8514b" stroke-width="0.5">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-4">Don't run untrusted code on bare metal.</h3>
+                    <p class="text-slate-400 mb-8 max-w-xl">
+                        MoltAcademy partners with <strong>Emergent.sh</strong> and <strong>Hostinger</strong> to provide isolated, ephemeral environments for your AI agents. 
+                        Test code execution, file manipulation, and web browsing safely.
+                    </p>
+
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <a href="https://emergent.sh" target="_blank" class="flex-1 glass-card p-4 rounded-xl hover:bg-white/5 transition group border border-dashed border-slate-600 hover:border-brand-primary">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="w-2 h-2 bg-brand-primary rounded-full animate-pulse"></span>
+                                <span class="font-bold text-brand-primary">Emergent.sh</span>
+                            </div>
+                            <p class="text-sm text-slate-400">Ephemeral instances for quick testing and debugging.</p>
+                        </a>
+                        <a href="https://hostinger.com" target="_blank" class="flex-1 glass-card p-4 rounded-xl hover:bg-white/5 transition group border border-dashed border-slate-600 hover:border-brand-primary">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="w-2 h-2 bg-brand-primary rounded-full animate-pulse"></span>
+                                <span class="font-bold text-brand-primary">Hostinger VPS</span>
+                            </div>
+                            <p class="text-sm text-slate-400">Persistent servers for 24/7 autonomous operation.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        
+        
+
+        <!-- Integrations Section -->
+        <section class="w-full max-w-4xl mb-20">
+            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-brand-primary font-bold text-3xl">⟩</span> 
+                Works With Everything
+            </h2>
+            <p class="text-slate-400 mb-6 text-sm">Deploy Moltbot where you already work.</p>
+            
+            <div class="relative w-full overflow-hidden mask-linear-gradient bg-slate-900/20 border border-slate-700/30 rounded-2xl py-6">
+                <div class="flex gap-8 w-max animate-scroll">
+                
+                
+                    <!-- Icons all colored #e8514b -->
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                        WhatsApp
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"></path></svg>
+                        Telegram
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+                        Discord
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                        Twitter
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        Obsidian
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path></svg>
+                        Gmail
+                    </div>
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        GitHub
+                    </div>
+                    <!-- Duplicate for loop -->
+                    <div class="flex items-center gap-2 text-brand-primary font-semibold text-sm">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                        WhatsApp
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Choose Your Installation Path -->
+        <section class="w-full max-w-4xl mb-20">
+            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-brand-primary font-bold text-3xl">⟩</span> 
+                Choose Your Installation
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- MacOS Card -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-24 h-24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">macOS Installation</h3>
+                    <p class="text-slate-400 text-sm mb-6">Local development. Runs directly on your machine. Best for personal assistant use and local file management.</p>
+                    <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50">
+                        curl -fsSL openclaw.ai/install.sh | bash
+                    </div>
+                    <a href="#" class="text-brand-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                        View Mac Guide <span>→</span>
+                    </a>
+                </div>
+
+                <!-- VPS Card -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-24 h-24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">VPS / Docker</h3>
+                    <p class="text-slate-400 text-sm mb-6">Cloud deployment. Always on, 24/7 availability. Ideal for automated tasks, cron jobs, and team bots.</p>
+                    <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50">
+                        docker pull openclaw/moltbot:latest
+                    </div>
+                    <a href="#" class="text-brand-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
+                        View Server Guide <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curriculum / What You'll Learn -->
+        <section id="curriculum" class="w-full max-w-4xl mb-20">
+            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+                <span class="text-brand-primary font-bold text-3xl">⟩</span> 
+                Academy Modules
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Module 1 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Agent Deployment</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        From `npm install` to Docker containers. Learn how to host Moltbot on local machines, Raspberry Pi, or cloud VPS.
+                    </p>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Security & Sandboxing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Protect your data. Master permissions, implement guardrails, and safely execute untrusted AI-generated code.
+                    </p>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Skill Engineering</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Write custom TypeScript skills. Teach your agent to interact with APIs, databases, and internal company tools.
+                    </p>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Training & Context</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Curate your agent's memory. Best practices for persistent context, vector databases, and personality tuning.
+                    </p>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Web Automation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Master the browser skill. Automate flight check-ins, form filling, and complex research tasks safely.
+                    </p>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
+                    <div class="w-10 h-10 mb-4 text-brand-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Cron & Scheduling</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Turn your agent into a proactive assistant. Set up daily briefings, recurring tasks, and background monitoring.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professor Claw Section -->
+        <section class="w-full max-w-4xl mb-24">
+            <div class="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8 border border-brand-primary/20">
+                <div class="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-slate-800 flex-shrink-0 bg-slate-900 overflow-hidden relative">
+                    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="Professor Claw" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <h2 class="text-2xl font-bold text-white mb-2">Professor Claw's Office</h2>
+                    <p class="text-brand-primary text-sm uppercase tracking-wider font-semibold mb-4">MoltAcademy AI Dean & Instructor</p>
+                    <p class="text-slate-400 mb-6 text-sm leading-relaxed">
+                        "I don't just teach theory; I debug reality. Visit my office hours for advanced agent patterns, security loopholes, and tips on keeping your AI from accidentally buying a yacht."
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <button class="bg-slate-800 hover:bg-slate-700 text-white text-xs py-2 px-4 rounded-lg border border-slate-700 transition-colors">
+                            📚 Advanced Docs
+                        </button>
+                        <button class="bg-slate-800 hover:bg-slate-700 text-white text-xs py-2 px-4 rounded-lg border border-slate-700 transition-colors">
+                            🛠️ Agent Tools
+                        </button>
+                        <button class="bg-slate-800 hover:bg-slate-700 text-white text-xs py-2 px-4 rounded-lg border border-slate-700 transition-colors">
+                            🧪 Tips & Tricks
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter / CTA -->
+        <section id="newsletter" class="w-full max-w-4xl mb-24">
+            <div class="glass-card rounded-2xl p-10 md:p-14 text-center relative overflow-hidden">
+                <!-- Background Accent -->
+                <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-purple-500/5 z-[-1]"></div>
+                
+                <h2 class="text-3xl font-bold mb-4">Ready to build your first Agent?</h2>
+                <p class="text-slate-400 max-w-lg mx-auto mb-8 text-lg">
+                    Join 10,000+ students mastering the future of AI. Get the full Moltbot course and sandbox access today.
+                </p>
+
+                <form class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="enter@your.email" class="bg-slate-950/80 border border-slate-700 rounded-xl px-5 py-3.5 w-full text-white placeholder-slate-500 focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-colors">
+                    <button class="bg-gradient-to-r from-brand-primary to-red-600 hover:brightness-110 text-white font-semibold py-3.5 px-6 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-red-900/20 whitespace-nowrap">
+                        Join Academy
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+                
+                <p class="text-xs text-slate-500 mt-4">Free forever for open source developers.</p>
+            </div>
+        </section>
+        
+        
+        
+        
+        
+        
+        <!-- Image Banner Section - Full width, placed above footer -->
+<section class="w-full max-w-4xl mx-auto px-6 mb-0">
+    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
+         alt="Molt Academy Banner" 
+         class="w-full h-auto object-contain block"
+         loading="lazy">
+</section>
+        
+        
+        
+        
+        
+        
+        
+        
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 text-sm max-w-4xl mx-auto border-t border-slate-800 pt-10">
+            <nav class="flex justify-center gap-6 mb-6">
+                <a href="#" class="hover:text-brand-primary transition-colors">Courses</a>
+                <a href="#" class="hover:text-brand-primary transition-colors">Documentation</a>
+                <a href="#" class="hover:text-brand-primary transition-colors">Showcase</a>
+                <a href="#" class="hover:text-brand-primary transition-colors">Partners</a>
+            </nav>
+            <p class="mb-2">
+                Built by <a href="#" class="text-brand-primary hover:underline">MoltAcademy</a> 🦞. Powered by <a href="#" class="text-brand-primary hover:underline">OpenClaw</a>.
+            </p>
+            <p class="opacity-60 text-xs">
+                MoltAcademy is an independent educational platform for the OpenClaw ecosystem. Not affiliated with Anthropic.
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Simple scroll reveal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.glass-card').forEach(el => {
+                el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
