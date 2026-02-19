@@ -29,6 +29,7 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                                            title: ['Stinger', 'sans-serif'],   // 👈 New title font (uses your Stinger)
                     },
                     colors: {
                         brand: {
@@ -70,6 +71,30 @@
     
     
     <style>
+
+
+
+/* Stinger Font (Bold only) */
+@font-face {
+    font-family: 'Stinger';
+    src: url('fonts/StingerFitTrial-Bold.woff2') format('woff2'),
+         url('fonts/StingerFitTrial-Bold.woff') format('woff');
+    font-weight: 700;  /* Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Optional: if you want to use the same bold file for lighter weights, 
+   you can add additional @font-face rules pointing to the same file, 
+   but it's not recommended. For now, we'll only define bold. */
+
+
+
+
+
+
+
+        
 
         
         body {
@@ -200,7 +225,7 @@
                 <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="MoltAcademy Logo" class="w-full h-full object-contain">
             </div>
             
-            <h1 class="text-6xl md:text-7xl font-bold mb-4 tracking-tighter">
+            <h1 class="font-title text-6xl md:text-7xl font-bold mb-4 tracking-tighter">
                 <span class="text-gradient">MoltAcademy</span></h1>
             
             
@@ -263,7 +288,7 @@
 <!-- Social Proof / Students -->
 <section class="w-full max-w-4xl mb-20 overflow-hidden relative">
     <div class="flex items-center justify-between px-2 mb-8">
-        <h2 class="text-2xl font-semibold flex items-center gap-3">
+        <h2 class="font-title text-2xl font-semibold flex items-center gap-3">
             <span class="text-brand-primary font-bold text-3xl">⟩</span> 
             Student Shipments
         </h2>
@@ -464,7 +489,7 @@
 
         <!-- Choose Your Installation Path -->
         <section class="w-full max-w-4xl mb-20">
-            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+            <h2 class="font-title text-2xl font-semibold mb-6 flex items-center gap-3">
                 <span class="text-brand-primary font-bold text-3xl">⟩</span> 
                 Choose Your Installation
             </h2>
@@ -510,7 +535,7 @@
         
         <!-- Integrations Section -->
         <section class="w-full max-w-4xl mb-20 flex flex-col items-center">
-            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3 w-full">
+            <h2 class="font-title text-2xl font-semibold mb-6 flex items-center gap-3 w-full">
                 <span class="text-brand-primary font-bold text-3xl">⟩</span> 
                 Works With Everything
             </h2>
@@ -601,12 +626,14 @@
 
         <!-- Curriculum / What You'll Learn -->
         <section id="curriculum" class="w-full max-w-4xl mb-20">
-            <h2 class="text-2xl font-semibold mb-6 flex items-center gap-3">
+            <h2 class="font-title text-2xl font-semibold mb-6 flex items-center gap-3">
                 <span class="text-brand-primary font-bold text-3xl">⟩</span> 
                 Academy Modules
             </h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+                
                 <!-- Module 1 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
                     <div class="w-10 h-10 mb-4 text-brand-primary">
@@ -624,6 +651,8 @@
                     </p>
                 </div>
 
+                
+
                 <!-- Module 2 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
                     <div class="w-10 h-10 mb-4 text-brand-primary">
@@ -636,6 +665,9 @@
                         Protect your data. Master permissions, implement guardrails, and safely execute untrusted AI-generated code.
                     </p>
                 </div>
+
+
+                
 
                 <!-- Module 3 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
@@ -650,6 +682,9 @@
                     </p>
                 </div>
 
+
+                
+
                 <!-- Module 4 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
                     <div class="w-10 h-10 mb-4 text-brand-primary">
@@ -663,6 +698,9 @@
                     </p>
                 </div>
 
+
+                
+
                 <!-- Module 5 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
                     <div class="w-10 h-10 mb-4 text-brand-primary">
@@ -675,6 +713,10 @@
                         Master the browser skill. Automate flight check-ins, form filling, and complex research tasks safely.
                     </p>
                 </div>
+
+
+
+                
 
                 <!-- Module 6 -->
                 <div class="glass-card p-6 rounded-2xl hover:translate-y-[-4px] transition-transform duration-300">
@@ -728,7 +770,7 @@
         <!-- Tools & Resources Library Section -->
         <section class="w-full max-w-4xl mb-24">
             <div class="flex flex-col mb-8">
-                <h2 class="text-2xl font-semibold flex items-center gap-3">
+                <h2 class="font-title text-2xl font-semibold flex items-center gap-3">
                     <span class="text-brand-primary font-bold text-3xl">⟩</span> 
                     Tools & Resources Library
                 </h2>
@@ -822,7 +864,7 @@
                 <!-- Background Accent -->
                 <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-purple-500/5 z-[-1]"></div>
                 
-                <h2 class="text-3xl font-bold mb-4">Build Secure Autonomous AI Systems</h2>
+                <h2 class="font-title text-3xl font-bold mb-4">Build Secure Autonomous AI Systems</h2>
                 <p class="text-slate-400 max-w-lg mx-auto mb-8 text-lg">
                     MoltAcademy is a technical institute for serious OpenClaw operators. Learn to design, secure, and deploy autonomous AI systems for real business use.
                 </p>
