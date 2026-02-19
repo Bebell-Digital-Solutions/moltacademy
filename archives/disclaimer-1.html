@@ -1,0 +1,1369 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =========================== -->
+    <!-- SECTION 1: PAGE TITLE & META -->
+    <!-- =========================== -->
+    <title>International AI Disclaimer – AIM™ AI Mastery Program</title>
+    <meta name="description" content="International AI Disclaimer for Molt Academy, adapted to AIM™ AI Mastery Program branding.">
+    
+    <!-- =========================== -->
+    <!-- SECTION 2: FONTS & ICONS -->
+    <!-- =========================== -->
+    <!-- Import Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/c6f729e3f2ce7e2bc59bf6037f6fe0f491d94819.png">
+
+    <!-- =========================== -->
+    <!-- SECTION 3: BASE CSS STYLES -->
+    <!-- =========================== -->
+    <style>
+        /* --- Molt Academy Brand Styles --- */
+        :root {
+            --skin-color: #e8514b; /* User-specified primary brand color */
+            --mirage-color: hsl(210, 10%, 23%);
+            --title-color: hsl(242, 8%, 98%);
+            --text-color: hsl(242, 8%, 80%);
+            --body-color: #0d0d0d;
+            --box-color: hsl(242, 14%, 12%);
+            --body-font: 'Inter', sans-serif;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            --small-font-size: 0.95rem;
+            --h3-font-size: 1.25rem;
+            --smaller-font-size: 0.75rem;
+            --mb15: 0.75rem;
+            --mb3: 1.5rem;
+        }
+
+        /* --- Base & Scrollbar --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: var(--body-font);
+            background-color: var(--body-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 8rem; /* Space for fixed nav */
+            overflow-x: hidden;
+        }
+        
+        main {
+            max-width: 980px; /* Adjusted to AIM's main content width */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; cursor: pointer; }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #333; }
+        ::-webkit-scrollbar-thumb { background: var(--skin-color); border-radius: 4px; }
+        
+        /* Utility container class */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* --- Loader Styles --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        
+        
+        
+        
+        
+
+        /* =========================== -->
+        <!-- SECTION 4: NAVIGATION BAR -->
+        <!-- =========================== */
+        
+        #nav-bar {
+            position: fixed; 
+            top: 2rem; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background: rgba(25, 25, 25, 0.85); 
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--box-color); 
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem; 
+            display: flex; 
+            align-items: center;
+            max-width: 1100px; 
+            width: 90%; 
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        #nav-logo img { height: 55px; }
+        
+        /* Desktop: nav-menu contains all links and is flexed */
+        #nav-menu { 
+            display: flex; 
+            gap: 1.5rem; 
+            margin-left: auto; 
+            align-items: center; 
+        }
+
+        /* Nav links and CTA */
+        .nav-link { 
+            color: var(--text-color); 
+            transition: color 0.3s, transform 0.2s; 
+            font-weight: 500; 
+        }
+        .nav-link:hover { 
+            color: var(--skin-color); 
+            transform: translateY(-1px); 
+        }
+        .nav-cta {
+            background: var(--skin-color);
+            color: var(--title-color); 
+            padding: 0.5rem 1rem; 
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(232, 81, 75, 0.4); /* Adjusted shadow color to match skin-color */
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+            white-space: nowrap; /* Ensure text stays on one line */
+        }
+        .nav-cta:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 8px rgba(232, 81, 75, 0.5); /* Adjusted shadow color to match skin-color */
+        }
+        .has-submenu { position: relative; }
+        
+        /* Submenu Default State (Hidden - Desktop) */
+        .submenu-courses {
+            position: absolute; 
+            top: 100%; 
+            left: 50%; 
+            transform: translateX(-50%);
+            background: var(--box-color); 
+            border-radius: 0.5rem; 
+            padding: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5); 
+            opacity: 0; 
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, top 0.3s; 
+            width: 300px;
+            z-index: 1001;
+        }
+        
+        /* Submenu Active State (Shown via JavaScript click - Desktop) */
+        .submenu-courses.active { 
+            opacity: 1; 
+            visibility: visible;
+            top: calc(100% + 10px);
+        }
+        .submenu-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            color: var(--text-color); 
+            padding: 0.5rem; 
+            border-radius: 0.25rem; 
+            transition: background-color 0.3s, color 0.3s; 
+        }
+        .submenu-link:hover { 
+            background-color: rgba(232, 81, 75, 0.1); /* Adjusted hover background to match skin-color */
+            color: var(--skin-color); 
+        }
+        .submenu-link i { width: 15px; text-align: center; }
+
+        /* Mobile visibility controls (Default/Desktop state) */
+        #mobile-menu-toggle { 
+            display: none; 
+            border: none;
+            background: transparent;
+            color: var(--skin-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+        .nav-cta.mobile-cta-only { display: none; }
+        .nav-cta.desktop-cta-only { display: block; }
+
+
+
+
+
+
+
+
+
+
+        /* =========================== -->
+        <!-- SECTION 5: BACK TO TOP BUTTON -->
+        <!-- =========================== */
+        #back-to-top {
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px;
+            width: 60px; 
+            height: 60px;
+            background: url('https://bucket.mlcdn.com/a/3336/3336910/images/7706b717d9f416e4a1a591e08182acf2e7757f49.png') no-repeat center center;
+            background-size: cover;
+            border: none; 
+            border-radius: 50%;
+            cursor: pointer; 
+            opacity: 0; 
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 999;
+        }
+        #back-to-top.show { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+        #back-to-top:hover { 
+            transform: scale(1.1); 
+        }
+
+
+
+
+
+
+
+
+        /* =========================== -->
+        <!-- SECTION 6: FOOTER STYLES -->
+        <!-- =========================== */
+        .footer { 
+            padding-top: 2rem; 
+            margin-top: 3rem;
+        }
+        .footer-bg { 
+            background-color: var(--box-color); 
+            padding: 3rem 0 3.5rem; 
+        }
+        .footer-container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            column-gap: 1.6rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .footer-title { 
+            font-size: var(--h3-font-size); 
+            margin-bottom: 0.25rem; 
+            color: var(--title-color); 
+        }
+        .footer-subtitle { 
+            font-size: var(--small-font-size); 
+            color: var(--title-color); 
+        }
+        .footer-links { 
+            list-style: none; 
+            display: flex; 
+            justify-self: center; 
+            column-gap: 2rem; 
+            padding: 0;
+            margin: 0;
+        }
+        .footer-links a { 
+            color: var(--title-color); 
+            transition: color 0.3s; 
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .footer-links a:hover { 
+            color: var(--skin-color); 
+        }
+        .footer-socials { 
+            justify-self: flex-end; 
+            display: flex; 
+            align-items: center; 
+            gap: var(--mb15); 
+        }
+        .footer-social { 
+            font-size: 1.25rem; 
+            color: var(--title-color); 
+            transition: color 0.3s; 
+            text-decoration: none;
+        }
+        .footer-social:hover { 
+            color: var(--skin-color); 
+            cursor: pointer; 
+        }
+        .footer-copy { 
+            font-size: var(--smaller-font-size); 
+            text-align: center; 
+            margin-top: 4.5rem; 
+            color: var(--title-color);
+        }
+        .footer-copy a { 
+            color: var(--title-color); 
+            text-decoration: none;
+        }
+        .footer-copy a:hover { 
+            color: var(--skin-color); 
+        }
+        .footer-brand { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            text-align: left; 
+            gap: 0.5rem; 
+        }
+        .footer-brand-text { 
+            text-align: left; 
+        }
+        .footer-logo { 
+            width: 70px; 
+            height: auto; 
+            display: block; 
+        }
+        .footer-logo:hover {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        /* =========================== -->
+        <!-- SECTION 7: MOBILE RESPONSIVENESS -->
+        <!-- =========================== */
+        /* UPDATED: Changed breakpoint to 980px to include tablets */
+        @media screen and (max-width: 980px) {
+            body { 
+                padding-top: 6rem; 
+                overflow-x: hidden;
+            }
+            
+            /* Mobile Navigation */
+            #nav-bar {
+                padding: 0.5rem 1rem;
+                justify-content: space-between;
+                box-shadow: none; 
+                width: 100%;
+                max-width: 100%;
+                top: 0;
+                left: 0;
+                transform: none;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+            
+            #mobile-menu-toggle {
+                display: block;
+                position: static;
+                transform: none;
+                z-index: 1002;
+                margin-left: auto;
+            }
+            
+            #nav-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: var(--body-color); 
+                z-index: 1001; 
+                flex-direction: column;
+                justify-content: flex-start; 
+                align-items: center; 
+                gap: 1.5rem;
+                padding: 6rem 1.5rem 2rem; /* Updated padding for spacing */
+                margin: 0;
+            }
+
+            #nav-menu.mobile-open {
+                display: flex;
+                padding: 6rem 1.5rem 2rem; /* Ensure consistent padding when open */
+                overflow-y: auto;
+            }
+            
+            #nav-menu .nav-link,
+            #nav-menu .nav-item {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--title-color);
+                padding: 0.5rem 0;
+                margin: 0;
+                width: auto; 
+                text-align: center;
+            }
+            
+            #nav-menu .nav-item { 
+                margin: 0; 
+                padding: 0; 
+            }
+
+            #nav-menu .nav-link:hover {
+                color: var(--skin-color);
+                transform: none;
+            }
+            
+            /* Courses Dropdown (Mobile alignment) */
+            .has-submenu {
+                display: flex;
+                flex-direction: column;
+                align-items: center; 
+                width: 100%; 
+            }
+            
+            .submenu-courses {
+                position: static; 
+                width: 100%; 
+                background: transparent; /* Removed background container */
+                box-shadow: none;
+                padding: 0; 
+                margin: 0.5rem 0 0 0; 
+                opacity: 0; 
+                visibility: hidden;
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: opacity 0.3s, max-height 0.3s;
+                /* FIXED: Remove desktop transform to prevent off-screen positioning */
+                transform: none; 
+                /* MODIFIED: Align items to left for mobile */
+                flex-direction: column; 
+                align-items: flex-start; 
+                text-align: left;
+                border-radius: 0;
+            }
+            
+            .submenu-courses.active { 
+                display: flex;
+                opacity: 1;
+                visibility: visible;
+                max-height: 400px;
+                padding: 0; 
+                margin-top: 0.5rem; 
+            }
+            
+            /* MODIFIED: Submenu Links Mobile Styles */
+            .submenu-courses .submenu-link {
+                font-size: 1.1rem;
+                /* Increased left padding for indentation, right padding for safe zone */
+                padding: 0.8rem 1rem 0.8rem 2.5rem;
+                justify-content: flex-start; 
+                width: 100%;
+                text-align: left;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            
+            /* Mobile CTA button */
+            .nav-cta.mobile-cta-only {
+                padding: 0.8rem 2rem; 
+                width: 100%; /* Changed to full width */
+                /* MODIFIED: Removed max-width constraint and forced single line */
+                max-width: none; 
+                white-space: nowrap;
+                font-size: 1.2rem; 
+                font-weight: 700;
+                margin-top: 1rem; 
+                display: block !important; 
+                align-self: center; 
+                text-align: center;
+            }
+            
+            /* Hide desktop items on mobile */
+            .nav-cta.desktop-cta-only,
+            .nav-cta:not(.mobile-cta-only) { 
+                display: none !important; 
+            }
+
+            /* Mobile Footer */
+            .footer-container {
+                grid-template-columns: 1fr;
+                row-gap: 2.5rem;
+                text-align: center;
+            }
+            
+            .footer-brand {
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+            }
+            .footer-brand-text {
+                text-align: center;
+            }
+            
+            .footer-socials {
+                justify-content: center;
+                justify-self: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                row-gap: 1.2rem;
+                justify-self: center;
+            }
+            
+            .footer-bg {
+                padding: 2rem 0 2.5rem;
+            }
+            
+            .footer-copy {
+                margin-top: var(--mb3);
+                padding: 0 1rem;
+            }
+        }
+
+        /* Tablet/Desktop responsiveness (Starts at 981px) */
+        @media screen and (min-width: 981px) and (max-width: 1024px) {
+            #nav-bar {
+                width: 95%;
+                padding: 0.5rem 1rem;
+            }
+            
+            #nav-menu {
+                gap: 1rem;
+            }
+        }
+
+        /* Desktop: Ensure correct visibility when not mobile */
+        @media screen and (min-width: 981px) {
+            #nav-menu {
+                display: flex !important;
+            }
+            .nav-cta.desktop-cta-only { 
+                display: block !important; 
+            }
+        }
+
+        /* =========================== -->
+        <!-- SECTION 8: PAGE LOADER STYLES -->
+        <!-- =========================== */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+
+        .loader-header {
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .progress {
+            width: 272.8px;
+            height: 41.7px;
+            border-radius: 28.8px;
+            color: var(--skin-color); /* Changed to skin-color */
+            background-color: #000;
+            border: 2.9px solid;
+            position: relative;
+        }
+
+        .progress::before {
+            content: "";
+            position: absolute;
+            margin: 2.9px;
+            inset: 0 100% 0 0;
+            border-radius: inherit;
+            background: currentColor;
+            animation: progress-pf82op 1.5s forwards;
+        }
+
+        @keyframes progress-pf82op {
+            100% {
+                inset: 0;
+            }
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* =========================== -->
+        <!-- SECTION 9: PAGE-SPECIFIC STYLES -->
+        <!-- =========================== */
+        
+        /* Disclaimer Page Specific Styles */
+        .disclaimer-header {
+        margin-top: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .disclaimer-header h1 {
+            color: var(--skin-color);
+            font-size: 2.5rem; /* Adjusted for AIM H1 */
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .disclaimer-header .page-kicker {
+            text-transform: uppercase;
+            font-size: var(--small-font-size);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .disclaimer-header .page-subtitle {
+            color: var(--text-color);
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--box-color);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            font-size: var(--small-font-size);
+            font-weight: 500;
+            margin-top: 0.5rem;
+            border: 1px solid var(--mirage-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .time-badge i {
+            color: var(--skin-color);
+            font-size: 0.9em;
+        }
+
+        /* Card Components - Adapted to .section */
+        .section {
+            background: var(--box-color);
+            border-radius: 12px; /* Consistent with AIM sections */
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--mirage-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards; /* AIM animation */
+            opacity: 0; /* Start hidden for animation */
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(232, 81, 75, 0.2); /* Subtle glow on hover */
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem; /* Spacing between sections within the card */
+        }
+
+        .icon-title:first-of-type {
+            margin-top: 0.5rem; /* Less margin for the first one */
+        }
+
+        .icon-title i {
+            color: var(--skin-color);
+            font-size: 1.5rem; /* Adjusted icon size */
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(232, 81, 75, 0.1); /* Subtle background for icon */
+            border: 1px solid rgba(232, 81, 75, 0.3);
+        }
+
+        .icon-title h2 {
+            font-size: 1.5rem; /* AIM H2 size */
+            color: var(--title-color);
+            margin: 0;
+            position: relative;
+            padding-left: 1rem; /* Space for border accent */
+        }
+
+        .icon-title h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 80%;
+            background-color: var(--skin-color); /* Orange-red left border accent */
+            border-radius: 2px;
+        }
+
+        /* Paragraphs within sections */
+        .section p {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-size: 1rem; /* Body text size >= 1rem */
+        }
+
+        /* Lists - Adapted to AIM style */
+        .check-list {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+            padding: 0;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.8rem;
+            padding-left: 0;
+            color: var(--text-color);
+            transition: transform 0.2s ease;
+        }
+
+        .check-list li:hover {
+            transform: translateX(5px); /* AIM list hover effect */
+        }
+
+        .check-list i {
+            color: var(--skin-color);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+            font-size: 1rem; /* Icon size for lists */
+        }
+
+        .check-list strong {
+            color: var(--title-color);
+            font-weight: 600;
+        }
+
+        /* Footer Note - Adapted to AIM style */
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--mirage-color);
+            color: var(--text-color);
+            font-size: var(--small-font-size);
+        }
+
+        /* Responsive Design for Disclaimer Page */
+        @media (max-width: 768px) {
+            .disclaimer-header h1 {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 1.5rem;
+            }
+            .icon-title h2 {
+                font-size: 1.25rem;
+            }
+            .icon-title i {
+                font-size: 1.2rem;
+            }
+            .section p {
+                font-size: var(--small-font-size);
+            }
+            .check-list li {
+                font-size: var(--small-font-size);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .disclaimer-header h1 {
+                font-size: 1.8rem;
+            }
+            .disclaimer-header .page-subtitle {
+                font-size: var(--small-font-size);
+            }
+            .icon-title {
+                flex-direction: row; /* Keep row for better alignment with border accent */
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .icon-title h2 {
+                padding-left: 0.8rem;
+            }
+            .icon-title h2::before {
+                height: 70%;
+            }
+        }
+        
+    </style>
+
+<!-- =========================== -->
+<!-- SECTION 10: PAGE LOADER SCRIPT -->
+<!-- =========================== -->
+<script>
+    // --- Page Loader Logic ---
+    function showLoader() {
+        const loader = document.createElement('div');
+        loader.className = 'page-loader';
+        loader.innerHTML = `
+            <div class="loader-header">Wait for it...</div>
+            <div class="progress"></div>
+        `;
+        document.body.appendChild(loader);
+        return loader;
+    }
+
+    function initLoader() {
+        const loader = showLoader();
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.remove(), 300);
+        }, 1500);
+    }
+
+    document.addEventListener('DOMContentLoaded', initLoader);
+</script>
+<!-- Loader Div is injected by the script above -->
+
+</head>
+<body>
+
+
+
+
+    <!-- =========================== -->
+    <!-- SECTION 11: NAVIGATION BAR HTML -->
+    <!-- =========================== -->
+    <nav id="nav-bar">
+        <a href="/" id="nav-logo">
+            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/a48f92f7455b7f3eb978169ff69d1705921435f4.png" alt="MoltAcademy Logo" />
+        </a>
+        
+        
+        
+        
+        <!-- MOBILE TOGGLE BUTTON -->
+        <button id="mobile-menu-toggle" aria-label="Open Menu">
+            <i class="fa-solid fa-bars" id="toggle-icon"></i>
+        </button>
+        
+        <div id="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            
+            
+            
+            
+            <!-- Courses Dropdown -->
+            <div class="nav-item has-submenu">
+                <a href="#" class="nav-link" id="courses-link">Courses <i class="fa-solid fa-angle-down" style="font-size: 0.8em;"></i></a>
+                <div class="submenu-courses" id="courses-submenu">
+                    <a href="/courses#all" class="submenu-link"><i class="fa-solid fa-list-ul"></i> All Courses</a>
+                    <a href="/courses#foundation" class="submenu-link"><i class="fa-solid fa-brain"></i> AI Foundation</a>
+                    <a href="/courses#prompting" class="submenu-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt Craftsmanship</a>
+                    <a href="#building-ai-brain" class="submenu-link"><i class="fa-solid fa-database"></i> Building Your AI Brain</a>
+                    <a href="#autonomous-ai-agents" class="submenu-link"><i class="fa-solid fa-robot"></i> Autonomous AI Agents</a>
+                </div>
+            </div>
+            
+            <a href="/pricing-page" class="nav-link">Pricing</a>
+            <a href="/contact" class="nav-link">Contact</a>
+            
+            <!-- DESKTOP CTA (VISIBLE ON DESKTOP NAV BAR) -->
+            <a href="/login" class="nav-cta desktop-cta-only">MEMBER LOGIN</a>
+            
+            <!-- MOBILE CTA (VISIBLE ONLY IN MOBILE OVERLAY) -->
+            <a href="/login" class="nav-cta mobile-cta-only">MEMBER LOGIN</a>
+        </div>
+    </nav>
+    
+    
+    
+    
+    
+
+    <!-- =========================== -->
+    <!-- SECTION 12: MAIN CONTENT AREA -->
+    <!-- =========================== -->
+    <main>
+        <div class="disclaimer-header">
+            <div class="page-kicker">
+                <i class="fas fa-globe"></i>
+                International Notice
+            </div>
+            <h1>Molt Academy –  AI Disclaimer</h1>
+            <p class="page-subtitle">
+                How we use AI, what you can expect, and where your responsibility begins.
+            </p>
+            <div class="time-badge">
+                <i class="fas fa-clock"></i>
+                Last updated: February 17, 2026
+            </div>
+            <div class="time-badge" style="margin-left: 0.5rem;">
+                <i class="fas fa-language"></i>
+                Applies to all regions
+            </div>
+        </div>
+
+        <section class="section">
+            <p>
+                Molt Academy provides educational content related to Artificial Intelligence tools, systems, automation, and digital workflows. Our services are offered globally and may be accessed from multiple jurisdictions.
+            </p>
+
+            <div class="icon-title">
+                <i class="fas fa-gear"></i>
+                <h2>Rapidly Changing Technology</h2>
+            </div>
+            <p>
+                Artificial Intelligence technologies evolve rapidly. Models, APIs, features, security standards, regulations, pricing, and third-party platform policies may change at any time without notice. Course content reflects information available at the time of publication and may become outdated. Molt Academy does not guarantee that any content will remain accurate, current, or compatible with future versions of tools, platforms, or regulations.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Educational Purpose Only</h2>
+            </div>
+            <p>
+                All materials, examples, templates, prompts, demonstrations, and strategies are provided strictly for educational and informational purposes. Nothing provided by Molt Academy should be construed as:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-shield-halved"></i>
+                    <div><strong>Legal advice</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <div><strong>Financial, investment, or tax advice</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-user-lock"></i>
+                    <div><strong>Cybersecurity or data protection advice</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-clipboard-check"></i>
+                    <div><strong>Compliance, regulatory, or risk-management advice</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-briefcase"></i>
+                    <div><strong>Any other form of professional advisory service</strong></div>
+                </li>
+            </ul>
+            <p>
+                You should consult qualified professionals before making decisions in these areas.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-ban"></i>
+                <h2>No Guarantees</h2>
+            </div>
+            <p>
+                Molt Academy makes no representations, warranties, or guarantees, express or implied, regarding any aspect of its content or the AI tools discussed, including without limitation:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-wave-square"></i>
+                    <div><strong>Accuracy, completeness, or reliability of AI-generated outputs</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-plug"></i>
+                    <div><strong>Availability, stability, or performance of third-party tools, APIs, or platforms</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-building"></i>
+                    <div><strong>Business performance, revenue, productivity, automation outcomes, or any specific results</strong></div>
+                </li>
+                <li>
+                    <i class="fas fa-shield-halved"></i>
+                    <div><strong>Security, integrity, or confidentiality of external platforms, services, or integrations</strong></div>
+                </li>
+            </ul>
+            <p>
+                AI systems may generate inaccurate, incomplete, biased, or fabricated information. You are solely responsible for independently verifying all outputs, configurations, and recommendations before relying on or implementing them.
+            </p>
+        </section>
+
+        <section class="section two-column-section">
+            <div class="column">
+                <div class="icon-title">
+                    <i class="fas fa-user-gear"></i>
+                    <h2>User Responsibility</h2>
+                </div>
+                <p>By accessing Molt Academy, you acknowledge and agree that:</p>
+                <ul class="check-list">
+                    <li>
+                        <i class="fas fa-cubes"></i>
+                        <div>
+                            <strong>You assume full responsibility</strong> for how you select, configure, and use AI tools and workflows.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-shield-halved"></i>
+                        <div>
+                            <strong>You are responsible for protecting sensitive data</strong>, personal information, trade secrets, and credentials, including how you input such data into AI systems or third-party platforms.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-scale-balanced"></i>
+                        <div>
+                            <strong>You must comply with all applicable local, national, and international laws</strong>, regulations, and industry standards, including but not limited to data protection, privacy, intellectual property, export control, and sector-specific rules.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-eye"></i>
+                        <div>
+                            <strong>You must implement appropriate human oversight</strong>, review processes, and risk controls when using AI in any operational, commercial, or client-facing context.
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-sitemap"></i>
+                        <div>
+                            <strong>You are responsible for determining whether any suggested workflows</strong>, automations, or practices are appropriate and lawful for your specific use case and jurisdiction.
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <div class="icon-title">
+                    <i class="fas fa-bolt"></i>
+                    <h2>Limitation of Liability</h2>
+                </div>
+                <p>
+                    To the fullest extent permitted by applicable law, Molt Academy and its owners, officers, employees, contractors, affiliates, instructors, and partners shall not be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages, including but not limited to loss of profits, revenue, data, goodwill, or business opportunities, arising out of or in connection with:
+                </p>
+                <ul class="check-list">
+                    <li>
+                        <i class="fas fa-robot"></i>
+                        <div><strong>Your use or misuse of AI systems</strong>, tools, or automations</div>
+                    </li>
+                    <li>
+                        <i class="fas fa-book-open"></i>
+                        <div><strong>Your reliance on AI-generated content</strong>, suggestions, prompts, or outputs</div>
+                    </li>
+                    <li>
+                        <i class="fas fa-triangle-exclamation"></i>
+                        <div><strong>Errors, inaccuracies, biases, or omissions</strong> in any AI-generated or educational material</div>
+                    </li>
+                    <li>
+                        <i class="fas fa-server"></i>
+                        <div><strong>Failures, downtime, changes, or discontinuation</strong> of third-party platforms, APIs, or services</div>
+                    </li>
+                    <li>
+                        <i class="fas fa-network-wired"></i>
+                        <div><strong>Security incidents, data breaches, or unauthorized access</strong> occurring on or through third-party tools, platforms, or infrastructure outside our direct control</div>
+                    </li>
+                </ul>
+                <p class="fine-print">
+                    This limitation applies whether claims are based on warranty, contract, tort (including negligence), strict liability, or any other legal theory, even if Molt Academy has been advised of the possibility of such damages. If any jurisdiction does not allow the exclusion or limitation of certain damages, Molt Academy’s liability shall be limited to the maximum extent permitted by law.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-people-group"></i>
+                <h2>International Users</h2>
+            </div>
+            <p>
+                Molt Academy content may be accessed from countries with different laws, regulations, and standards regarding AI, data protection, privacy, and digital services. Users accessing Molt Academy from outside the country or countries of operation do so on their own initiative and are solely responsible for:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-location-dot"></i>
+                    <div><strong>Determining whether access to and use of our content is lawful</strong> in their jurisdiction</div>
+                </li>
+                <li>
+                    <i class="fas fa-gavel"></i>
+                    <div><strong>Complying with all local, regional, national, and international laws</strong> and regulations applicable to their use of AI tools and related workflows</div>
+                </li>
+            </ul>
+            <p>
+                Molt Academy does not represent that its content is appropriate, compliant, or available for use in all locations.
+            </p>
+        </section>
+
+        <section class="section">
+            <div class="icon-title">
+                <i class="fas fa-file-signature"></i>
+                <h2>Agreement</h2>
+            </div>
+            <p>
+                By accessing or using Molt Academy content in any form (including courses, videos, documents, live sessions, communities, or other materials), you:
+            </p>
+            <ul class="check-list">
+                <li>
+                    <i class="fas fa-hand-sparkles"></i>
+                    <div>
+                        <strong>Acknowledge that AI is an assistive technology</strong> and not a substitute for professional judgment, expertise, or due diligence.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-clipboard-check"></i>
+                    <div>
+                        <strong>Agree that you retain full and final responsibility</strong> for all decisions, actions, implementations, and outcomes that result from your use of AI tools or Molt Academy content.
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-file-contract"></i>
+                    <div>
+                        <strong>Accept this International AI Disclaimer</strong> as a binding part of your use of Molt Academy resources.
+                    </div>
+                </li>
+            </ul>
+
+            <div class="notice">
+                <div class="notice-icon">
+                    <i class="fas fa-circle-exclamation"></i>
+                </div>
+                <div class="notice-body">
+                    <h3>Don’t Agree?</h3>
+                    <p>
+                        If you do not agree with this disclaimer, you should not access or use Molt Academy content.
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- =========================== -->
+    <!-- SECTION 13: BACK TO TOP BUTTON -->
+    <!-- =========================== -->
+    <button id="back-to-top" aria-label="Back to Top"></button>
+    
+    
+    
+    
+    
+    
+    <!-- =========================== -->
+    <!-- SECTION 14: FOOTER HTML -->
+    <!-- =========================== -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <div class="footer-container container"> 
+                <!-- Logo/Brand Block -->
+                <div class="footer-brand">
+                    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="Molt Academy Logo Icon" class="footer-logo">
+                    <div class="footer-brand-text">
+                        <h3 class="footer-title">Molt Academy</h3>
+                        <span class="footer-subtitle">By AIM, AI Mastery Program</span>
+                    </div>
+                </div>
+                    
+                <!-- Footer Links -->
+                <ul class="footer-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/courses">Courses</a></li>
+                    <li><a href="/pricing-page">Pricing</a></li>
+                    <li><a href="/resources">Resources</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+
+                <!-- Social Icons -->
+                <div class="footer-socials">
+                    <a href="https://www.youtube.com/" target="_blank" class="footer-social" aria-label="Youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="footer-social" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="footer-social" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" class="footer-social" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <p class="footer-copy">Copyright &#169; <span id="current-year"></span> • All rights reserved.<br>Developed with 🦞 by <a href="https://bebelldigitalsolutions.com">Bebell Digital Solutions</a></p>
+        </div>
+    </footer>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <!-- =========================== -->
+    <!-- SECTION 15: BASE JAVASCRIPT -->
+    <!-- =========================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Dropdown Logic (Desktop/Mobile Submenu) ---
+            const coursesLink = document.getElementById('courses-link');
+            const submenu = document.getElementById('courses-submenu');
+            const navBar = document.getElementById('nav-bar');
+
+            if (coursesLink && submenu && navBar) {
+                // Toggle visibility on click
+                coursesLink.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    const isMobile = window.innerWidth <= 980; // UPDATED Check
+                    
+                    if (isMobile) {
+                        // For mobile, just toggle the submenu
+                        submenu.classList.toggle('active');
+                    } else {
+                        // For desktop, toggle and manage hover-like behavior
+                        submenu.classList.toggle('active');
+                    }
+                    
+                    e.stopPropagation(); 
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navBar.contains(e.target)) {
+                        submenu.classList.remove('active');
+                    }
+                });
+
+                // Prevent clicks inside submenu from closing it
+                submenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            }
+
+            // --- Mobile Menu Toggle Logic (Hamburger Icon) ---
+            const mobileToggle = document.getElementById('mobile-menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            const toggleIcon = document.getElementById('toggle-icon');
+
+            if (mobileToggle && navMenu && toggleIcon) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('mobile-open');
+                    
+                    if (navMenu.classList.contains('mobile-open')) {
+                        toggleIcon.classList.remove('fa-bars');
+                        toggleIcon.classList.add('fa-xmark');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        toggleIcon.classList.remove('fa-xmark');
+                        toggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = 'auto';
+                        if (submenu) submenu.classList.remove('active');
+                    }
+                });
+                
+                // Close mobile menu when clicking links
+                navMenu.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 980) { // UPDATED Check
+                            // Don't close menu if clicking the "Courses" toggle or a submenu link
+                            if (!link.classList.contains('submenu-link') && link.id !== 'courses-link') {
+                                navMenu.classList.remove('mobile-open');
+                                toggleIcon.classList.remove('fa-xmark');
+                                toggleIcon.classList.add('fa-bars');
+                                document.body.style.overflow = 'auto';
+                            }
+                        }
+                    });
+                });
+                
+                // Close menu when clicking outside on mobile
+                document.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 980 && // UPDATED Check
+                        navMenu.classList.contains('mobile-open') &&
+                        !navMenu.contains(e.target) && 
+                        e.target !== mobileToggle) {
+                        navMenu.classList.remove('mobile-open');
+                        toggleIcon.classList.remove('fa-xmark');
+                        toggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = 'auto';
+                        if (submenu) submenu.classList.remove('active');
+                    }
+                });
+            }
+
+            
+            
+            
+            // --- Back to Top Button Logic ---
+            const toTopButton = document.getElementById('back-to-top');
+            
+            if (toTopButton) {
+                window.addEventListener('scroll', function() {
+                    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                        toTopButton.classList.add('show');
+                    } else {
+                        toTopButton.classList.remove('show');
+                    }
+                });
+
+                toTopButton.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            
+            
+            
+            
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                const isMobile = window.innerWidth <= 980; // UPDATED Check
+                
+                if (!isMobile && navMenu && navMenu.classList.contains('mobile-open')) {
+                    // If resizing to desktop and mobile menu is open, close it
+                    navMenu.classList.remove('mobile-open');
+                    if (toggleIcon) {
+                        toggleIcon.classList.remove('fa-xmark');
+                        toggleIcon.classList.add('fa-bars');
+                    }
+                    document.body.style.overflow = 'auto';
+                }
+                
+                // Always close submenu on resize
+                if (submenu) {
+                    submenu.classList.remove('active');
+                }
+            });
+            
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // =========================== -->
+            <!-- SECTION 16: PAGE-SPECIFIC JAVASCRIPT -->
+            <!-- =========================== */
+            
+            // Add your page-specific JavaScript here
+            
+        });
+    </script>
+    
+    <!-- =========================== -->
+    <!-- SECTION 17: PAGE-SPECIFIC SCRIPTS -->
+    <!-- =========================== -->
+</body>
+
+</html>
+            
