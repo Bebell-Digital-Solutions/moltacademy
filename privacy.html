@@ -107,12 +107,18 @@
             box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
         }
 
-        /* Header Gradient Text */
-        .text-gradient-brand {
-            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* Header Gradient Text */
+.text-gradient-brand {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block; /* Add this line to prevent clipping */
+    line-height: 1.4; /* Add proper line height */
+    padding-bottom: 0.15em; /* Add a tiny bit of breathing room */
+}
+
+
+        
 
         /* Scrollbar */
         ::-webkit-scrollbar {
