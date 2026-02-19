@@ -628,8 +628,8 @@
       const container = document.createElement('div');
       container.id = 'footer-banner-container';
       container.style.position = 'fixed';
-      container.style.bottom = '0px';    // No padding at bottom
-      container.style.left = '40px';     // 20px from left
+      container.style.bottom = '0px';
+      container.style.left = '40px';
       container.style.zIndex = '9999';
       
       // Create link
@@ -637,12 +637,13 @@
       link.href = 'https://openclaw.ai';
       link.target = '_blank';
       link.style.display = 'block';
+      link.style.position = 'relative'; // Added for close button positioning
       
       // Create image
       const img = document.createElement('img');
       img.src = 'https://bucket.mlcdn.com/a/3336/3336910/images/b881d7f20934412469af14f445d502e590599415.gif';
       img.alt = 'OpenClaw';
-      img.style.maxWidth = '200px';      // Adjust as needed
+      img.style.maxWidth = '200px';
       img.style.height = 'auto';
       img.style.display = 'block';
       
@@ -650,18 +651,25 @@
       const closeBtn = document.createElement('button');
       closeBtn.innerHTML = '×';
       closeBtn.style.position = 'absolute';
-      closeBtn.style.top = '-5px';
-      closeBtn.style.right = '-5px';
-      closeBtn.style.width = '20px';
-      closeBtn.style.height = '20px';
+      closeBtn.style.top = '-8px'; // Slightly adjusted
+      closeBtn.style.right = '-8px'; // Slightly adjusted
+      closeBtn.style.width = '24px'; // Slightly larger
+      closeBtn.style.height = '24px'; // Slightly larger
       closeBtn.style.background = '#fff';
+      closeBtn.style.color = '#000';
       closeBtn.style.border = '1px solid #ccc';
       closeBtn.style.borderRadius = '50%';
       closeBtn.style.cursor = 'pointer';
-      closeBtn.style.fontSize = '15px';
+      closeBtn.style.fontSize = '20px';
+      closeBtn.style.fontWeight = 'bold'; // Added for better visibility
       closeBtn.style.lineHeight = '1';
       closeBtn.style.padding = '0';
-      closeBtn.style.textAlign = 'center';
+      
+      // Centering the × character
+      closeBtn.style.display = 'flex';
+      closeBtn.style.alignItems = 'center';
+      closeBtn.style.justifyContent = 'center';
+      
       closeBtn.style.zIndex = '10000';
       
       // Close button hover effects
@@ -684,8 +692,8 @@
       
       // Assemble elements
       link.appendChild(img);
+      link.appendChild(closeBtn); // Add close button to link instead of container
       container.appendChild(link);
-      container.appendChild(closeBtn);
       document.body.appendChild(container);
       
     } catch (error) {
