@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer | Molt Academy</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Lobster Red
+                            cyan: '#00e5cc',    // Cyan Accent
+                            dark: '#050810',    // Deep Navy Base
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(232, 81, 75, 0.3);
+            color: #fecaca;
+        }
+
+        /* Glass Card Utility */
+        .glass-card {
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3);
+            box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
+        }
+
+        /* Header Gradient Text */
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+        
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative flex flex-col">
+
+    <!-- BACKGROUND AMBIENCE (Blob Animation) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <!-- Red Blob -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-50"></div>
+        <!-- Cyan Blob -->
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-blob animation-delay-2000 opacity-40"></div>
+        <!-- Extra Blob for depth -->
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow max-w-4xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 relative">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-medium mb-6">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="tracking-wide uppercase text-xs">Legal Notice</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gradient-brand">
+                Disclaimer
+            </h1>
+            
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                Operational limits, liability boundaries, and safety protocols for autonomous agent development.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-500 font-mono">
+                <div class="flex items-center gap-2 bg-slate-900/50 px-3 py-1 rounded border border-slate-800">
+                    <i class="fas fa-calendar-alt text-brand-cyan"></i>
+                    Last Updated: <span id="effective-date">February 18, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. General Disclaimer -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                        1. Educational Purpose Only
+                    </h2>
+                </div>
+                <i class="fas fa-graduation-cap text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6 leading-relaxed">
+                The information provided by Molt Academy ("we," "us," or "our") on this platform is for general <strong>educational and informational purposes only</strong>. All information is provided in good faith, however, we make no representation or warranty of any kind regarding the accuracy, adequacy, validity, reliability, or completeness of any information.
+            </p>
+
+            <div class="bg-slate-900/40 border-l-2 border-brand-cyan p-4 rounded-r-lg">
+                <p class="text-slate-300 text-sm italic">
+                    "We teach you how to build the tools. How you use them is your responsibility."
+                </p>
+            </div>
+        </section>
+
+        <!-- 2. No Professional Advice -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">2. No Professional Advice</h2>
+                </div>
+                <i class="fas fa-user-tie text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-slate-400 mb-4">
+                        This platform does <strong class="text-brand-primary">not</strong> provide:
+                    </p>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-times text-brand-primary/50"></i> Legal advice</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-times text-brand-primary/50"></i> Financial investment advice</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-times text-brand-primary/50"></i> Cybersecurity auditing</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/40 p-5 rounded-xl border border-slate-800 flex items-center justify-center text-center">
+                    <p class="text-slate-300 text-sm">
+                        Consult with a qualified professional before taking action based on any information found here.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Code Execution & AI Risk (Professor Claw) -->
+        <section class="glass-card border-brand-primary/20 p-8 rounded-2xl mb-8 relative overflow-hidden">
+             <!-- Subtle Red Glow Background -->
+             <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-primary/5 rounded-full blur-3xl"></div>
+
+            <div class="flex flex-col md:flex-row gap-8 items-start relative z-10">
+                <!-- Icon Placeholder for Professor Claw -->
+                <div class="shrink-0 w-20 h-20 bg-brand-primary/10 rounded-2xl flex items-center justify-center border border-brand-primary/30 text-4xl">
+                    🦞
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold text-slate-100 mb-2 flex items-center gap-2">
+                        3. Code Execution & AI Safety
+                        <span class="px-2 py-0.5 rounded text-[10px] uppercase font-mono bg-brand-primary/20 text-brand-primary tracking-wide">Critical</span>
+                    </h3>
+                    <p class="text-slate-400 mb-4 text-sm leading-relaxed">
+                        Running autonomous AI agents involves inherent risks, including infinite loops, excessive API costs, and unintended data modification.
+                    </p>
+                    
+                    <div class="bg-slate-950/50 border border-slate-800 p-4 rounded-lg">
+                        <h4 class="text-brand-primary font-bold text-sm mb-1 font-mono uppercase">Professor Claw's Tip:</h4>
+                        <p class="text-slate-400 italic text-sm">
+                            "Always sandbox your agents. I once saw a scraper delete a production database because it thought it was 'optimizing storage'. Don't be that guy. Use a virtual environment and limit your API keys."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. External Links & Affiliations -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">4. External Links</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">
+                    The Site may contain links to third-party content. We do not monitor or guarantee the accuracy of external sites.
+                </p>
+                <div class="flex items-center gap-2 text-xs text-slate-500 font-mono">
+                    <i class="fas fa-external-link-alt"></i> Clicking implies acceptance of their terms.
+                </div>
+            </section>
+
+            <section class="glass-card p-6 md:p-8 rounded-2xl">
+                <div class="flex items-start gap-4 mb-4">
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <h2 class="text-xl font-semibold text-slate-100">5. No Affiliation</h2>
+                </div>
+                <p class="text-slate-400 text-sm mb-4">
+                    Molt Academy is an independent educational platform.
+                </p>
+                <ul class="space-y-2 text-xs text-slate-400">
+                    <li class="flex items-center gap-2"><i class="fas fa-ban text-slate-600"></i> Not affiliated with OpenClaw.</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-ban text-slate-600"></i> Not affiliated with OpenAI/Anthropic.</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- 6. Limitation of Liability -->
+        <section class="glass-card p-6 md:p-8 rounded-2xl mb-12">
+            <div class="flex items-start gap-4 mb-6">
+                <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                <div class="flex-1">
+                    <h2 class="text-2xl font-semibold text-slate-100">6. Assumption of Risk</h2>
+                </div>
+                <i class="fas fa-shield-halved text-slate-600 text-xl mt-1 opacity-50"></i>
+            </div>
+            
+            <p class="text-slate-400 mb-6">
+                By using our code templates, tutorials, or strategies, you assume all risks associated with their deployment.
+            </p>
+            
+            <div class="bg-red-900/10 border border-red-500/20 p-5 rounded-xl flex gap-4 items-start">
+                <i class="fas fa-exclamation-triangle text-brand-primary mt-1"></i>
+                <div>
+                    <h4 class="text-brand-primary font-semibold text-sm uppercase tracking-wide mb-1">Liability Cap</h4>
+                    <p class="text-slate-400 text-sm">
+                        In no event shall Molt Academy be liable for any direct, indirect, consequential, or incidental damages arising out of the use of the Service or the contents of the Service.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Contact Block -->
+        <section class="glass-card border-brand-cyan/20 p-8 text-center rounded-3xl relative overflow-hidden group mb-16">
+            <div class="absolute inset-0 bg-brand-cyan/5 group-hover:bg-brand-cyan/10 transition-colors duration-500"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-2xl font-bold text-white mb-2">Questions regarding this Disclaimer?</h2>
+                <p class="text-slate-400 text-sm mb-6">
+                    If you require more information or have any questions about our site's disclaimer, please feel free to contact us.
+                </p>
+                
+                <a href="mailto:legal@moltacademy.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-800 border border-slate-700 text-slate-200 hover:bg-brand-cyan/20 hover:border-brand-cyan/50 hover:text-brand-cyan transition-all duration-300">
+                    <i class="fas fa-envelope"></i>
+                    <span>legal@moltacademy.com</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    
+    
+    
+    
+    
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
+
+    <!-- Footer Simple -->
+    <footer class="text-center text-slate-500 text-sm max-w-4xl mx-auto pt-0 pb-12 mt-0">
+        <nav class="flex flex-wrap justify-center gap-6 mb-8">
+            <a href="/" class="hover:text-brand-primary transition-colors">Homepage</a>
+            <a href="/terms" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+            <a href="/privacy" class="hover:text-brand-primary transition-colors">Privacy Policy</a>
+            <a href="/disclaimer" class="hover:text-brand-primary transition-colors">Disclaimer</a>
+        </nav>
+        
+        <p class="mb-4 text-slate-400">
+            Built by <a href="#" class="text-brand-primary hover:underline font-medium">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline font-medium">OpenClaw</a>.
+        </p>
+        
+        <p class="opacity-50 text-xs leading-relaxed max-w-lg mx-auto">
+            MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+        </p>
+    </footer>
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <!-- Logic -->
+    <script>
+    
+    
+        // Date Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Effective Date
+            const dateElement = document.getElementById('effective-date');
+            if (dateElement) {
+                const today = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                dateElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+
+            // Back to Top Logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+        
+        
+    </script>
+    
+    
+    
+    
+    
+    
+</body>
+</html>
