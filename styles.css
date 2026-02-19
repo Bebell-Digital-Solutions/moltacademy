@@ -23,6 +23,25 @@
 
 
 
+/* Add this after your @font-face block */
+.font-title {
+    line-height: 1.4 !important;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-top: -0.1em;
+    margin-bottom: -0.1em;
+    transform: translateY(2px); /* Slight adjustment if needed */
+}
+
+/* Specific fix for the h1 if needed */
+h1.font-title {
+    line-height: 1.3 !important;
+    padding: 0.15em 0;
+}
+
+
+
+
 /* --- CSS Variables (Brand Colors) --- */
 :root {
     --skin-color: #e8514b;
