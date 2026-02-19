@@ -605,5 +605,97 @@
             });
         });
     </script>
+
+
+
+
+<script>
+(function() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  
+  function init() {
+    // Check if user previously closed the image
+    if (localStorage.getItem('footerBannerHidden') === 'true') {
+      return;
+    }
+    
+    try {
+      // Create container
+      const container = document.createElement('div');
+      container.id = 'footer-banner-container';
+      container.style.position = 'fixed';
+      container.style.bottom = '0px';    // No padding at bottom
+      container.style.left = '40px';     // 20px from left
+      container.style.zIndex = '9999';
+      
+      // Create link
+      const link = document.createElement('a');
+      link.href = 'https://openclaw.ai';
+      link.target = '_blank';
+      link.style.display = 'block';
+      
+      // Create image
+      const img = document.createElement('img');
+      img.src = 'https://bucket.mlcdn.com/a/3336/3336910/images/b881d7f20934412469af14f445d502e590599415.gif';
+      img.alt = 'OpenClaw';
+      img.style.maxWidth = '200px';      // Adjust as needed
+      img.style.height = 'auto';
+      img.style.display = 'block';
+      
+      // Create close button
+      const closeBtn = document.createElement('button');
+      closeBtn.innerHTML = '×';
+      closeBtn.style.position = 'absolute';
+      closeBtn.style.top = '-5px';
+      closeBtn.style.right = '-5px';
+      closeBtn.style.width = '20px';
+      closeBtn.style.height = '20px';
+      closeBtn.style.background = '#fff';
+      closeBtn.style.border = '1px solid #ccc';
+      closeBtn.style.borderRadius = '50%';
+      closeBtn.style.cursor = 'pointer';
+      closeBtn.style.fontSize = '15px';
+      closeBtn.style.lineHeight = '1';
+      closeBtn.style.padding = '0';
+      closeBtn.style.textAlign = 'center';
+      closeBtn.style.zIndex = '10000';
+      
+      // Close button hover effects
+      closeBtn.onmouseover = function() {
+        this.style.background = '#f0f0f0';
+        this.style.transform = 'scale(1.1)';
+      };
+      closeBtn.onmouseout = function() {
+        this.style.background = '#fff';
+        this.style.transform = 'scale(1)';
+      };
+      
+      // Close button click handler
+      closeBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        container.style.display = 'none';
+        localStorage.setItem('footerBannerHidden', 'true');
+      };
+      
+      // Assemble elements
+      link.appendChild(img);
+      container.appendChild(link);
+      container.appendChild(closeBtn);
+      document.body.appendChild(container);
+      
+    } catch (error) {
+      console.error('Error adding footer banner:', error);
+    }
+  }
+})();
+</script>
+
+
+    
 </body>
 </html>
