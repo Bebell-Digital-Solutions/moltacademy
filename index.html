@@ -497,33 +497,56 @@
                 
                 <!-- MacOS Card -->
                 <div class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-brand-primary/50 transition-colors duration-300">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-brand-primary">
-                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-24 h-24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path></svg>
-                    </div>
+    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-slate-950/50"> <!-- Changed from text-brand-primary to text-slate-950/50 -->
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-24 h-24">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"></path>
+        </svg>
+    </div>
+                    
                     <h3 class="text-xl font-bold mb-3">macOS Installation</h3>
                     <p class="text-slate-400 text-sm mb-6">Local development. Runs directly on your machine. Best for personal assistant use and local file management.</p>
+                    
+                    
                     <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50 flex items-center gap-2">
                         <span class="text-slate-500">$</span> curl -fsSL openclaw.ai/install.sh | bash
                     </div>
+
+                    
                     <a href="#" class="text-brand-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                         View Mac Guide <span>→</span>
                     </a>
                 </div>
 
+                
+
                 <!-- VPS Card -->
                 <div class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-brand-primary/50 transition-colors duration-300">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-brand-primary">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-24 h-24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                    </div>
+   
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-slate-950/50"> <!-- Changed from text-brand-primary to text-slate-950/50 -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-24 h-24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
+        </svg>
+    </div>
+
+                    
                     <h3 class="text-xl font-bold mb-3">VPS / Docker</h3>
                     <p class="text-slate-400 text-sm mb-6">Cloud deployment on a Virtual Private Server (VPS). Always on, 24/7 availability. Ideal for automated tasks, cron jobs, and team bots.</p>
+                    
+                    
                     <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50 flex items-center gap-2">
                         <span class="text-slate-500">$</span> docker pull openclaw/moltbot:latest
                     </div>
+
+                    
                     <a href="#" class="text-brand-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                         View Server Guide <span>→</span>
                     </a>
+
+                    
                 </div>
+
+
+                
           
             </div>
         </section>
