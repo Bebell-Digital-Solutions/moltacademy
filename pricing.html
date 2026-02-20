@@ -178,7 +178,7 @@
 
         /* Carousel Overrides */
         .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide { min-width: 100%; box-sizing: border-box; }
+        .carousel-slide { width: 100%; min-width: 100%; height: auto; box-sizing: border-box; }
         .carousel-button {
             position: absolute;
             top: 50%;
@@ -200,21 +200,7 @@
         .prev-button { left: 15px; }
         .next-button { right: 15px; }
 
-        /* Snow Effects (Winter Only) */
-        @keyframes snowfall {
-            0% { transform: translateY(-100%) translateX(0); }
-            50% { transform: translateY(0%) translateX(10px); }
-            100% { transform: translateY(100vh) translateX(0); }
-        }
-        .snowflakes-blurry {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 40;
-            background-image: radial-gradient(4px 4px at 10% 20%, rgba(255, 255, 255, 0.4) 30%, transparent 100%),
-                              radial-gradient(6px 6px at 30% 10%, rgba(255, 255, 255, 0.3) 40%, transparent 100%),
-                              radial-gradient(5px 5px at 60% 80%, rgba(255, 255, 255, 0.5) 45%, transparent 100%),
-                              radial-gradient(7px 7px at 80% 20%, rgba(255, 255, 255, 0.4) 40%, transparent 100%),
-                              radial-gradient(3px 3px at 90% 70%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
-            background-repeat: no-repeat; animation: snowfall 15s linear infinite; filter: blur(1px); opacity: 0.7;
-        }
+
     </style>
 </head>
 <body class="antialiased min-h-screen relative">
@@ -367,7 +353,7 @@
         </section>
 
         <!-- Image Banner Section (Uniform) -->
-        <section class="w-full max-w-4xl mx-auto px-6 mb-12 mt-16">
+        <section class="w-full max-w-4xl mx-auto px-6 mb-0 mt-16">
             <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
                  alt="Molt Academy Banner" 
                  class="w-full h-auto object-contain block"
