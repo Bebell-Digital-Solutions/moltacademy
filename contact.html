@@ -1,1 +1,418 @@
 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Molt Academy</title>
+    <!-- Contact Meta Description -->
+    <meta name="description" content="Get in touch with Molt Academy. Reach out to our team for questions about our AI Mastery Program, or schedule a consultation today.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/4da194dd109512d48537351d7f294b8f0aa5961b.png">
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (For User Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        title: ['Stinger', 'sans-serif'],   // 👈 New title font
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Lobster Red
+                            cyan: '#00e5cc',    // Cyan Accent
+                            dark: '#050810',    // Deep Navy Base
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Stinger Font (Bold only) */
+        @font-face {
+            font-family: 'Stinger';
+            src: url('fonts/StingerFitTrial-Bold.woff2') format('woff2'),
+                 url('fonts/StingerFitTrial-Bold.woff') format('woff');
+            font-weight: 700;  /* Bold */
+            font-style: normal;
+            font-display: swap;
+            ascent-override: 100%;  
+            descent-override: 20%;   
+            line-gap-override: 10%;  
+        }
+
+        /* Global Styles */
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(232, 81, 75, 0.3);
+            color: #fecaca;
+        }
+
+        /* Glass Card Utility */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6); /* Fallback/Base */
+            background: rgba(10, 15, 26, 0.8); /* PDF Spec */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3);
+            box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
+        }
+
+        /* Header Gradient Text */
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- BACKGROUND AMBIENCE (Blob Animation) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <!-- Red Blob -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-50"></div>
+        <!-- Cyan Blob -->
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl animate-blob opacity-40" style="animation-delay: 2s;"></div>
+        <!-- Extra Blob for depth -->
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+
+
+
+  
+
+    <!-- MAIN CONTENT AREA -->
+    <!-- Note: Keeping a wider max-w-7xl here because of the two-column layout, but padding matches ToS -->
+    <main class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+
+      
+        
+        <!-- Header Section -->
+        <div class="text-center mb-16 relative">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-sm font-medium mb-6 animate-fade-in-up">
+                <i class="fas fa-headset"></i>
+                <span class="tracking-wide uppercase text-xs">Support & Inquiries</span>
+            </div>
+            
+            <h1 class="font-title text-5xl md:text-6xl font-bold mb-6 tracking-tight text-gradient-brand">
+                Get in Touch with Us
+            </h1>
+            
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                Have questions about Molt Academy? Want to schedule a private session? Choose how you'd like to connect with us below.
+            </p>
+        </div>
+
+        <!-- Two Column Contact Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            
+            <!-- Left Column: Contact Form -->
+            <section class="glass-card p-6 md:p-8 rounded-2xl h-full">
+                <div class="flex items-start gap-4 mb-6">
+                    <!-- Chevron Prefix Implementation -->
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                            Send us a Message
+                        </h2>
+                    </div>
+                    <i class="fa-solid fa-envelope text-slate-600 text-xl mt-1 opacity-50"></i>
+                </div>
+                
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Fill out the form below to send us your questions, feedback, or inquiries. Our team typically responds within 24 hours.
+                </p>
+                
+                <!-- MailerLite Form Embed Container -->
+                <div class="bg-slate-900/50 border border-slate-700/50 rounded-xl p-2 min-h-[400px] flex items-center justify-center">
+                    <div class="ml-form-embed w-full" 
+                         data-account="3336910:t8p6n6m7b3"
+                         data-form="6110822:z6h0l3">
+                         <p class="text-slate-500 text-sm text-center animate-pulse">Loading form widget...</p>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+          
+
+            <!-- Right Column: Booking Widget -->
+            <section class="glass-card p-6 md:p-8 rounded-2xl h-full">
+                <div class="flex items-start gap-4 mb-6">
+                    <!-- Chevron Prefix Implementation -->
+                    <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-semibold text-slate-100 flex items-center gap-3">
+                            Book a Consultation
+                        </h2>
+                    </div>
+                    <i class="fa-solid fa-calendar-check text-slate-600 text-xl mt-1 opacity-50"></i>
+                </div>
+                
+                <p class="text-slate-400 mb-6 leading-relaxed">
+                    Schedule a 30-minute consultation with our AI experts. Choose a time that works for you to discuss how AIM™ can help you master artificial intelligence.
+                </p>
+                
+                <!-- Cal.com Booking Widget Container -->
+                <div class="bg-slate-900/50 border border-slate-700/50 rounded-xl p-2 min-h-[400px] flex items-center justify-center">
+                    <div id="my-cal-inline-booking-project-freedom" class="w-full">
+                        <p class="text-slate-500 text-sm text-center animate-pulse">Loading calendar widget...</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+
+
+
+
+
+      
+
+        <!-- Image Banner Section - Full width, placed above footer -->
+        <section class="w-full max-w-4xl mx-auto px-6 mb-0 mt-12">
+            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
+                 alt="Molt Academy Banner" 
+                 class="w-full h-auto object-contain block"
+                 loading="lazy">
+        </section>
+
+
+
+
+      
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-500 text-sm max-w-7xl mx-auto border-t border-slate-800 pt-10">
+            <nav class="flex flex-wrap justify-center gap-6 mb-8">
+                <a href="/" class="hover:text-brand-primary transition-colors">Homepage</a>
+                <a href="/pricing" class="hover:text-brand-primary transition-colors">Pricing</a>
+                <a href="/terms" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+                <a href="/privacy" class="hover:text-brand-primary transition-colors">Privacy Policy</a>
+                <a href="/disclaimer" class="hover:text-brand-primary transition-colors">Disclaimer</a>
+                <a href="#" class="hover:text-brand-primary transition-colors text-white font-medium">Contact</a>
+            </nav>
+            
+            <p class="mb-2">
+                Built by <a href="#" class="text-brand-primary hover:underline">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline">OpenClaw</a>.
+            </p>
+            
+            <p class="opacity-60 text-xs">
+                MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+            </p>
+        </footer>
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+  
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
+
+    <!-- Logic -->
+    <script>
+        // DOM Loaded Scripts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Logic
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <!-- OpenClaw Footer Popup Script -->
+    <script>
+    (function() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+      
+      function init() {
+        // Check if user previously closed the image
+        if (localStorage.getItem('footerBannerHidden') === 'true') {
+          return;
+        }
+        
+        try {
+          // Create container
+          const container = document.createElement('div');
+          container.id = 'footer-banner-container';
+          container.style.position = 'fixed';
+          container.style.bottom = '0px';
+          container.style.left = '40px';
+          container.style.zIndex = '9999';
+          
+          // Create link
+          const link = document.createElement('a');
+          link.href = 'https://openclaw.ai';
+          link.target = '_blank';
+          link.style.display = 'block';
+          link.style.position = 'relative'; // Added for close button positioning
+          
+          // Create image
+          const img = document.createElement('img');
+          img.src = 'https://bucket.mlcdn.com/a/3336/3336910/images/b881d7f20934412469af14f445d502e590599415.gif';
+          img.alt = 'OpenClaw';
+          img.style.maxWidth = '200px';
+          img.style.height = 'auto';
+          img.style.display = 'block';
+          
+          // Create close button
+          const closeBtn = document.createElement('button');
+          closeBtn.innerHTML = '×';
+          closeBtn.style.position = 'absolute';
+          closeBtn.style.top = '-8px'; 
+          closeBtn.style.right = '-8px'; 
+          closeBtn.style.width = '24px'; 
+          closeBtn.style.height = '24px'; 
+          closeBtn.style.background = '#fff';
+          closeBtn.style.color = '#000';
+          closeBtn.style.border = '1px solid #ccc';
+          closeBtn.style.borderRadius = '50%';
+          closeBtn.style.cursor = 'pointer';
+          closeBtn.style.fontSize = '20px';
+          closeBtn.style.fontWeight = 'bold'; 
+          closeBtn.style.lineHeight = '1';
+          closeBtn.style.padding = '0';
+          
+          // Centering the × character
+          closeBtn.style.display = 'flex';
+          closeBtn.style.alignItems = 'center';
+          closeBtn.style.justifyContent = 'center';
+          
+          closeBtn.style.zIndex = '10000';
+          
+          // Close button hover effects
+          closeBtn.onmouseover = function() {
+            this.style.background = '#f0f0f0';
+            this.style.transform = 'scale(1.1)';
+          };
+          closeBtn.onmouseout = function() {
+            this.style.background = '#fff';
+            this.style.transform = 'scale(1)';
+          };
+          
+          // Close button click handler
+          closeBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            container.style.display = 'none';
+            localStorage.setItem('footerBannerHidden', 'true');
+          };
+          
+          // Assemble elements
+          link.appendChild(img);
+          link.appendChild(closeBtn); 
+          container.appendChild(link);
+          document.body.appendChild(container);
+          
+        } catch (error) {
+          console.error('Error adding footer banner:', error);
+        }
+      }
+    })();
+    </script>
+
+</body>
+</html>
