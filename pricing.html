@@ -1,1 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans | Molt Academy</title>
+    <!-- Pricing Meta Description -->
+    <meta name="description" content="Unlock your full potential with our comprehensive AI courses. Choose the plan that best fits your learning journey at Molt Academy.">
 
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/4da194dd109512d48537351d7f294b8f0aa5961b.png">
+
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        title: ['Stinger', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Lobster Red
+                            cyan: '#00e5cc',    // Cyan Accent
+                            dark: '#050810',    // Deep Navy Base
+                        }
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" },
+                        },
+                        fadeInUp: {
+                            "0%": { opacity: "0", transform: "translateY(20px)" },
+                            "100%": { opacity: "1", transform: "translateY(0)" },
+                        }
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Stinger Font (Bold only) */
+        @font-face {
+            font-family: 'Stinger';
+            src: url('fonts/StingerFitTrial-Bold.woff2') format('woff2'),
+                 url('fonts/StingerFitTrial-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+            ascent-override: 100%;  
+            descent-override: 20%;   
+            line-gap-override: 10%;  
+        }
+
+        /* Global Styles */
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background-color: rgba(232, 81, 75, 0.3);
+            color: #fecaca;
+        }
+
+        /* Glass Card Utility */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3);
+            box-shadow: 0 0 20px rgba(232, 81, 75, 0.05);
+        }
+
+        /* Header Gradient Text */
+        .text-gradient-brand {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050810; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e8514b; }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        /* Primary Button Utility */
+        .btn-primary {
+            display: inline-block;
+            background-color: #e8514b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(232, 81, 75, 0.25);
+            text-align: center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(232, 81, 75, 0.4);
+        }
+
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Carousel Overrides */
+        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; box-sizing: border-box; }
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10, 15, 26, 0.8);
+            border: 1px solid rgba(232, 81, 75, 0.3);
+            color: #e8514b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .carousel-button:hover { background: #e8514b; color: white; }
+        .prev-button { left: 15px; }
+        .next-button { right: 15px; }
+
+        /* Snow Effects (Winter Only) */
+        @keyframes snowfall {
+            0% { transform: translateY(-100%) translateX(0); }
+            50% { transform: translateY(0%) translateX(10px); }
+            100% { transform: translateY(100vh) translateX(0); }
+        }
+        .snowflakes-blurry {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 40;
+            background-image: radial-gradient(4px 4px at 10% 20%, rgba(255, 255, 255, 0.4) 30%, transparent 100%),
+                              radial-gradient(6px 6px at 30% 10%, rgba(255, 255, 255, 0.3) 40%, transparent 100%),
+                              radial-gradient(5px 5px at 60% 80%, rgba(255, 255, 255, 0.5) 45%, transparent 100%),
+                              radial-gradient(7px 7px at 80% 20%, rgba(255, 255, 255, 0.4) 40%, transparent 100%),
+                              radial-gradient(3px 3px at 90% 70%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+            background-repeat: no-repeat; animation: snowfall 15s linear infinite; filter: blur(1px); opacity: 0.7;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <!-- BACKGROUND AMBIENCE (Blob Animation) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-50"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-primary/10 rounded-full blur-3xl animate-blob opacity-40" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+        
+        <!-- Top Container: Hero + Pricing Cards -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
+            
+            <!-- Hero Showcase (Spans 2 columns on desktop) -->
+            <div class="lg:col-span-2 glass-card rounded-3xl overflow-hidden relative flex flex-col justify-center min-h-[400px] p-8 md:p-12 animate-fade-in-up">
+                <!-- Background Image Overlay inside the card -->
+                <div class="absolute inset-0 bg-[url('https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/Untitled%20design%20(1)%20(1).png?updatedAt=1766896311086')] bg-cover bg-center opacity-30 mix-blend-luminosity pointer-events-none"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/90 to-brand-dark/40 pointer-events-none"></div>
+                
+                <div class="relative z-10 max-w-xl">
+                    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/0d3b6b7bd23371ddc850164056f396686646fb37.png" alt="5 Star Rating Banner" class="w-48 md:w-56 mb-6 shadow-xl rounded-md">
+                    <h1 class="font-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight text-white">
+                        Join Molt Academy
+                    </h1>
+                    <p class="text-slate-300 text-lg mb-8 leading-relaxed font-light">
+                        Unlock your full potential with our comprehensive AI courses. Choose the plan that best fits your learning journey.
+                    </p>
+                    <a href="/aim-syllabus" target="_blank" class="btn-primary inline-flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download Syllabus
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pricing Column (Stacks vertically on desktop) -->
+            <div class="flex flex-col gap-6 md:gap-8 lg:col-span-1 animate-fade-in-up" style="animation-delay: 0.2s;">
+                
+                <!-- Box A: Annual Access -->
+                <div class="glass-card p-8 rounded-3xl text-center flex flex-col justify-center flex-1 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-lg text-slate-300 font-medium mb-3 uppercase tracking-wider">Annual Access</h4>
+                        <div class="relative inline-block mb-4">
+                            <span class="text-5xl font-bold text-white">$150<span class="text-2xl text-slate-500 font-normal">/yr</span></span>
+                            <!-- Underline Accent -->
+                            <div class="absolute -bottom-2 left-0 w-full h-1 bg-brand-primary rounded-full -rotate-2 opacity-80"></div>
+                        </div>
+                        <p class="text-slate-400 mb-8 mt-2 text-sm leading-relaxed">Unlimited access to all foundational and advanced AI courses.</p>
+                        <a href="https://app.aimbootcamp.com/pay/Z1MDQLBQ" target="_blank" class="btn-primary w-full">Get Unlimited Access</a>
+                    </div>
+                </div>
+
+                <!-- Box B: Lifetime Pro -->
+                <div class="glass-card p-8 rounded-3xl text-center flex flex-col justify-center flex-1 relative overflow-hidden group border-brand-primary/20">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <!-- Popular Badge -->
+                    <div class="absolute top-0 right-0 bg-brand-primary text-white text-xs font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Best Value</div>
+                    
+                    <div class="relative z-10">
+                        <h4 class="text-lg text-slate-300 font-medium mb-3 uppercase tracking-wider">Lifetime Pro</h4>
+                        <div class="relative inline-block mb-4">
+                            <span class="text-5xl font-bold text-brand-primary">$499<span class="text-2xl text-brand-primary/50 font-normal">/ltd</span></span>
+                        </div>
+                        <p class="text-slate-400 mb-8 mt-2 text-sm leading-relaxed">One-time fee for lifetime access, updates, and community.</p>
+                        <a href="https://app.aimbootcamp.com/pay/HEOUVWTH" target="_blank" class="btn-primary w-full">Get Lifetime Access</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="glass-card p-8 rounded-2xl text-center group">
+                <i class="fas fa-brain text-4xl text-brand-primary mb-5 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(232,81,75,0.3)]"></i>
+                <h3 class="text-lg font-semibold text-slate-100 mb-3">Expert-Led Courses</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Learn from industry leaders at the forefront of AI technology and application.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center group">
+                <i class="fas fa-book text-4xl text-brand-primary mb-5 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(232,81,75,0.3)]"></i>
+                <h3 class="text-lg font-semibold text-slate-100 mb-3">Pro Resources</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Gain access to exclusive guides, templates, and tools with our Lifetime plan.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center group">
+                <i class="fas fa-sync-alt text-4xl text-brand-primary mb-5 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(232,81,75,0.3)]"></i>
+                <h3 class="text-lg font-semibold text-slate-100 mb-3">Lifetime Updates</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">The world of AI is always evolving. Your course materials will be, too.</p>
+            </div>
+            <div class="glass-card p-8 rounded-2xl text-center group">
+                <i class="fas fa-users text-4xl text-brand-primary mb-5 group-hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_10px_rgba(232,81,75,0.3)]"></i>
+                <h3 class="text-lg font-semibold text-slate-100 mb-3">Community Access</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Connect with fellow learners, share insights, and grow together globally.</p>
+            </div>
+        </section>
+
+        <!-- Video & Info Section -->
+        <section class="glass-card rounded-3xl p-6 md:p-10 mb-16 overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-brand-primary/5 pointer-events-none"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10">
+                <div class="video-wrapper bg-black">
+                    <iframe 
+                        src="https://www.youtube.com/embed/yBe10HO1wu8?si=fv07vaETaV9G8XPe" 
+                        title="AI Course Introduction Video" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="text-center lg:text-left">
+                    <h2 class="font-title text-3xl md:text-4xl font-bold mb-6 text-white">Master AI, <br><span class="text-gradient-brand">Transform Your Career</span></h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed font-light">
+                        Our curriculum is designed to take you from foundational concepts to advanced applications. Learn practical skills that you can apply immediately to solve real-world problems and drive business innovation.
+                    </p>
+                    <a href="/courses" class="btn-primary inline-flex items-center gap-2">
+                        Explore Full Curriculum <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Carousel -->
+        <section class="glass-card p-6 md:p-10 rounded-3xl relative overflow-hidden">
+            <div class="text-center mb-10 relative z-10">
+                <h2 class="font-title text-3xl md:text-4xl font-bold text-white mb-4">Your All-In-One Hub for <span class="text-gradient-brand">AI Mastery</span></h2>
+                <div class="h-1 w-24 bg-brand-primary mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="relative w-full max-w-4xl mx-auto overflow-hidden rounded-xl border border-slate-700/50 shadow-2xl z-10">
+                <div class="carousel-track flex" id="carousel-track">
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/9da9c8aa6e6abe589d55b7f43e8a91294c454faa.png" alt="Tech Image 1" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/b91095c038cbca9303d094a8b99f2ac6127a129d.png" onerror="this.src='https://ik.imagekit.io/bebell/Project%20Freedom/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/7.png'" alt="Tech Image 2" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/264e6db73707084fc003ec1cab9c85599b398fe1.png" alt="Tech Image 3" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/632a20ea54344e9bf901bca1ca60f0f02d1dd561.png" alt="Tech Image 4" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/668b3689baf958b3cd263db066ef07be06cb7962.png" onerror="this.src='https://ik.imagekit.io/bebell/Project%20Freedom/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/8.png'" alt="Tech Image 6" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/41021ef161a0b2d986a6630e0843e7d64403ae8d.png" alt="Certificate" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/fbb31a73e43b097db8f98dec050264118a7fb98e.png" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/ai-foundation-product.png?updatedAt=1767836600038" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/book-prompting-craftsmanship.png?updatedAt=1767843260557" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/ai-brain-architecture.png?updatedAt=1767842226988" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/autonomous-ai-agents-product.png?updatedAt=1767836599935" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/security-privacy-compliance.png?updatedAt=1767836600129" alt="Book" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://ik.imagekit.io/bebell/AIM%E2%84%A2%20AI%20Mastery%20Program/Covers/AIM%20Toolbox%20(1).png" alt="Molt Academy Cover" class="w-full object-cover"></div>
+                    <div class="carousel-slide min-w-full"><img src="https://bucket.mlcdn.com/a/3336/3336910/images/2f061b8ae04322a5e617c0c65f959577a8824836.gif" alt="Molt Academy Cover" class="w-full object-cover"></div>
+                </div>
+                <!-- Controls -->
+                <button class="carousel-button prev-button" id="prev-btn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-button next-button" id="next-btn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Image Banner Section (Uniform) -->
+        <section class="w-full max-w-4xl mx-auto px-6 mb-12 mt-16">
+            <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
+                 alt="Molt Academy Banner" 
+                 class="w-full h-auto object-contain block"
+                 loading="lazy">
+        </section>
+
+        <!-- Footer (Uniform) -->
+        <footer class="text-center text-slate-500 text-sm max-w-7xl mx-auto border-t border-slate-800 pt-10 relative z-10">
+            <nav class="flex flex-wrap justify-center gap-6 mb-8">
+                <a href="/" class="hover:text-brand-primary transition-colors">Homepage</a>
+                <a href="/pricing" class="hover:text-brand-primary transition-colors text-white font-medium">Pricing</a>
+                <a href="/terms" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+                <a href="/privacy" class="hover:text-brand-primary transition-colors">Privacy Policy</a>
+                <a href="/disclaimer" class="hover:text-brand-primary transition-colors">Disclaimer</a>
+                <a href="/contact" class="hover:text-brand-primary transition-colors">Contact</a>
+            </nav>
+            
+            <p class="mb-2">
+                Built by <a href="#" class="text-brand-primary hover:underline">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline">OpenClaw</a>.
+            </p>
+            
+            <p class="opacity-60 text-xs">
+                MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- BACK TO TOP BUTTON (Uniform) -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
+
+    <!-- UI Logic Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Back to Top Logic ---
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            // --- Carousel Logic ---
+            const track = document.getElementById('carousel-track');
+            const slides = track ? Array.from(track.children) : [];
+            const nextButton = document.getElementById('next-btn');
+            const prevButton = document.getElementById('prev-btn');
+            
+            if (track && slides.length > 0) {
+                const getSlideWidth = () => slides[0].getBoundingClientRect().width;
+                let currentIndex = 0;
+
+                const moveToSlide = (newIndex) => {
+                    if (newIndex < 0) newIndex = slides.length - 1;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    
+                    const slideWidth = getSlideWidth();
+                    track.style.transform = 'translateX(-' + slideWidth * newIndex + 'px)';
+                    currentIndex = newIndex;
+                };
+
+                if (prevButton) prevButton.addEventListener('click', () => moveToSlide(currentIndex - 1));
+                if (nextButton) nextButton.addEventListener('click', () => moveToSlide(currentIndex + 1));
+
+                window.addEventListener('resize', () => {
+                    const newSlideWidth = getSlideWidth();
+                    track.style.transition = 'none';
+                    track.style.transform = 'translateX(-' + newSlideWidth * currentIndex + 'px)';
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease-in-out';
+                    }, 50);
+                });
+                
+                // Optional: Auto-play
+                // setInterval(() => moveToSlide(currentIndex + 1), 5000);
+            }
+        });
+    </script>
+
+    <!-- Winter Snow Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            
+            if (month === 12 || month === 1 || month === 2) {
+                const snow = document.createElement('div');
+                snow.className = 'snowflakes-blurry';
+                document.body.appendChild(snow);
+            }
+        });
+    </script>
+
+    <!-- OpenClaw Footer Popup Script (Uniform) -->
+    <script>
+    (function() {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+      
+      function init() {
+        if (localStorage.getItem('footerBannerHidden') === 'true') return;
+        
+        try {
+          const container = document.createElement('div');
+          container.id = 'footer-banner-container';
+          container.style.position = 'fixed';
+          container.style.bottom = '0px';
+          container.style.left = '40px';
+          container.style.zIndex = '9999';
+          
+          const link = document.createElement('a');
+          link.href = 'https://openclaw.ai';
+          link.target = '_blank';
+          link.style.display = 'block';
+          link.style.position = 'relative'; 
+          
+          const img = document.createElement('img');
+          img.src = 'https://bucket.mlcdn.com/a/3336/3336910/images/b881d7f20934412469af14f445d502e590599415.gif';
+          img.alt = 'OpenClaw';
+          img.style.maxWidth = '200px';
+          img.style.height = 'auto';
+          img.style.display = 'block';
+          
+          const closeBtn = document.createElement('button');
+          closeBtn.innerHTML = '×';
+          closeBtn.style.position = 'absolute';
+          closeBtn.style.top = '-8px'; 
+          closeBtn.style.right = '-8px'; 
+          closeBtn.style.width = '24px'; 
+          closeBtn.style.height = '24px'; 
+          closeBtn.style.background = '#fff';
+          closeBtn.style.color = '#000';
+          closeBtn.style.border = '1px solid #ccc';
+          closeBtn.style.borderRadius = '50%';
+          closeBtn.style.cursor = 'pointer';
+          closeBtn.style.fontSize = '20px';
+          closeBtn.style.fontWeight = 'bold'; 
+          closeBtn.style.lineHeight = '1';
+          closeBtn.style.padding = '0';
+          
+          closeBtn.style.display = 'flex';
+          closeBtn.style.alignItems = 'center';
+          closeBtn.style.justifyContent = 'center';
+          
+          closeBtn.style.zIndex = '10000';
+          
+          closeBtn.onmouseover = function() {
+            this.style.background = '#f0f0f0';
+            this.style.transform = 'scale(1.1)';
+          };
+          closeBtn.onmouseout = function() {
+            this.style.background = '#fff';
+            this.style.transform = 'scale(1)';
+          };
+          
+          closeBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            container.style.display = 'none';
+            localStorage.setItem('footerBannerHidden', 'true');
+          };
+          
+          link.appendChild(img);
+          link.appendChild(closeBtn); 
+          container.appendChild(link);
+          document.body.appendChild(container);
+          
+        } catch (error) {
+          console.error('Error adding footer banner:', error);
+        }
+      }
+    })();
+    </script>
+</body>
+</html>
