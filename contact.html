@@ -185,6 +185,9 @@
             </p>
         </div>
 
+
+
+        
         <!-- Two Column Contact Section -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             
@@ -218,11 +221,16 @@
 
 
 
+
+            
           
 
             <!-- Right Column: Booking Widget -->
             <section class="glass-card p-6 md:p-8 rounded-2xl h-full">
                 <div class="flex items-start gap-4 mb-6">
+
+
+                    
                     <!-- Chevron Prefix Implementation -->
                     <span class="text-brand-primary font-bold text-3xl leading-none select-none">)</span>
                     <div class="flex-1">
@@ -234,8 +242,10 @@
                 </div>
                 
                 <p class="text-slate-400 mb-6 leading-relaxed">
-                    Schedule a 30-minute consultation with our AI experts. Choose a time that works for you to discuss how AIM™ can help you master artificial intelligence.
+                    Schedule a 30-minute consultation with our AI experts. Choose a time that works for you to get personalized assistance.
                 </p>
+
+                
                 
                 <!-- Cal.com Booking Widget Container -->
                 <div class="bg-slate-900/50 border border-slate-700/50 rounded-xl p-2 min-h-[400px] flex items-center justify-center">
@@ -413,6 +423,36 @@
       }
     })();
     </script>
+
+
+
+
+
+    <!-- MailerLite Universal -->
+    <script>
+        (function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+        var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+        f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+        var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+        _.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+        
+        var ml_account = ml('accounts', '3336910', 't8p6n6m7b3', 'load');
+    </script>
+
+    <!-- Cal.com Booking Widget -->
+    <script type="text/javascript">
+        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "booking-project-freedom", {origin:"https://app.cal.com"});
+        
+        Cal.ns["booking-project-freedom"]("inline", {
+            elementOrSelector:"#my-cal-inline-booking-project-freedom",
+            config: {"layout":"month_view","theme":"dark"},
+            calLink: "bebell-digital-solutions/booking-project-freedom",
+        });
+        
+        Cal.ns["booking-project-freedom"]("ui", {"theme":"dark","cssVarsPerTheme":{"light":{"cal-brand":"#ff5011"},"dark":{"cal-brand":"#ff5011"}},"hideEventTypeDetails":true,"layout":"month_view"});
+    </script>
+    
 
 </body>
 </html>
