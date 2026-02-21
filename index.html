@@ -162,29 +162,22 @@
         
 
 
-/* Continuous typewriter animation */
-.typewriter {
-    display: inline-block;
-    font-family: monospace;
-    position: relative;
-}
-
-.typewriter::before {
-    content: "code";
+/* Typing animation for the command text */
+.typing-command {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    border-right: 2px solid #e8514b;
+    border-right: 2px solid #ff6b00; /* Your brand-primary color */
     width: 0;
-    animation: typewriter 4s steps(4) infinite;
+    animation: typing 4s steps(40, end) infinite;
 }
 
-@keyframes typewriter {
-    0%, 100% { width: 0; }
-    20%, 60% { width: 4ch; }
-    80% { width: 4ch; border-color: transparent; }
+@keyframes typing {
+    0% { width: 0; }
+    20% { width: 100%; } /* Type out */
+    80% { width: 100%; } /* Pause at full text */
+    100% { width: 0; } /* Delete/restart */
 }
-
         
 
 
@@ -531,15 +524,17 @@
         </svg>
     </div>
                     
+                    
                     <h3 class="text-xl font-bold mb-3">macOS Installation</h3>
                     <p class="text-slate-400 text-sm mb-6">Local development. Runs directly on your machine. Best for personal assistant use and local file management.</p>
                     
                     
 <!-- For the macOS card -->
 <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50 flex items-center gap-2">
-    <span class="text-slate-500">$</span><span class="typewriter"> curl -fsSL openclaw.ai/install.sh | bash</span>
+    <span class="text-slate-500">$</span> 
+    <span class="typing-command">curl -fsSL openclaw.ai/install.sh | bash</span>
 </div>
-
+                    
                     
                     <a href="#" class="text-brand-primary text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">
                         View Mac Guide <span>→</span>
@@ -548,6 +543,9 @@
 
                 
 
+
+
+                
                 <!-- VPS Card -->
                 <div class="glass-card p-8 rounded-2xl relative overflow-hidden group hover:border-brand-primary/50 transition-colors duration-300">
    
@@ -564,7 +562,8 @@
                     
 <!-- For the VPS card -->
 <div class="bg-slate-950/50 rounded-lg p-3 font-mono text-xs text-brand-primary mb-4 border border-slate-700/50 flex items-center gap-2">
-    <span class="text-slate-500">$</span><span class="typewriter"> docker pull openclaw/moltbot:latest</span>
+    <span class="text-slate-500">$</span> 
+    <span class="typing-command">docker pull openclaw/moltbot:latest</span>
 </div>
 
                     
