@@ -162,24 +162,27 @@
         
 
 
-/* Typing animation for the command text */
+/* Slower typing animation for the command text */
 .typing-command {
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
     border-right: 2px solid #ff6b00; /* Your brand-primary color */
     width: 0;
-    animation: typing 4s steps(40, end) infinite;
+    animation: typing 8s steps(40, end) infinite;
 }
 
 @keyframes typing {
     0% { width: 0; }
-    20% { width: 100%; } /* Type out */
-    80% { width: 100%; } /* Pause at full text */
-    100% { width: 0; } /* Delete/restart */
+    30% { width: 100%; } /* Takes 2.4s to type out (30% of 8s) */
+    80% { width: 100%; } /* Pauses for 4 seconds */
+    100% { width: 0; } /* Deletes quickly */
 }
-        
 
+
+
+
+        
 
         
 
