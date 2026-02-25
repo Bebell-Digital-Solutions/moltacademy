@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Molt Academy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/4da194dd109512d48537351d7f294b8f0aa5961b.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b', // Updated Primary Color
+                            cyan: '#00e5cc',
+                            dark: '#050810',
+                            panel: 'rgba(10, 15, 26, 0.8)',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                        'scroll-reverse': 'scroll-reverse 40s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'scroll-reverse': {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS for specific aesthetic touches -->
+    <style>
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+        
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.3); /* Brand primary with opacity */
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Artificial stroke removed to slim down the numbers */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+        
+        /* Custom Toast Notification Styles */
+        #toast-container {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            pointer-events: none;
+        }
+        .toast {
+            background-color: rgba(15, 23, 42, 0.95);
+            border-left: 4px solid #e8514b;
+            color: #f0f4ff;
+            padding: 1rem 1.5rem;
+            border-radius: 0.375rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+            transform: translateX(120%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+            max-width: 24rem;
+        }
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Typing Animation */
+        .typing-effect {
+            width: 0;
+            /* 6s total: 0.5s start pause + 1.5s typing + 4.0s end pause */
+            animation: typingLoop 6s infinite, blink 0.8s step-end infinite;
+        }
+
+        @keyframes typingLoop {
+            0%, 8.33% { 
+                width: 0; 
+                /* 15 steps applied only to the 1.5s typing window */
+                animation-timing-function: steps(15, end); 
+            }
+            33.33%, 100% { 
+                width: 100%; 
+            }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #e8514b; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-primary/30 selection:text-red-200 font-sans min-h-screen flex flex-col items-center justify-center p-6">
+
+    <!-- Background Ambient Glow -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-2000" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-brand-primary/5 rounded-full mix-blend-screen filter blur-[128px] animate-blob animation-delay-4000" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-3xl flex flex-col items-center text-center space-y-8 animate-fade-in-up">
+        
+        <!-- 404 Header -->
+        <div class="space-y-2 relative">
+            <!-- Changed font-black to font-bold to reduce thickness -->
+            <h1 class="text-9xl md:text-[12rem] font-bold flex items-center justify-center tracking-tighter relative z-10 drop-shadow-lg leading-none">
+                <span class="text-gradient font-sans font-black">4</span>
+                
+                <!-- Custom Shattered Zero SVG -->
+                <svg viewBox="0 0 100 120" class="w-[0.55em] h-[0.75em] overflow-visible mx-1 md:mx-3">
+                    <defs>
+                        <!-- Gradient to match the text -->
+                        <linearGradient id="zero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f0f4ff" />
+                            <stop offset="60%" stop-color="#e8514b" />
+                            <stop offset="100%" stop-color="#ff8f8a" />
+                        </linearGradient>
+                        
+                        <!-- The base shape of the zero -->
+                        <path id="zero-shape" d="M 50 0 C 20 0, 0 20, 0 60 C 0 100, 20 120, 50 120 C 80 120, 100 100, 100 60 C 100 20, 80 0, 50 0 Z M 50 25 C 70 25, 72 40, 72 60 C 72 80, 70 95, 50 95 C 30 95, 28 80, 28 60 C 28 40, 30 25, 50 25 Z" fill-rule="evenodd" />
+
+                        <!-- Clip masks to split the zero in half along a jagged line -->
+                        <clipPath id="bottom-clip">
+                            <polygon points="0,65 45,55 50,70 100,45 100,120 0,120" />
+                        </clipPath>
+                        <clipPath id="top-clip">
+                            <polygon points="0,0 100,0 100,45 50,70 45,55 0,65" />
+                        </clipPath>
+                    </defs>
+                    
+                    <!-- Bottom half -->
+                    <use href="#zero-shape" fill="url(#zero-grad)" clip-path="url(#bottom-clip)" />
+                    
+                    <!-- Top half (fractured and shifted up/right) -->
+                    <g transform="translate(3, -6) rotate(4, 50, 60)">
+                        <use href="#zero-shape" fill="url(#zero-grad)" clip-path="url(#top-clip)" />
+                    </g>
+                    
+                    <!-- Flying Shattered Debris Shards -->
+                    <polygon points="-8,70 -3,62 -1,72" fill="url(#zero-grad)" />
+                    <polygon points="55,75 62,70 58,82" fill="url(#zero-grad)" />
+                    <polygon points="108,35 115,40 110,48" fill="url(#zero-grad)" />
+                    <polygon points="-5,50 0,48 -2,53" fill="url(#zero-grad)" />
+                </svg>
+
+                <span class="text-gradient font-sans font-black">4</span>
+            </h1>
+            
+            <div class="flex items-center justify-center gap-2 relative z-10 mt-2">
+                <span class="text-brand-primary font-bold text-3xl md:text-4xl">⟩</span>
+                <div class="inline-grid text-left">
+                    <!-- Invisible placeholder to maintain constant width and prevent layout shift -->
+                    <p class="text-2xl md:text-3xl font-bold invisible col-start-1 row-start-1 pr-1">Route Not Found</p>
+                    <!-- Animated typing text overlay -->
+                    <p class="text-2xl md:text-3xl font-bold text-gray-100 col-start-1 row-start-1 overflow-hidden whitespace-nowrap border-r-[3px] border-brand-primary typing-effect pr-1">Route Not Found</p>
+                </div>
+            </div>
+        </div>
+        
+        <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
+            The path you requested has shed its skin and no longer exists. Use the terminal below to navigate or choose a shortcut.
+        </p>
+
+        <!-- Search / Command Input -->
+        <form id="searchForm" class="w-full max-w-xl relative flex items-center glass-card rounded-full p-1.5 shadow-2xl transition-all duration-300 focus-within:border-brand-primary focus-within:ring-2 focus-within:ring-brand-primary/20 group">
+            <i data-lucide="terminal" class="ml-3 text-brand-primary w-5 h-5 flex-shrink-0"></i>
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Ask a question or type a route..." 
+                class="w-full bg-transparent border-none px-3 py-2 text-[#f0f4ff] focus:outline-none placeholder-gray-500 text-base"
+                autocomplete="off"
+            >
+            <button 
+                type="submit" 
+                id="submitBtn"
+                class="p-2 bg-transparent text-[#94a3b8] hover:text-brand-primary transition-colors focus:outline-none flex-shrink-0"
+                aria-label="Search"
+            >
+                <!-- Line paper plane icon -->
+                <i data-lucide="send" class="w-5 h-5 stroke-[1.5]"></i>
+            </button>
+        </form>
+
+        <!-- Navigation Pills (Updated to match website folder structure) -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 mt-8 w-full">
+            <a href="index.html" class="px-3 py-1.5 rounded-full glass-card hover:border-brand-primary/50 text-gray-300 hover:text-white font-medium transition-all duration-300 shadow-md flex items-center gap-1.5 text-[10px] group">
+                <i data-lucide="home" class="w-3 h-3 text-blue-400 group-hover:text-blue-300 transition-colors"></i> 
+                Home
+            </a>
+            <a href="pricing.html" class="px-3 py-1.5 rounded-full glass-card hover:border-brand-primary/50 text-gray-300 hover:text-white font-medium transition-all duration-300 shadow-md flex items-center gap-1.5 text-[10px] group">
+                <i data-lucide="tag" class="w-3 h-3 text-emerald-400 group-hover:text-emerald-300 transition-colors"></i> 
+                Pricing
+            </a>
+            <a href="contact.html" class="px-3 py-1.5 rounded-full glass-card hover:border-brand-primary/50 text-gray-300 hover:text-white font-medium transition-all duration-300 shadow-md flex items-center gap-1.5 text-[10px] group">
+                <i data-lucide="mail" class="w-3 h-3 text-amber-400 group-hover:text-amber-300 transition-colors"></i> 
+                Contact Us
+            </a>
+            <a href="privacy.html" class="px-3 py-1.5 rounded-full glass-card hover:border-brand-primary/50 text-gray-300 hover:text-white font-medium transition-all duration-300 shadow-md flex items-center gap-1.5 text-[10px] group">
+                <i data-lucide="shield" class="w-3 h-3 text-purple-400 group-hover:text-purple-300 transition-colors"></i> 
+                Privacy Policy
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="absolute bottom-6 text-gray-500 text-sm flex flex-col items-center gap-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-brand-primary/70"></i>
+            <span class="tracking-wide">Molt Academy: Your Source for OpenClaw Mastery</span>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Custom Toast System
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast flex items-start gap-3 glass-card';
+            
+            toast.innerHTML = `
+                <i data-lucide="terminal-square" class="w-5 h-5 text-brand-primary flex-shrink-0 mt-0.5"></i>
+                <div>
+                    <h4 class="font-bold text-sm text-[#f0f4ff] mb-1">System Message</h4>
+                    <p class="text-sm text-gray-300 leading-tight">${message}</p>
+                </div>
+            `;
+            
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            // Remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300); // Wait for transition to finish
+            }, 4000);
+        }
+
+        // --- Routing Logic mapped to your folder structure ---
+        const routeDictionary = {
+            'home': 'index.html',
+            'index': 'index.html',
+            'start': 'index.html',
+            'pricing': 'pricing.html',
+            'price': 'pricing.html',
+            'cost': 'pricing.html',
+            'buy': 'pricing.html',
+            'plan': 'pricing.html',
+            'contact': 'contact.html',
+            'support': 'contact.html',
+            'help': 'contact.html',
+            'email': 'contact.html',
+            'privacy': 'privacy.html',
+            'policy': 'privacy.html',
+            'terms': 'terms.html',
+            'conditions': 'terms.html',
+            'disclaimer': 'disclaimer.html'
+        };
+
+        // Handle Form Submission
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const submitBtn = document.getElementById('submitBtn');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            
+            if (query !== '') {
+                // UI Feedback (Loading state)
+                const originalIcon = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin text-brand-primary"></i>';
+                submitBtn.disabled = true;
+                lucide.createIcons();
+
+                // Determine routing
+                setTimeout(() => {
+                    const lowerQuery = query.toLowerCase();
+                    let targetUrl = null;
+
+                    // 1. Check if they typed an exact filename (e.g., "terms.html")
+                    if (lowerQuery.endsWith('.html')) {
+                        targetUrl = lowerQuery;
+                    } else {
+                        // 2. Scan keywords in the dictionary
+                        for (const [keyword, url] of Object.entries(routeDictionary)) {
+                            if (lowerQuery.includes(keyword)) {
+                                targetUrl = url;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (targetUrl) {
+                        // Match found - Redirect
+                        showToast(`Route identified. Redirecting to <strong>${targetUrl}</strong>...`);
+                        setTimeout(() => {
+                            window.location.href = targetUrl;
+                        }, 1200);
+                    } else {
+                        // No Match - Show Error
+                        showToast(`Command <strong>"${query}"</strong> not recognized. Try typing "home", "pricing", or "contact".`);
+                        submitBtn.innerHTML = originalIcon;
+                        submitBtn.disabled = false;
+                        lucide.createIcons();
+                        searchInput.focus();
+                    }
+                }, 800);
+            } else {
+                // Focus input if empty
+                searchInput.focus();
+            }
+        });
+    </script>
+</body>
+</html>
