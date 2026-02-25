@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +23,6 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        title: ['Stinger', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -69,16 +68,6 @@
     
     <!-- Custom CSS for specific aesthetic touches -->
     <style>
-        /* Stinger Font (Bold only) */
-        @font-face {
-            font-family: 'Stinger';
-            src: url('fonts/StingerFitTrial-Bold.woff2') format('woff2'),
-                 url('fonts/StingerFitTrial-Bold.woff') format('woff');
-            font-weight: 700;  /* Bold */
-            font-style: normal;
-            font-display: swap;
-        }
-
         body {
             background-color: #050810;
             color: #f0f4ff;
@@ -102,13 +91,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* Artificially thicken the font to match the zero */
-            -webkit-text-stroke: 3px transparent;
-        }
-        @media (min-width: 768px) {
-            .text-gradient {
-                -webkit-text-stroke: 6px transparent;
-            }
+            /* Artificial stroke removed to slim down the numbers */
         }
 
         /* Custom Scrollbar */
@@ -191,7 +174,8 @@
         
         <!-- 404 Header -->
         <div class="space-y-2 relative">
-            <h1 class="text-9xl md:text-[12rem] font-title flex items-center justify-center tracking-tighter relative z-10 drop-shadow-lg leading-none">
+            <!-- Changed font-black to font-bold to reduce thickness -->
+            <h1 class="text-9xl md:text-[12rem] font-bold flex items-center justify-center tracking-tighter relative z-10 drop-shadow-lg leading-none">
                 <span class="text-gradient">4</span>
                 
                 <!-- Custom Shattered Zero SVG -->
@@ -238,9 +222,9 @@
                 <span class="text-brand-primary font-bold text-3xl md:text-4xl">⟩</span>
                 <div class="inline-grid text-left">
                     <!-- Invisible placeholder to maintain constant width and prevent layout shift -->
-                    <p class="text-2xl md:text-3xl font-title invisible col-start-1 row-start-1 pr-1">Route Not Found</p>
+                    <p class="text-2xl md:text-3xl font-bold invisible col-start-1 row-start-1 pr-1">Route Not Found</p>
                     <!-- Animated typing text overlay -->
-                    <p class="text-2xl md:text-3xl font-title text-gray-100 col-start-1 row-start-1 overflow-hidden whitespace-nowrap border-r-[3px] border-brand-primary typing-effect pr-1">Route Not Found</p>
+                    <p class="text-2xl md:text-3xl font-bold text-gray-100 col-start-1 row-start-1 overflow-hidden whitespace-nowrap border-r-[3px] border-brand-primary typing-effect pr-1">Route Not Found</p>
                 </div>
             </div>
         </div>
