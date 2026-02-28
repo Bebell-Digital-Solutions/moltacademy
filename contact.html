@@ -143,6 +143,58 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
         }
+
+
+
+
+
+        /* Starry Background Effect - Balanced Realism */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0; /* Stretches the overlay across the entire screen */
+            z-index: -2; /* Places stars behind your content and the z-[-1] ambient glows */
+            pointer-events: none; /* Ensures the stars don't intercept any mouse clicks */
+            
+            /* Paints varied stars finding the middle ground between subtle and visible */
+            background-image: 
+                /* 1. Large Glowing Stars - visible but not overpowering */
+                radial-gradient(circle at 150px 150px, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.15) 2px, transparent 6px),
+                radial-gradient(circle at 450px 50px, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.15) 3px, transparent 8px),
+                radial-gradient(circle at 300px 350px, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 2px, transparent 5px),
+                
+                /* 2. Medium Blurred Stars - moderate brightness */
+                radial-gradient(circle at 50px 250px, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.1) 1.5px, transparent 3px),
+                radial-gradient(circle at 200px 80px, rgba(255, 255, 255, 0.5) 0%, transparent 3px),
+                radial-gradient(circle at 380px 220px, rgba(255, 255, 255, 0.4) 0%, transparent 4px),
+                radial-gradient(circle at 80px 400px, rgba(255, 255, 255, 0.5) 0%, transparent 2.5px),
+                
+                /* 3. Tiny Sharp/Distant Stars - visible background texture */
+                radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(1px 1px at 90px 110px, rgba(255, 255, 255, 0.25), transparent),
+                radial-gradient(1.5px 1.5px at 160px 290px, rgba(255, 255, 255, 0.35), transparent),
+                radial-gradient(1px 1px at 280px 150px, rgba(255, 255, 255, 0.2), transparent),
+                radial-gradient(1px 1px at 410px 380px, rgba(255, 255, 255, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 480px 190px, rgba(255, 255, 255, 0.4), transparent);
+            
+            /* Varying tile sizes to prevent an obvious repeating grid */
+            background-size: 
+                600px 600px, 600px 600px, 600px 600px, /* Layers for Large Stars */
+                450px 450px, 450px 450px, 450px 450px, 450px 450px, /* Layers for Medium Stars */
+                300px 300px, 300px 300px, 300px 300px, 300px 300px, 300px 300px, 300px 300px; /* Layers for Tiny Stars */
+            
+            opacity: 0.55; /* The sweet spot between subtle and realistic */
+        }
+
+
+
+
+
+
+
+
+
+        
     </style>
 </head>
 <body class="antialiased min-h-screen relative">
