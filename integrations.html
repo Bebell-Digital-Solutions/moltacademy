@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations - MoltAcademy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/4da194dd109512d48537351d7f294b8f0aa5961b.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        title: ['Stinger', 'sans-serif'],   
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b',
+                            cyan: '#00e5cc',
+                            dark: '#050810',
+                            panel: 'rgba(10, 15, 26, 0.8)',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'scroll': 'scroll 40s linear infinite',
+                        'scroll-reverse': 'scroll-reverse 40s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'scale-in': 'scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        'scroll-reverse': {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Stinger Font */
+        @font-face {
+            font-family: 'Stinger';
+            src: url('fonts/StingerFitTrial-Bold.woff2') format('woff2'),
+                 url('fonts/StingerFitTrial-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(232, 81, 75, 0.5); /* Brand primary with opacity */
+            background: rgba(15, 23, 42, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(232, 81, 75, 0.2);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lobster-glow {
+            filter: drop-shadow(0 0 20px rgba(232, 81, 75, 0.3));
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050810;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e8514b;
+        }
+
+        /* Modal Prevent Scroll */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
+        }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-primary/30 selection:text-red-200">
+
+    <!-- Back to Homepage Link -->
+    <a href="/moltacademy" class="absolute top-6 left-6 md:top-10 md:left-10 z-50 flex items-center gap-2 text-brand-primary hover:text-white transition-all duration-300 font-medium text-[12px] tracking-widest uppercase opacity-0 animate-fade-in-up group">
+        <i class="fa-solid fa-arrow-left transform group-hover:-translate-x-1 transition-transform duration-300"></i>
+        Back to Homepage
+    </a>
+
+    <!-- Background Ambient Glow -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-brand-primary/5 rounded-full mix-blend-screen filter blur-[128px] animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+    <main class="flex flex-col items-center min-h-screen pt-16 px-4 pb-20">
+
+        <!-- Header / Hero -->
+        <header class="text-center max-w-4xl mx-auto mb-16 relative opacity-0 animate-fade-in-up">
+            <div class="w-32 h-32 mx-auto mb-6 lobster-glow cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="MoltAcademy Logo" class="w-full h-full object-contain">
+            </div>
+            
+            <h1 class="font-title text-6xl md:text-7xl font-bold mb-4 tracking-tighter">
+                <span class="text-gradient">Integrations</span>
+            </h1>
+            
+            <p class="text-brand-primary text-lg font-medium tracking-[0.2em] uppercase mb-6">
+                Build. Secure. Deploy. Dominate.
+            </p>
+            
+            <p class="text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed">
+                The premier resource for building Secure, Production-Ready <strong>Autonomous AI Systems</strong> with Moltbot & OpenClaw. Deploy and delegate with confidence.
+            </p>
+        </header>
+
+        <!-- Categories Container -->
+        <div id="integrations-container" class="w-full max-w-4xl mx-auto flex flex-col gap-16">
+            <!-- Populated via JavaScript -->
+        </div>
+
+        <!-- Call To Actions -->
+        <div class="w-full max-w-4xl mx-auto mt-32 flex flex-col gap-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+            <!-- Primary CTA -->
+            <div class="glass-card rounded-3xl p-10 text-center flex flex-col items-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-primary/5 z-0"></div>
+                <h3 class="font-title text-3xl text-white mb-4 relative z-10">Ready to get started?</h3>
+                <p class="text-slate-400 mb-8 relative z-10">Join thousands of developers building the future of autonomous systems.</p>
+                <a href="/moltacademy/pricing" class="relative z-10 px-8 py-3 bg-brand-primary hover:bg-red-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-brand-primary/30">
+                    Get Started Now
+                </a>
+            </div>
+
+            <!-- Secondary CTA -->
+            <div class="glass-card rounded-3xl p-10 text-center flex flex-col items-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-cyan/10 rounded-full blur-[80px]"></div>
+                <h3 class="font-title text-3xl text-white mb-4 relative z-10">Want More Skills?</h3>
+                <p class="text-slate-400 mb-8 relative z-10">Discover API endpoints, custom webhooks, and advanced developer tools.</p>
+                <a href="/docs" class="relative z-10 px-8 py-3 bg-brand-cyan hover:bg-teal-400 text-brand-dark font-bold rounded-xl transition-colors shadow-lg shadow-brand-cyan/20">
+                    Explore Developer Docs
+                </a>
+            </div>
+            
+        </div>
+
+    </main>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"></button>
+
+    <!-- Image Banner Section - Full width, placed above footer -->
+    <section class="w-full max-w-4xl mx-auto px-6 mb-0">
+        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
+             alt="Molt Academy Banner" 
+             class="w-full h-auto object-contain block"
+             loading="lazy">
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-slate-500 text-sm max-w-4xl mx-auto border-t border-slate-800 pt-10 px-4 pb-10">
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-6">
+            <a href="/moltacademy" class="hover:text-brand-primary transition-colors whitespace-nowrap">Homepage</a>
+            <a href="/moltacademy/pricing" class="hover:text-brand-primary transition-colors whitespace-nowrap">Pricing</a>
+            <a href="/moltacademy/terms" class="hover:text-brand-primary transition-colors whitespace-nowrap">Terms</a>
+            <a href="/moltacademy/privacy" class="hover:text-brand-primary transition-colors whitespace-nowrap">Privacy</a>
+            <a href="/moltacademy/disclaimer" class="hover:text-brand-primary transition-colors whitespace-nowrap">Disclaimer</a>
+            <a href="/moltacademy/contact" class="hover:text-brand-primary transition-colors whitespace-nowrap">Contact</a>                
+        </nav>
+        
+        <p class="mb-2">
+            Built by <a href="#" class="text-brand-primary hover:underline">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline">OpenClaw</a>.
+        </p>
+        
+        <p class="opacity-60 text-xs">
+            MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+        </p>
+    </footer>
+
+    <!-- Modal Background & Container -->
+    <div id="setup-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="absolute inset-0 bg-brand-dark/90 backdrop-blur-md transition-opacity opacity-0" onclick="closeModal()"></div>
+        
+        <!-- Modal Content Box -->
+        <div id="modal-content" class="glass-card relative z-10 w-full max-w-md rounded-3xl p-8 border border-brand-primary/30 shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            
+            <button onclick="closeModal()" class="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex flex-col items-center text-center mt-2">
+                <!-- Icon container populated by JS -->
+                <div id="modal-icon-container" class="w-20 h-20 rounded-2xl bg-slate-800/50 flex items-center justify-center mb-6 shadow-lg shadow-brand-primary/20 border border-slate-700">
+                    <img id="modal-icon" src="" alt="Icon" class="w-10 h-10 object-contain">
+                </div>
+                
+                <h2 class="font-title text-2xl md:text-3xl text-white mb-3">
+                    Let's Set Up Your MoltBot Today!
+                </h2>
+                
+                <p id="modal-subtitle" class="text-slate-400 mb-8 leading-relaxed">
+                    Connect <strong>[Brand]</strong> to unleash powerful automations and supercharge your workflow in minutes.
+                </p>
+
+                <a href="/moltacademy/pricing" class="w-full py-4 px-6 bg-brand-primary hover:bg-red-500 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 group shadow-lg shadow-brand-primary/25">
+                    Start Integration
+                    <i class="fa-solid fa-chevron-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                
+                <p class="mt-5 text-xs text-slate-500">
+                    No credit card required for setup.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // --- Integration Data Mapping ---
+        // We use simpleicons.org CDN to pull actual brand SVGs. 
+        // Syntax: 'brandSlug/hexColor'. If hex is 'white', it forces a white logo for dark themes.
+        const integrationData = [
+            {
+                title: "Chat & Messaging",
+                description: "Connect instantly across popular communication platforms.",
+                items: [
+                    { name: "WhatsApp", icon: "whatsapp/25D366", fallback: "fa-brands fa-whatsapp text-[#25D366]" },
+                    { name: "Telegram", icon: "telegram/26A5E4", fallback: "fa-brands fa-telegram text-[#26A5E4]" },
+                    { name: "Discord", icon: "discord/5865F2", fallback: "fa-brands fa-discord text-[#5865F2]" },
+                    { name: "Slack", icon: "slack/E01E5A", fallback: "fa-brands fa-slack text-[#E01E5A]" },
+                    { name: "Apple", icon: "apple/white", fallback: "fa-brands fa-apple text-white" },
+                    { name: "Android", icon: "android/3DDC84", fallback: "fa-brands fa-android text-[#3DDC84]" },
+                    { name: "MessageBird", icon: "messagebird/2481D7", fallback: "fa-solid fa-comment-sms text-[#2481D7]" },
+                    { name: "Twilio", icon: "twilio/F22F46", fallback: "fa-solid fa-comment-dots text-[#F22F46]" },
+                    { name: "WeChat", icon: "wechat/07C160", fallback: "fa-brands fa-weixin text-[#07C160]" }
+                ]
+            },
+            {
+                title: "AI Models",
+                description: "Power your workflows with industry-leading AI models.",
+                items: [
+                    { name: "Anthropic", icon: "anthropic/white", fallback: "fa-solid fa-brain text-white" },
+                    { name: "OpenAI", icon: "openai/white", fallback: "fa-solid fa-microchip text-white" },
+                    { name: "Google Gemini", icon: "google/4285F4", fallback: "fa-brands fa-google text-[#4285F4]" },
+                    { name: "Meta Llama", icon: "meta/0668E1", fallback: "fa-brands fa-meta text-[#0668E1]" },
+                    { name: "Hugging Face", icon: "huggingface/FFD21E", fallback: "fa-solid fa-face-smile text-[#FFD21E]" },
+                    { name: "Cohere", icon: "cohere/white", fallback: "fa-solid fa-cube text-white" },
+                    { name: "Perplexity", icon: "perplexity/white", fallback: "fa-solid fa-magnifying-glass text-white" },
+                    { name: "Mistral AI", icon: "mistral/F26522", fallback: "fa-solid fa-wind text-[#F26522]" },
+                    { name: "Replicate", icon: "replicate/white", fallback: "fa-solid fa-copy text-white" },
+                    { name: "Local Models", icon: "fa-solid fa-server text-white", fallback: "fa-solid fa-server text-white" }
+                ]
+            },
+            {
+                title: "Productivity",
+                description: "Streamline tasks and connect your daily tools.",
+                items: [
+                    { name: "Notion", icon: "notion/white", fallback: "fa-solid fa-book text-white" },
+                    { name: "Google Drive", icon: "googledrive/4285F4", fallback: "fa-brands fa-google-drive text-[#4285F4]" },
+                    { name: "Trello", icon: "trello/0052CC", fallback: "fa-brands fa-trello text-[#0052CC]" },
+                    { name: "Asana", icon: "asana/F06A6A", fallback: "fa-solid fa-list-check text-[#F06A6A]" },
+                    { name: "Dropbox", icon: "dropbox/0061FF", fallback: "fa-brands fa-dropbox text-[#0061FF]" },
+                    { name: "GitHub", icon: "github/white", fallback: "fa-brands fa-github text-white" }
+                ]
+            },
+            {
+                title: "Music & Audio",
+                description: "Control media directly from your workflows.",
+                items: [
+                    { name: "Spotify", icon: "spotify/1DB954", fallback: "fa-brands fa-spotify text-[#1DB954]" },
+                    { name: "Apple Music", icon: "applemusic/FA243C", fallback: "fa-solid fa-music text-[#FA243C]" },
+                    { name: "SoundCloud", icon: "soundcloud/FF3300", fallback: "fa-brands fa-soundcloud text-[#FF3300]" }
+                ]
+            },
+            {
+                title: "Tools & Automation",
+                description: "Extend capabilities with integration platforms.",
+                items: [
+                    { name: "Zapier", icon: "zapier/FF4A00", fallback: "fa-solid fa-bolt text-[#FF4A00]" },
+                    { name: "Make", icon: "make/white", fallback: "fa-solid fa-network-wired text-white" },
+                    { name: "Stripe", icon: "stripe/008CDD", fallback: "fa-brands fa-stripe text-[#008CDD]" },
+                    { name: "Mailchimp", icon: "mailchimp/FFE01B", fallback: "fa-brands fa-mailchimp text-[#FFE01B]" },
+                    { name: "Postmark", icon: "postmark/F6CF45", fallback: "fa-solid fa-envelope-open-text text-[#F6CF45]" }
+                ]
+            },
+            {
+                title: "Databases",
+                description: "Connect to vector and relational databases.",
+                items: [
+                    { name: "Pinecone", icon: "pinecone/white", fallback: "fa-solid fa-tree text-white" },
+                    { name: "Supabase", icon: "supabase/3ECF8E", fallback: "fa-solid fa-database text-[#3ECF8E]" },
+                    { name: "MongoDB", icon: "mongodb/47A248", fallback: "fa-solid fa-leaf text-[#47A248]" },
+                    { name: "Redis", icon: "redis/DC382D", fallback: "fa-solid fa-server text-[#DC382D]" }
+                ]
+            }
+        ];
+
+        // --- DOM Elements ---
+        const container = document.getElementById('integrations-container');
+        const modal = document.getElementById('setup-modal');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const modalContent = document.getElementById('modal-content');
+        const modalIconContainer = document.getElementById('modal-icon-container');
+        const modalSubtitle = document.getElementById('modal-subtitle');
+
+        // --- Render Functions ---
+        function generateIconHTML(item, sizeClasses = "w-8 h-8") {
+            // Check if it's a FontAwesome fallback icon directly
+            if (item.icon.startsWith('fa-')) {
+                return `<i class="${item.fallback} text-3xl transition-transform duration-300 group-hover:scale-110"></i>`;
+            }
+            // Otherwise, it's a simple-icon slug, but gracefully fallback if it 404s
+            return `<img src="https://cdn.simpleicons.org/${item.icon}" alt="${item.name} Logo" class="${sizeClasses} object-contain transition-transform duration-300 group-hover:scale-110" onerror="this.onerror=null; this.outerHTML='<i class=\\'${item.fallback} text-3xl transition-transform duration-300 group-hover:scale-110\\'></i>';">`;
+        }
+
+        function renderCategories() {
+            let delay = 0.1;
+            
+            integrationData.forEach(category => {
+                const section = document.createElement('div');
+                section.className = `opacity-0 animate-fade-in-up`;
+                section.style.animationDelay = `${delay}s`;
+                
+                // Header of Category
+                const headerHTML = `
+                    <div class="flex items-center mb-2">
+                        <h2 class="font-title text-2xl font-semibold flex items-center gap-3 text-white tracking-wide">
+                            <span class="text-brand-primary font-bold text-3xl">⟩</span>
+                            ${category.title}
+                        </h2>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-6 ml-7">${category.description}</p>
+                `;
+
+                // Grid of Cards
+                const grid = document.createElement('div');
+                grid.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4";
+                
+                category.items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "glass-card rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer group text-center relative overflow-hidden";
+                    
+                    // Add click listener
+                    card.onclick = () => openModal(item);
+
+                    // Top hover glow line
+                    const hoverGlow = `<div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-brand-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>`;
+                    
+                    card.innerHTML = `
+                        ${hoverGlow}
+                        <div class="mb-4 w-12 h-12 flex items-center justify-center bg-transparent">
+                            ${generateIconHTML(item)}
+                        </div>
+                        <h3 class="text-sm font-semibold text-slate-200 group-hover:text-white transition-colors leading-tight">${item.name}</h3>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                section.innerHTML = headerHTML;
+                section.appendChild(grid);
+                container.appendChild(section);
+                
+                delay += 0.1;
+            });
+        }
+
+        // --- Modal Logic ---
+        function openModal(item) {
+            // Populate Modal Data
+            modalSubtitle.innerHTML = `Connect <strong class="text-white">${item.name}</strong> to unleash powerful automations and supercharge your workflow in minutes.`;
+            
+            // Set Icon in Modal using the same fallback logic
+            if (item.icon.startsWith('fa-')) {
+                modalIconContainer.innerHTML = `<i class="${item.fallback} text-4xl drop-shadow-lg"></i>`;
+            } else {
+                modalIconContainer.innerHTML = `<img src="https://cdn.simpleicons.org/${item.icon}" alt="${item.name}" class="w-10 h-10 object-contain drop-shadow-lg" onerror="this.onerror=null; this.outerHTML='<i class=\\'${item.fallback} text-4xl drop-shadow-lg\\'></i>';">`;
+            }
+
+            // Show Modal Container
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Lock body scroll
+            document.body.classList.add('modal-open');
+
+            // Trigger entrance animations
+            requestAnimationFrame(() => {
+                modalBackdrop.classList.remove('opacity-0');
+                modalBackdrop.classList.add('opacity-100');
+                
+                modalContent.classList.remove('opacity-0', 'scale-95');
+                modalContent.classList.add('opacity-100', 'scale-100');
+            });
+        }
+
+        function closeModal() {
+            // Trigger exit animations
+            modalBackdrop.classList.remove('opacity-100');
+            modalBackdrop.classList.add('opacity-0');
+            
+            modalContent.classList.remove('opacity-100', 'scale-100');
+            modalContent.classList.add('opacity-0', 'scale-95');
+
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }, 300); // Matches duration-300 class
+        }
+
+        // Initialize Page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            
+            // Back to Top functionality
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.style.display = 'flex';
+                } else {
+                    backToTopBtn.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
