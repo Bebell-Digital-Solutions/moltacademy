@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations - MoltAcademy</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/4da194dd109512d48537351d7f294b8f0aa5961b.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        title: ['Inter', 'sans-serif'],   
+                    },
+                    colors: {
+                        brand: {
+                            primary: '#e8514b',
+                            cyan: '#00e5cc',
+                            dark: '#050810',
+                            panel: 'rgba(10, 15, 26, 0.8)',
+                            card: '#0a0f1a',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050810;
+            color: #f0f4ff;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: #0a0f1a;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: #111827;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8514b 60%, #ff8f8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lobster-glow {
+            filter: drop-shadow(0 0 20px rgba(232, 81, 75, 0.3));
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050810; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e8514b; }
+
+        body.modal-open { overflow: hidden; }
+
+        #back-to-top {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 3rem; height: 3rem;
+            background: rgba(232, 81, 75, 0.2);
+            border: 1px solid rgba(232, 81, 75, 0.5);
+            border-radius: 50%;
+            cursor: pointer; display: none;
+            align-items: center; justify-content: center;
+            transition: all 0.3s; z-index: 50; color: #e8514b;
+        }
+        #back-to-top:hover { background: #e8514b; color: white; }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-primary/30 selection:text-red-200">
+
+    <!-- Back Link -->
+    <a href="/moltacademy" class="absolute top-6 left-6 md:top-10 md:left-10 z-50 flex items-center gap-2 text-brand-primary hover:text-white transition-all duration-300 font-medium text-[12px] tracking-widest uppercase opacity-0 animate-fade-in-up group">
+        <i class="fa-solid fa-arrow-left transform group-hover:-translate-x-1 transition-transform duration-300"></i>
+        Back to Homepage
+    </a>
+
+    <!-- Background Ambient Glow -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-primary/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-screen filter blur-[128px] animate-blob" style="animation-delay: 2s;"></div>
+    </div>
+
+    <main class="flex flex-col items-center min-h-screen pt-16 px-4 pb-20">
+
+        <!-- Hero -->
+        <header class="text-center max-w-4xl mx-auto mb-20 relative opacity-0 animate-fade-in-up">
+            <div class="w-24 h-24 mx-auto mb-6 lobster-glow cursor-pointer hover:scale-105 transition-transform duration-300">
+                <img src="https://bucket.mlcdn.com/a/3336/3336910/images/117a712a31c4145b6d35e19e16da25fabc6129f5.png" alt="MoltAcademy Logo" class="w-full h-full object-contain">
+            </div>
+            
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight">
+                <span class="text-gradient">Integrations</span>
+            </h1>
+            
+            <p class="text-brand-primary text-sm font-bold tracking-[0.25em] uppercase mb-6">
+                Build. Secure. Deploy. Dominate.
+            </p>
+            
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                Connect your favorite tools to OpenClaw. From chat providers to productivity suites, build a truly autonomous workflow.
+            </p>
+        </header>
+
+        <!-- Categories Container -->
+        <div id="integrations-container" class="w-full mx-auto flex flex-col gap-24">
+            <!-- Populated via JavaScript -->
+        </div>
+
+        <!-- Call To Actions -->
+        <div class="w-full max-w-4xl mx-auto mt-32 flex flex-col gap-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+            <!-- Primary CTA -->
+            <div class="glass-card rounded-3xl p-10 text-center flex flex-col items-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-brand-primary/5 z-0"></div>
+                <h3 class="font-title text-3xl text-white mb-4 relative z-10">Ready to get started?</h3>
+                <p class="text-slate-400 mb-8 relative z-10">Join thousands of developers building the future of autonomous systems.</p>
+                <a href="/moltacademy/pricing" class="relative z-10 px-8 py-3 bg-brand-primary hover:bg-red-500 text-white font-semibold rounded-xl transition-colors shadow-lg shadow-brand-primary/30">
+                    Get Started Now
+                </a>
+            </div>
+
+            <!-- Secondary CTA -->
+            <div class="glass-card rounded-3xl p-10 text-center flex flex-col items-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-cyan/10 rounded-full blur-[80px]"></div>
+                <h3 class="font-title text-3xl text-white mb-4 relative z-10">Want More Skills?</h3>
+                <p class="text-slate-400 mb-8 relative z-10">Discover API endpoints, custom webhooks, and advanced developer tools.</p>
+                <a href="/docs" class="relative z-10 px-8 py-3 bg-brand-cyan hover:bg-teal-400 text-brand-dark font-bold rounded-xl transition-colors shadow-lg shadow-brand-cyan/20">
+                    Explore Developer Docs
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" aria-label="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Image Banner Section - Full width, placed above footer -->
+    <section class="w-full max-w-4xl mx-auto px-6 mb-0">
+        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5e9730b190aed26728a80a1054426730d7528021.png" 
+             alt="Molt Academy Banner" 
+             class="w-full h-auto object-contain block"
+             loading="lazy">
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center text-slate-500 text-sm max-w-4xl mx-auto border-t border-slate-800 pt-10 px-4 pb-10">
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-6">
+            <a href="/moltacademy" class="hover:text-brand-primary transition-colors whitespace-nowrap">Homepage</a>
+            <a href="/moltacademy/pricing" class="hover:text-brand-primary transition-colors whitespace-nowrap">Pricing</a>
+            <a href="/moltacademy/terms" class="hover:text-brand-primary transition-colors whitespace-nowrap">Terms</a>
+            <a href="/moltacademy/privacy" class="hover:text-brand-primary transition-colors whitespace-nowrap">Privacy</a>
+            <a href="/moltacademy/disclaimer" class="hover:text-brand-primary transition-colors whitespace-nowrap">Disclaimer</a>
+            <a href="/moltacademy/contact" class="hover:text-brand-primary transition-colors whitespace-nowrap">Contact</a>                
+        </nav>
+        
+        <p class="mb-2">
+            Built by <a href="#" class="text-brand-primary hover:underline">MoltAcademy</a> 🦞. Powered with <a href="#" class="text-brand-primary hover:underline">OpenClaw</a>.
+        </p>
+        
+        <p class="opacity-60 text-xs">
+            MoltAcademy is an independent educational platform for the OpenClaw ecosystem.<br>Not affiliated with OpenClaw, Anthropic, or any entity mentioned in the platform.
+        </p>
+    </footer>
+
+    <!-- Setup Modal -->
+    <div id="setup-modal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+        <div id="modal-backdrop" class="absolute inset-0 bg-brand-dark/95 backdrop-blur-md transition-opacity opacity-0" onclick="closeModal()"></div>
+        <div id="modal-content" class="glass-card relative z-10 w-full max-w-md rounded-3xl p-10 shadow-2xl transform scale-95 opacity-0 transition-all duration-300">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            <div class="flex flex-col items-center text-center">
+                <div id="modal-icon-container" class="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10"></div>
+                <h2 class="text-3xl font-bold text-white mb-3">Integrate Today</h2>
+                <p id="modal-subtitle" class="text-slate-400 mb-8 leading-relaxed"></p>
+                <a href="/moltacademy/pricing" class="w-full py-4 bg-brand-primary hover:bg-red-500 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 group shadow-xl shadow-brand-primary/20">
+                    Start Integration
+                    <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const integrationData = [
+            {
+                title: "Chat Providers",
+                description: "Message OpenClaw from any chat app — it responds right where you are.",
+                items: [
+                    { name: "WhatsApp", sub: "QR pairing via Baileys", icon: "whatsapp/25D366", fb: "fa-brands fa-whatsapp text-[#25D366]" },
+                    { name: "Telegram", sub: "Bot API via grammY", icon: "telegram/26A5E4", fb: "fa-brands fa-telegram text-[#26A5E4]" },
+                    { name: "Discord", sub: "Servers, channels & DMs", icon: "discord/5865F2", fb: "fa-brands fa-discord text-[#5865F2]" },
+                    { name: "Slack", sub: "Workspace apps via Bolt", icon: "fa-solid fa-hashtag text-[#E01E5A]", fb: "fa-solid fa-hashtag text-[#E01E5A]" },
+                    { name: "Signal", sub: "Privacy-focused via signal-cli", icon: "signal/3A76F0", fb: "fa-solid fa-comment-dots text-[#3A76F0]" },
+                    { name: "iMessage", sub: "iMessage via imsg (AppleScript bridge)", icon: "apple/007AFF", fb: "fa-brands fa-apple text-[#007AFF]" },
+                    { name: "iMessage", sub: "iMessage via BlueBubbles server", icon: "fa-solid fa-comment-dots text-[#007AFF]", fb: "fa-solid fa-comment-dots text-[#007AFF]" },
+                    { name: "Microsoft Teams", sub: "Enterprise support", icon: "microsoftteams/6264D0", fb: "fa-solid fa-users text-[#6264D0]" },
+                    { name: "Nextcloud Talk", sub: "Self-hosted Nextcloud chat", icon: "nextcloud/0082C9", fb: "fa-solid fa-cloud text-[#0082C9]" },
+                    { name: "Matrix", sub: "Matrix protocol", customHTML: '<span class="text-slate-400 font-mono font-bold text-2xl">[m]</span>' },
+                    { name: "Nostr", sub: "Decentralized DMs via NIP-04", icon: "fa-regular fa-circle text-[#A333D2]", fb: "fa-regular fa-circle text-[#A333D2]" },
+                    { name: "Tlon Messenger", sub: "P2P ownership-first chat", icon: "urbit/white", fb: "fa-solid fa-box text-white" },
+                    { name: "Zalo", sub: "Zalo Bot API", customHTML: '<span class="text-[#0068FF] font-bold text-lg">Zalo</span>' },
+                    { name: "Zalo Personal", sub: "Personal account via QR login", customHTML: '<span class="text-[#0068FF] font-bold text-lg">Zalo</span>' },
+                    { name: "WebChat", sub: "Browser-based UI", icon: "fa-solid fa-globe text-[#00E5CC]", fb: "fa-solid fa-globe text-[#00E5CC]" }
+                ]
+            },
+            {
+                title: "AI Models",
+                description: "Use any model you want — cloud or local. Your keys, your choice.",
+                items: [
+                    { name: "Anthropic", sub: "Claude Pro/Max + Opus 4.5", icon: "anthropic/E57D5C", fb: "fa-solid fa-brain text-[#E57D5C]" },
+                    { name: "OpenAI", sub: "GPT-4, GPT-5, o1", icon: "openai/10A37F", fb: "fa-brands fa-openai text-[#10A37F]" },
+                    { name: "Google", sub: "Gemini 2.5 Pro/Flash", icon: "google/4285F4", fb: "fa-brands fa-google text-[#4285F4]" },
+                    { name: "MiniMax", sub: "MiniMax-M2.1", icon: "fa-solid fa-wave-square text-pink-500", fb: "fa-solid fa-wave-square text-pink-500" },
+                    { name: "xAI", sub: "Grok 3 & 4", icon: "x/white", fb: "fa-brands fa-x-twitter text-white" },
+                    { name: "Vercel AI Gateway", sub: "Hundreds of models, 1 API key", icon: "vercel/white", fb: "fa-solid fa-caret-up text-white" },
+                    { name: "OpenRouter", sub: "Unified API gateway", icon: "fa-solid fa-bolt text-[#7A3EE8]", fb: "fa-solid fa-bolt text-[#7A3EE8]" },
+                    { name: "Mistral", sub: "Mistral Large & Codestral", icon: "mistral/F26522", fb: "fa-solid fa-m text-[#F26522]" },
+                    { name: "DeepSeek", sub: "DeepSeek V3 & R1", icon: "fa-solid fa-brain text-[#3A76F0]", fb: "fa-solid fa-brain text-[#3A76F0]" },
+                    { name: "GLM", sub: "ChatGLM models", icon: "fa-regular fa-comment text-[#10A37F]", fb: "fa-regular fa-comment text-[#10A37F]" },
+                    { name: "Perplexity", sub: "Search-augmented AI", icon: "perplexity/00E5CC", fb: "fa-solid fa-asterisk text-[#00E5CC]" },
+                    { name: "Hugging Face", sub: "Open-source models", icon: "huggingface/FFD21E", fb: "fa-solid fa-face-smile text-[#FFD21E]" },
+                    { name: "Local Models", sub: "Ollama, LM Studio", icon: "fa-solid fa-paw text-white", fb: "fa-solid fa-paw text-white" }
+                ]
+            },
+            {
+                title: "Productivity",
+                description: "Notes, tasks, wikis, and code — OpenClaw works with your favorite tools.",
+                items: [
+                    { name: "Apple Notes", sub: "Native macOS/iOS notes", icon: "fa-regular fa-file-lines text-yellow-400", fb: "fa-regular fa-file-lines text-yellow-400" },
+                    { name: "Apple Reminders", sub: "Task management", icon: "fa-solid fa-square-check text-orange-400", fb: "fa-solid fa-square-check text-orange-400" },
+                    { name: "Things 3", sub: "GTD task manager", icon: "fa-solid fa-list-check text-blue-400", fb: "fa-solid fa-list-check text-blue-400" },
+                    { name: "Notion", sub: "Workspace & databases", icon: "notion/white", fb: "fa-solid fa-book text-white" },
+                    { name: "Obsidian", sub: "Knowledge graph notes", icon: "obsidian/7A3EE8", fb: "fa-solid fa-gem text-[#7A3EE8]" },
+                    { name: "Bear Notes", sub: "Markdown notes", icon: "fa-solid fa-pen-nib text-[#E8514B]", fb: "fa-solid fa-pen-nib text-[#E8514B]" },
+                    { name: "Trello", sub: "Kanban boards", icon: "trello/0052CC", fb: "fa-brands fa-trello text-[#0052CC]" },
+                    { name: "GitHub", sub: "Code, issues, PRs", icon: "github/white", fb: "fa-brands fa-github text-white" }
+                ]
+            },
+            {
+                title: "Music & Audio",
+                description: "Control playback, identify songs, and manage multi-room audio.",
+                items: [
+                    { name: "Spotify", sub: "Music playback control", icon: "spotify/1DB954", fb: "fa-brands fa-spotify text-[#1DB954]" },
+                    { name: "Sonos", sub: "Multi-room audio", customHTML: '<span class="text-white font-bold text-[10px] tracking-[0.2em] uppercase">SONOS</span>' },
+                    { name: "Shazam", sub: "Song recognition", icon: "shazam/0088FF", fb: "fa-solid fa-music text-[#0088FF]" }
+                ]
+            },
+            {
+                title: "Smart Home",
+                description: "Lights, thermostats, and IoT devices — all voice-controllable.",
+                items: [
+                    { name: "Philips Hue", sub: "Smart lighting", customHTML: '<span class="text-[#0088FF] font-light text-2xl tracking-wide lowercase">hue</span>' },
+                    { name: "8Sleep", sub: "Smart mattress", icon: "fa-solid fa-bed text-[#00E5CC]", fb: "fa-solid fa-bed text-[#00E5CC]" },
+                    { name: "Home Assistant", sub: "Home automation hub", icon: "homeassistant/41BDF5", fb: "fa-solid fa-house-chimney text-[#41BDF5]" }
+                ]
+            },
+            {
+                title: "Tools & Automation",
+                description: "Browser control, scheduled tasks, email triggers, and more.",
+                items: [
+                    { name: "Browser", sub: "Chrome/Chromium control", icon: "googlechrome/4285F4", fb: "fa-brands fa-chrome text-[#4285F4]" },
+                    { name: "Canvas", sub: "Visual workspace + A2UI", icon: "fa-solid fa-diagram-project text-[#E57D5C]", fb: "fa-solid fa-diagram-project text-[#E57D5C]" },
+                    { name: "Voice", sub: "Voice Wake + Talk Mode", icon: "fa-solid fa-microphone text-[#A333D2]", fb: "fa-solid fa-microphone text-[#A333D2]" },
+                    { name: "Gmail", sub: "Pub/Sub email triggers", icon: "gmail/EA4335", fb: "fa-regular fa-envelope text-[#EA4335]" },
+                    { name: "Cron", sub: "Scheduled tasks", icon: "fa-regular fa-clock text-[#F5C211]", fb: "fa-regular fa-clock text-[#F5C211]" },
+                    { name: "Webhooks", sub: "External triggers", icon: "fa-solid fa-link text-[#10A37F]", fb: "fa-solid fa-link text-[#10A37F]" },
+                    { name: "1Password", sub: "Secure credentials", icon: "fa-solid fa-shield-halved text-[#0088FF]", fb: "fa-solid fa-shield-halved text-[#0088FF]" },
+                    { name: "Weather", sub: "Forecasts & conditions", icon: "fa-solid fa-cloud-sun text-[#F5C211]", fb: "fa-solid fa-cloud-sun text-[#F5C211]" }
+                ]
+            },
+            {
+                title: "Media & Creative",
+                description: "Generate images, capture screens, and find the perfect GIF.",
+                items: [
+                    { name: "Image Gen", sub: "AI image generation", icon: "fa-regular fa-image text-[#E8514B]", fb: "fa-regular fa-image text-[#E8514B]" },
+                    { name: "GIF Search", sub: "Find the perfect GIF", icon: "fa-solid fa-magnifying-glass text-[#00E5CC]", fb: "fa-solid fa-magnifying-glass text-[#00E5CC]" },
+                    { name: "Peekaboo", sub: "Screen capture & control", icon: "fa-regular fa-eye text-[#E8514B]", fb: "fa-regular fa-eye text-[#E8514B]" },
+                    { name: "Camera", sub: "Photo/video capture", icon: "fa-solid fa-camera text-slate-400", fb: "fa-solid fa-camera text-slate-400" }
+                ]
+            },
+            {
+                title: "Social",
+                description: "Post tweets, manage email, and stay connected.",
+                items: [
+                    { name: "Twitter/X", sub: "Tweet, reply, search", icon: "x/white", fb: "fa-brands fa-x-twitter text-white" },
+                    { name: "Email", sub: "Send & read emails", icon: "fa-regular fa-envelope text-[#E8514B]", fb: "fa-regular fa-envelope text-[#E8514B]" }
+                ]
+            },
+            {
+                title: "Platforms",
+                description: "Run the Gateway anywhere. Use companion apps for voice, camera, and native features.<br><span class='text-white'>Mobile access:</span> Chat via WhatsApp/Telegram from your phone — no app install needed.",
+                items: [
+                    { name: "macOS", sub: "Menu bar app + Voice Wake", customHTML: '<span class="text-white font-bold text-sm">macOS</span>' },
+                    { name: "iOS", sub: "Canvas, camera, Voice Wake", customHTML: '<span class="text-[#007AFF] font-bold text-2xl">iOS</span>' },
+                    { name: "Android", sub: "Canvas, camera, screen", icon: "android/3DDC84", fb: "fa-brands fa-android text-[#3DDC84]" },
+                    { name: "Windows", sub: "WSL2 recommended", icon: "windows/0078D4", fb: "fa-brands fa-windows text-[#0078D4]" },
+                    { name: "Linux", sub: "Native support", icon: "linux/F5C211", fb: "fa-brands fa-linux text-[#F5C211]" }
+                ]
+            },
+            {
+                title: "Community Showcase",
+                description: "Impressive integrations built by the community.",
+                items: [
+                    { name: "Tesco Autopilot", sub: "Automated grocery shopping", icon: "fa-solid fa-cart-shopping text-[#007AFF]", fb: "fa-solid fa-cart-shopping text-[#007AFF]" },
+                    { name: "Bambu Control", sub: "3D printer management", icon: "fa-solid fa-print text-[#25D366]", fb: "fa-solid fa-print text-[#25D366]" },
+                    { name: "Oura Ring", sub: "Health data insights", icon: "fa-regular fa-heart text-[#F5C211]", fb: "fa-regular fa-heart text-[#F5C211]" },
+                    { name: "Food Ordering", sub: "Foodora integration", icon: "fa-solid fa-utensils text-[#E8514B]", fb: "fa-solid fa-utensils text-[#E8514B]" }
+                ]
+            }
+        ];
+
+        const container = document.getElementById('integrations-container');
+
+        function generateIconHTML(item) {
+            if (item.customHTML) return item.customHTML;
+            if (item.icon.includes('fa-')) {
+                return `<i class="${item.icon} text-3xl"></i>`;
+            }
+            return `<img src="https://cdn.simpleicons.org/${item.icon}" alt="${item.name}" class="w-8 h-8 object-contain" onerror="this.outerHTML='<i class=\\'${item.fb} text-3xl\\'></i>';">`;
+        }
+
+        function render() {
+            let delay = 0;
+            integrationData.forEach(cat => {
+                const section = document.createElement('div');
+                section.className = "opacity-0 animate-fade-in-up w-full max-w-5xl mx-auto px-10";
+                section.style.animationDelay = `${delay}s`;
+
+                section.innerHTML = `
+                    <div class="mb-6 flex flex-col items-start relative">
+                        <div class="relative flex items-center">
+                            <!-- Hanging Icon -->
+                            <span class="absolute right-full mr-3 text-brand-primary text-2xl font-bold leading-none">⟩</span>
+                            <h2 class="text-[22px] font-bold text-white tracking-wide leading-none">${cat.title}</h2>
+                        </div>
+                        <p class="text-slate-500 mt-2 text-sm leading-relaxed">${cat.description}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        ${cat.items.map(item => `
+                            <div class="glass-card rounded-2xl p-6 flex flex-col items-center text-center cursor-pointer group" onclick="openModal('${item.name.replace(/'/g, "\\'")}')">
+                                <div class="mb-4 h-10 flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
+                                    ${generateIconHTML(item)}
+                                </div>
+                                <h3 class="text-white font-bold text-[15px] mb-1">${item.name}</h3>
+                                <p class="text-slate-500 text-[12px] leading-relaxed">${item.sub}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+                delay += 0.1;
+            });
+        }
+
+        function openModal(name) {
+            const modal = document.getElementById('setup-modal');
+            const subtitle = document.getElementById('modal-subtitle');
+            const iconBox = document.getElementById('modal-icon-container');
+            
+            let item = null;
+            for(let cat of integrationData) {
+                item = cat.items.find(i => i.name === name);
+                if(item) break;
+            }
+
+            if(!item) return;
+
+            subtitle.innerHTML = `Connect <strong class="text-white">${item.name}</strong> to your OpenClaw ecosystem and start delegating tasks instantly.`;
+            
+            let iconRender = generateIconHTML(item);
+            if(item.customHTML) {
+                iconRender = iconRender.replace('text-2xl', 'text-3xl').replace('text-sm', 'text-lg').replace('text-[10px]', 'text-sm');
+            } else if (item.icon.includes('fa-')) {
+                iconRender = iconRender.replace('text-3xl', 'text-5xl');
+            } else {
+                iconRender = iconRender.replace('w-8 h-8', 'w-10 h-10');
+            }
+            iconBox.innerHTML = iconRender;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-open');
+            setTimeout(() => {
+                document.getElementById('modal-backdrop').classList.replace('opacity-0', 'opacity-100');
+                document.getElementById('modal-content').classList.replace('scale-95', 'scale-100');
+                document.getElementById('modal-content').classList.replace('opacity-0', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            document.getElementById('modal-backdrop').classList.replace('opacity-100', 'opacity-0');
+            document.getElementById('modal-content').classList.replace('scale-100', 'scale-95');
+            document.getElementById('modal-content').classList.replace('opacity-100', 'opacity-0');
+            setTimeout(() => {
+                document.getElementById('setup-modal').classList.replace('flex', 'hidden');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+            window.addEventListener('scroll', () => {
+                const btt = document.getElementById('back-to-top');
+                btt.style.display = window.scrollY > 500 ? 'flex' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
