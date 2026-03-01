@@ -105,17 +105,40 @@
 
         body.modal-open { overflow: hidden; }
 
+
+
+
+
+
+
+        /* Back to Top Button */
         #back-to-top {
-            position: fixed; bottom: 2rem; right: 2rem;
-            width: 3rem; height: 3rem;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
             background: rgba(232, 81, 75, 0.2);
             border: 1px solid rgba(232, 81, 75, 0.5);
             border-radius: 50%;
-            cursor: pointer; display: none;
-            align-items: center; justify-content: center;
-            transition: all 0.3s; z-index: 50; color: #e8514b;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 50;
+            color: #e8514b;
         }
-        #back-to-top:hover { background: #e8514b; color: white; }
+        #back-to-top:hover {
+            background: #e8514b;
+            color: white;
+        }
+        #back-to-top::after {
+            content: '\f077';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
 
 
 
